@@ -39,7 +39,7 @@ export class Home extends React.Component {
           <Button onClick={this.logout.bind(this)}>Logout</Button>
         </Jumbotron>
         <Jumbotron>
-          <Link to='random'>Go to random</Link>
+          <Link to='/random'>Go to random</Link>
         </Jumbotron>
       </div>
     )

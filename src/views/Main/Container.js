@@ -1,10 +1,10 @@
-import React, { PropTypes as T } from 'react'
+import React, { PropTypes } from 'react'
 import { Jumbotron } from 'react-bootstrap'
 import styles from './styles.module.css'
 
 export class Container extends React.Component {
   static contextTypes = {
-    router: T.object
+    router: PropTypes.object
   }
 
   render() {
