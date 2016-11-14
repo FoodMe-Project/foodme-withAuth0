@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Jumbotron } from 'react-bootstrap'
-import styles from './styles.module.css'
+import './Container.css'
 
 export class Container extends React.Component {
   static contextTypes = {

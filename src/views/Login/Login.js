@@ -1,7 +1,7 @@
 import React, { PropTypes as T } from 'react'
-import {ButtonToolbar, Button} from 'react-bootstrap'
-import AuthService from '../../../utils/AuthService'
-import styles from './styles.module.css'
+import {Button} from 'react-bootstrap'
+import AuthService from '../../utils/AuthService'
+import styles from './Login.css'
 
 export class Login extends React.Component {
   static contextTypes = {

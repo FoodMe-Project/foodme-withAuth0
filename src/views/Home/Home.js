@@ -1,7 +1,7 @@
 import React, { PropTypes as T } from 'react'
 import {Button, Jumbotron} from 'react-bootstrap'
-import AuthService from '../../../utils/AuthService'
-import styles from './styles.module.css'
+import AuthService from '../../utils/AuthService'
+import styles from './Home.css'
 import { Link } from 'react-router'
 
 export class Home extends React.Component {
