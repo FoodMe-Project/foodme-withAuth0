@@ -13,3 +13,6 @@ build
 .DS_Store
 .env
 npm-debug.log
+
+# personal info
+src/views/Main/routes.js
