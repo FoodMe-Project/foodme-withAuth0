@@ -17,8 +17,7 @@ export class Login extends React.Component {
     const { auth } = this.props
     return (
       <div className={styles.root}>
-        <h2>Experience MFA like a Boss!!!</h2>
-        <Button bsStyle="primary" onClick={auth.login.bind(this)}>Login to Proceed >></Button>
+        <Button bsStyle="primary" onClick={auth.login.bind(this)}>Login</Button>
       </div>
     )
   }

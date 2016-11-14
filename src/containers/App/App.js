@@ -25,7 +25,7 @@ class App extends React.Component {
 
        <div className="App">
          <div style={{ height: '100%' }}>
-          <h2>Welcome to Vavavoom!</h2>
+          <h2>FoodMe</h2>
            {this.content}
          </div>
       </div>

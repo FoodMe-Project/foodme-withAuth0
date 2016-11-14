@@ -1,7 +1,8 @@
 import React, { PropTypes as T } from 'react'
-import {Button} from 'react-bootstrap'
+import {Button, Jumbotron} from 'react-bootstrap'
 import AuthService from '../../../utils/AuthService'
 import styles from './styles.module.css'
+import { Link } from 'react-router'
 
 export class Home extends React.Component {
   static contextTypes = {
@@ -31,10 +32,15 @@ export class Home extends React.Component {
     const { profile } = this.state
     return (
       <div className={styles.root}>
-        <h2>Home</h2>
-        <p>Welcome {profile.nickname}!</p>
-        { console.log(profile) }
-        <Button onClick={this.logout.bind(this)}>Logout</Button>
+        <Jumbotron>
+          <h2>Home</h2>
+          <p>Welcome {profile.nickname}!</p>
+          { console.log(profile) }
+          <Button onClick={this.logout.bind(this)}>Logout</Button>
+        </Jumbotron>
+        <Jumbotron>
+          <Link to='random'>Go to random</Link>
+        </Jumbotron>
       </div>
     )
   }

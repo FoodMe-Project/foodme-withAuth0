@@ -16,12 +16,14 @@ export class Container extends React.Component {
     }
 
     return (
-      <Jumbotron>
-        <h2 className={styles.mainTitle}>
-          <img src="https://lh3.googleusercontent.com/--TNLinvq9hU/VRGY2U37abI/AAAAAAAAACU/S6Y4G54s7ac/w426-h427/ninja.png" />
-        </h2>
-        {children}
-      </Jumbotron>
+      <div>
+        <Jumbotron>
+          {children}
+        </Jumbotron>
+        <Jumbotron>
+          <p>Some random text</p>
+        </Jumbotron>
+      </div>
     )
   }
 }
