@@ -1,16 +1,15 @@
-import React, { PropTypes as T } from 'react'
-import {Button, Jumbotron} from 'react-bootstrap'
+import React, { PropTypes, Component } from 'react'
+import { Button } from 'react-bootstrap'
 import AuthService from '../../utils/AuthService'
 import styles from './Home.css'
-import { Link } from 'react-router'
 
-export class Home extends React.Component {
+export class Home extends Component {
   static contextTypes = {
-    router: T.object
+    router: PropTypes.object
   }
 
   static propTypes = {
-    auth: T.instanceOf(AuthService)
+    auth: PropTypes.instanceOf(AuthService)
   }
 
   constructor(props, context) {
@@ -32,15 +31,10 @@ export class Home extends React.Component {
     const { profile } = this.state
     return (
       <div className={styles.root}>
-        <Jumbotron>
-          <h2>Home</h2>
-          <p>Welcome {profile.nickname}!</p>
-          { console.log(profile) }
-          <Button onClick={this.logout.bind(this)}>Logout</Button>
-        </Jumbotron>
-        <Jumbotron>
-          <Link to='/random'>Go to random</Link>
-        </Jumbotron>
+        <h2>Home</h2>
+        <p>Welcome {profile.nickname}!</p>
+        { console.log(profile) }
+        <Button onClick={this.logout.bind(this)}>Logout</Button>
       </div>
     )
   }

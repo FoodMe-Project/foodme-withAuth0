@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes, Component } from 'react'
 import { Jumbotron } from 'react-bootstrap'
 import './Container.css'
 
-export class Container extends React.Component {
+export class Container extends Component {
   static contextTypes = {
     router: PropTypes.object
   }
@@ -19,9 +19,6 @@ export class Container extends React.Component {
       <div>
         <Jumbotron>
           {children}
-        </Jumbotron>
-        <Jumbotron>
-          <p>Some random text</p>
         </Jumbotron>
       </div>
     )
