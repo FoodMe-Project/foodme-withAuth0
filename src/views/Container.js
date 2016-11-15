@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react'
-import { Jumbotron } from 'react-bootstrap'
 import './Container.css'
 
 export class Container extends Component {
@@ -17,9 +16,7 @@ export class Container extends Component {
 
     return (
       <div>
-        <Jumbotron>
-          {children}
-        </Jumbotron>
+        {children}
       </div>
     )
   }

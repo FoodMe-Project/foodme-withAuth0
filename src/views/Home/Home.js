@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react'
-import { Button } from 'react-bootstrap'
+import { Button, Jumbotron } from 'react-bootstrap'
 import AuthService from '../../utils/AuthService'
 import styles from './Home.css'
 
@@ -31,10 +31,15 @@ export class Home extends Component {
     const { profile } = this.state
     return (
       <div className={styles.root}>
+        <Jumbotron>
         <h2>Home</h2>
-        <p>Welcome {profile.nickname}!</p>
-        { console.log(profile) }
-        <Button onClick={this.logout.bind(this)}>Logout</Button>
+          <p>Welcome {profile.nickname}!</p>
+          { console.log(profile) }
+          <Button onClick={this.logout.bind(this)}>Logout</Button>
+        </Jumbotron>
+        <Jumbotron>
+          <p>The components for the user page go here (views/Home/Home.js)</p>
+        </Jumbotron>
       </div>
     )
   }
