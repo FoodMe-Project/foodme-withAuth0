@@ -9,6 +9,7 @@
     "auth0-lock": "^10.6.1",
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
+    "jquery": "^3.1.1",
     "jwt-decode": "^2.1.0",
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.6",
