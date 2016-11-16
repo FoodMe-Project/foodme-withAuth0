@@ -17,7 +17,7 @@ class App extends Component {
       <Router
         routes={this.props.routes}
         history={this.props.history} />
-    )
+    );
   }
 
   render () {
@@ -29,7 +29,7 @@ class App extends Component {
            {this.content}
          </div>
       </div>
-     )
+     );
    }
 }
 
