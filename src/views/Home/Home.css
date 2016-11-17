@@ -1,3 +1,7 @@
-.root{
+.root {
   text-align: center;
+}
+
+.jumbotron {
+    background-color: white;
 }

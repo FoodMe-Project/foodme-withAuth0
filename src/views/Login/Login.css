@@ -1,7 +1,70 @@
-.root{
-  text-align: center;
+a:link {
+    color: black;
+    text-decoration: none
 }
 
-.toolbar{
+/* visited link */
+a:visited {
+    color: black;
+    text-decoration: none
+}
+
+/* mouse over link */
+a:hover {
+    color: #97d84b;
+    text-decoration: none
+}
+
+/* selected link */
+a:active {
+    color: black;
+    text-decoration: none
+}
+
+.header {
+    background-image: url('http://i.huffpost.com/gen/2867908/images/o-FARM-TO-TABLE-facebook.jpg');
+    background-size: cover;
+    background-position: 25% 25%;
+    padding: 230px 0;
+    position: relative;
+    background-attachment: fixed;
+}
+
+.foodMeLogin {
+  position: absolute;
+  right: 15%;
+  top: 30%;
+  font-family: 'Roboto Mono', monospace;
+  padding-bottom: 75px;
+  justify-content: center;
+}
+
+.foodMe {
+  color: black;
+  font-size: 2.5em;
+  letter-spacing: 5px;
+  background-color: white;
+  border: solid 10px black;
+  box-shadow: 5px 5px 0 0;
+  display: flex;
+  padding: 5px;
+}
+
+.loginButton {
+  position: relative;
+  bottom: 0;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: #97d84b;
+  border-style: none;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.loginButton:hover {
+  background-color: black;
+}
+
+.toolbar {
   display: inline-block;
 }

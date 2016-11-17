@@ -1,7 +1,7 @@
-import React, { PropTypes, Component } from 'react'
-import { Button, Jumbotron } from 'react-bootstrap'
-import AuthService from '../../utils/AuthService'
-import styles from './Home.css'
+import React, { PropTypes, Component } from 'react';
+import { Button, Jumbotron } from 'react-bootstrap';
+import AuthService from '../../utils/AuthService';
+import './Home.css';
 
 export class Home extends Component {
   static contextTypes = {
@@ -13,25 +13,25 @@ export class Home extends Component {
   }
 
   constructor(props, context) {
-    super(props, context)
+    super(props, context);
     this.state = {
       profile: props.auth.getProfile()
-    }
+    };
     props.auth.on('profile_updated', (newProfile) => {
-      this.setState({profile: newProfile})
-    })
+      this.setState({profile: newProfile});
+    });
   }
 
   logout(){
-    this.props.auth.logout()
+    this.props.auth.logout();
     this.context.router.push('/login');
   }
 
   render(){
-    const { profile } = this.state
+    const { profile } = this.state;
     return (
-      <div className={styles.root}>
-        <Jumbotron>
+      <div className="root">
+        <Jumbotron className="jumbotron">
         <h2>Home</h2>
           <p>Welcome {profile.nickname}!</p>
           { console.log(profile) }
@@ -41,7 +41,7 @@ export class Home extends Component {
           <p>The components for the user page go here (views/Home/Home.js)</p>
         </Jumbotron>
       </div>
-    )
+    );
   }
 }
 

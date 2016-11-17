@@ -1,0 +1,33 @@
+.main-div {
+    justify-content: center;
+}
+
+.description {
+    position: relative;
+    text-align: center;
+    width: 50%;
+    margin: 50px auto 50px auto;
+    line-height: 50px;
+    letter-spacing: 1px;
+    font-family: 'Josefin Slab', serif;
+}
+
+.insert-ingredients {
+    margin: 50px auto 50px auto;
+}
+
+.searchButton {
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #97d84b;
+    border-style: none;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-left: 10px;
+}
+
+.ingredientsInput {
+    margin-right: 10px;
+    height: 40px;
+    width: 300px;
+}
