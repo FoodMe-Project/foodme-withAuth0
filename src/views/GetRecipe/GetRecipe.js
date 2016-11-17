@@ -1,7 +1,11 @@
+import './GetRecipe.css';
+import {Button} from 'react-bootstrap';
+
+
 var React = require('react');
 var Link = require('react-router').Link;
 var $ = require('jquery');
-var Recipes = require('./RecipeObject');
+var Recipes = require('../RecipeObject/RecipeObject');
 
 var GetRecipe = React.createClass({
     getInitialState: function() {
@@ -9,12 +13,12 @@ var GetRecipe = React.createClass({
             recipes: null,
             recipesId: null,
             userInput: "",
+            isLoading: false
         };
     },
     _getRecipes: function(e) {
         e.preventDefault();
         var searchItem = this.refs.userInput.value;
-        console.log(searchItem);
         var self = this;
         $.ajax({
             url:`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=${searchItem}`,
@@ -40,35 +44,33 @@ var GetRecipe = React.createClass({
         this._getRecipes();
     },
     render: function() {
+        let isLoading = this.state.isLoading;
         return (
-            <div className="main-app">
-                <header className="main-header">
-                    <h1><Link to="/">FoodMe</Link></h1>
-                </header>
-                <main className="main-content">
-                <p>USER LOGIN/SIGN UP</p>
-                <p>Having trouble to find what to eat today? No problem!
-                FoodMe is a website that will help you to find what to prepare today.
-                Just enter your main ingredient that you have home and let FoodMe do his work!</p>
-                <h2>Please enter an ingredient to begin.</h2>
+            <div className="main-div">
+            <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet"/>
+                <div className="main-content">
+                <p className="description">Having trouble finding what you would like to eat? No problem!
+                FoodMe is a website that will help you find the perfect meal to prepare today.
+                Just enter the ingredients you would like to use (separated by comas) and let FoodMe suggest you recipes to make with these!</p>
+                <h2 className="insert-ingredients">Please enter your ingredients to begin.</h2>
                 <form>
-                    <input ref="userInput" className="homepage__input" type="text" />
-                    <button onClick={this._getRecipes} className="homepage__button">Search</button>
+                    <input ref="userInput" className="ingredientsInput" type="text" />
+                    <Button bsStyle="primary" onClick={this._getRecipes} className="searchButton">Search</Button>
                 </form>
-                    <ul>
-                        {this.state.recipes ?
-                            <h2>Here are the recipe suggestions for {this.refs.userInput.value}:</h2> : ""
-                        }
-                        {this.state.recipesId ?
-                            <h2>Sorry, there are no suggestions for {this.refs.userInput.value}</h2> : ""
-                            
-                        }
-                        {this.state.recipes ?  
-                            this.state.recipes.map(recipe => <Recipes recipeObject={recipe} key={recipe.id}/>) :
-                            ""
-                        }
-                    </ul>
-                </main>
+                </div>
+                <div className="recipes-content">
+                    {this.state.recipes ?
+                        <h2>Here are the recipe suggestions for {this.refs.userInput.value}: </h2> : ""
+                    }
+                    {this.state.recipesId ?
+                        <h2>Sorry, there are no suggestions for {this.refs.userInput.value}</h2> : ""
+                        
+                    }
+                    {this.state.recipes ?  
+                        this.state.recipes.map(recipe => <Recipes recipeObject={recipe} key={recipe.id}/>) :
+                        ""
+                    }
+                </div>
                 <main>
                     {this.props.children}
                 </main>

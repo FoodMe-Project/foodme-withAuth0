@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { Button, Jumbotron } from 'react-bootstrap';
 import AuthService from '../../utils/AuthService';
-import styles from './Home.css';
+import './Home.css';
 
 export class Home extends Component {
   static contextTypes = {
@@ -30,8 +30,8 @@ export class Home extends Component {
   render(){
     const { profile } = this.state;
     return (
-      <div className={styles.root}>
-        <Jumbotron>
+      <div className="root">
+        <Jumbotron className="jumbotron">
         <h2>Home</h2>
           <p>Welcome {profile.nickname}!</p>
           { console.log(profile) }

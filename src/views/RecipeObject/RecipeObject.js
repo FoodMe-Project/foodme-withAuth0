@@ -1,6 +1,9 @@
+import './RecipeObject.css'
+import {Button} from 'react-bootstrap';
+
 var React = require('react');
 var $ = require('jquery');
-var RecipesOtherIngredients = require('./RecipeInfo');
+var RecipesOtherIngredients = require('../RecipeInfo/RecipeInfo');
 
 var RecipeObject = React.createClass({
     propTypes: {
@@ -38,24 +41,29 @@ var RecipeObject = React.createClass({
     },
     render: function() {
         return (
-            <div>
-                <h3>{this.props.recipeObject.title} (Recipe ID: {this.props.recipeObject.id})</h3>
-                <img src={this.props.recipeObject.image}/>
-                <p onClick={this._getRecipesURL}>Click here for more informations about this recipe!</p>
-                {this.state.recipesOtherIngredients ? <h4>Ingredients needed:</h4> : "" }
-                <ul>
-                    {this.state.recipesOtherIngredients ?  
-                        this.state.recipesOtherIngredients.map(recipeOtherIngredients => <RecipesOtherIngredients recipeObject={recipeOtherIngredients} key={recipeOtherIngredients.id}/>) :
-                        ""
-                    }
-                </ul>
-                {this.state.recipesServings ? <h4>Gives: {this.state.recipesServings} serving(s)</h4> : ""}
-                {this.state.recipesInstructions? <h4>Steps to follow:</h4> : "" }
+            <div className="eachRecipe">
+                <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet"/>
+                <h3 className="recipeTitle">{this.props.recipeObject.title} (Recipe ID: {this.props.recipeObject.id})</h3>
+                <div class="imageAndButton">
+                    <img className="recipeImage" src={this.props.recipeObject.image}/>
+                    <Button className="moreInfo" onClick={this._getRecipesURL}>Click here for more informations about this recipe!</Button>
+                </div>
+                <div className="ingredientsList">
+                    {this.state.recipesOtherIngredients ? <h4 className="recipeTitles">Ingredients needed:</h4> : "" }
+                    <ul>
+                        {this.state.recipesOtherIngredients ?  
+                            this.state.recipesOtherIngredients.map(recipeOtherIngredients => <RecipesOtherIngredients recipeObject={recipeOtherIngredients} key={recipeOtherIngredients.id}/>) :
+                            ""
+                        }
+                    </ul>
+                {this.state.recipesServings ? <h4 className="recipeTitles">Gives: {this.state.recipesServings} serving(s)</h4> : ""}
+                {this.state.recipesInstructions? <h4 className="recipeTitles">Steps to follow:</h4> : "" }
                 {this.state.recipesInstructions === "" ? 
-                    <h5>No need for instructions for this one ;)</h5> : 
+                    <h5 className="recipeTitles">No need for instructions for this one ;)</h5> : 
                     <div dangerouslySetInnerHTML={{__html: this.state.recipesInstructions}}/>
                 }
                 {this.state.recipesUrl ? <h4>For more informations, please click on this link: <a href={this.state.recipesUrl}>{this.state.recipesUrl}</a></h4> : ""}
+                </div>
             </div>
         );
     }
