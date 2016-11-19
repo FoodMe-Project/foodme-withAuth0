@@ -1,0 +1,60 @@
+.main-div {
+    justify-content: center;
+}
+
+.description {
+    position: relative;
+    text-align: center;
+    width: 50%;
+    margin: 3em auto 4em auto;
+    line-height: 2.8em;
+    letter-spacing: 0.07em;
+    font-family: 'Josefin Slab', serif;
+}
+
+.insert-ingredients {
+    margin: 3.5em auto 3.5em auto;
+}
+
+.searchButton {
+    padding-left: 1.875em;
+    padding-right: 1.875em;
+    background-color: #ffa500;
+    border-style: none;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-left: 10px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.ingredientsInput {
+    margin-right: 10px;
+    height: 40px;
+    width: 300px;
+}
+
+.recipeSuggestionTitle {
+    margin: 3.5em auto 3.5em auto;
+}
+
+.searchButton:hover {
+    background-color: black;
+    text-decoration: none;
+}
+
+.searchButton:active {
+    background-color: black;
+    text-decoration: none;
+}
+
+.searchButton:visited {
+    background-color: black;
+    text-decoration: none;
+}
+
+.searchButton:focus {
+    background-color: black;
+    text-decoration: none;
+    border-style: none;
+}
+
