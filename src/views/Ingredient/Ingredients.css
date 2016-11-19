@@ -1,0 +1,25 @@
+#add-ingredient-input {
+   
+    margin: 0.5em;
+    display: inline-block;
+    box-shadow: 2px 2px;
+
+}
+
+#add-ingredient-input text {
+    background-color: white;
+    font-size: 1em;
+    padding: 0 .3em;
+    border-bottom: solid white 1px;
+
+}
+
+#add-ingredient-input button {
+    background-color: white;
+    font-size: 1em;
+    padding: 0 .3em;
+    border: none;
+
+    
+}
+

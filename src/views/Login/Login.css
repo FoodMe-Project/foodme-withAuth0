@@ -17,6 +17,10 @@ a:hover {
     text-decoration: none
 }
 
+.jumbotron {
+  background-color: white;
+}
+
 .header {
     background-image: url('https://static.pexels.com/photos/27599/pexels-photo-27599.jpg');
     background-size: cover;

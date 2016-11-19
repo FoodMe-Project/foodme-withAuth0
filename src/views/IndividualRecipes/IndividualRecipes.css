@@ -1,0 +1,36 @@
+img {
+    max-width: 250px;
+    padding: .5em;
+}
+
+
+#individual-recipe-wrapper {
+    margin: 1em;
+    
+    display: inline-block;
+    border: solid black 3px;
+    box-shadow: 3px 3px;
+    max-width: 260px;
+}
+
+#individual-recipe-wrapper h2 {
+    font-size: 1.5em;
+    margin-top: .5em;
+
+}
+
+#individual-recipe-wrapper hr {
+
+    color: black;
+    margin: 0em;
+}
+
+.seperating-line hr{
+     margin: 0em;
+}
+
+#recipe-info{
+    font-size: .7em;
+    margin-bottom: .7em;
+    margin-top:.5em;
+}

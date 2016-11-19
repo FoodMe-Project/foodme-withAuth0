@@ -3,7 +3,7 @@ import {Button, Jumbotron} from 'react-bootstrap';
 import AuthService from '../../utils/AuthService';
 import './Login.css';
 import GetRecipe from '../GetRecipe/GetRecipe';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 
 export class Login extends Component {
   static contextTypes = {

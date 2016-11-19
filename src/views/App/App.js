@@ -25,7 +25,6 @@ class App extends Component {
 
        <div className="App">
          <div style={{ height: '100%' }}>
-          <h2>FoodMe</h2>
            {this.content}
          </div>
       </div>

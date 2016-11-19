@@ -1,0 +1,11 @@
+.recipe-list {
+    display: inline-block;
+    margin: auto;
+}
+
+ul {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    padding-bottom: 300px;
+}
