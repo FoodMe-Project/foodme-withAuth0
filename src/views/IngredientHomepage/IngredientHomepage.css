@@ -1,0 +1,64 @@
+.add-ingredient-input {
+    margin: 0.5em;
+    display: inline-block;
+    box-shadow: 2px 2px;
+    background-color: white;
+}
+
+.add-ingredient-input text {
+    background-color: white;
+    font-size: 1em;
+    padding: 0 .3em;
+    border-bottom: solid white 1px;
+    flex-direction: row;
+}
+
+.add-ingredient {
+    background-color: white;
+    color: black;
+    font-size: 0.8em;
+    border-radius: 0;
+    border-style: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-right: 10px;
+    font-family: 'Roboto Mono', monospace;
+    border: 2px solid black;
+    box-shadow: 2px 2px;
+}
+
+.add-ingredient:hover {
+    background-color: black;
+    color: white;
+    border-style: none;
+}
+
+.add-ingredient:active {
+    background-color: black;
+    color: white;
+    border-style: none;
+}
+
+.add-ingredient:focus {
+    background-color: black;
+    color: white;
+    border-style: none;
+}
+
+.add-ingredient:link {
+    background-color: black;
+    color: white;
+    border-style: none;
+}
+
+.add-ingredient-input button {
+    background-color: white;
+    font-size: 1em;
+    padding: 0 .3em;
+    border: none;
+}
+
+.ingredients {
+    display: flex;
+    flex-direction: row;
+}

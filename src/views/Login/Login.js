@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import {Button, Jumbotron} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 import AuthService from '../../utils/AuthService';
 import './Login.css';
 import GetRecipe from '../GetRecipe/GetRecipe';
@@ -18,16 +18,16 @@ export class Login extends Component {
   render() {
     const { auth } = this.props;
     return (
-      <div>
+      <div className="page">
         <header className="header">
           <div className="foodMeLogin">
             <h1><Link to="/" className="foodMe">foodMe.</Link></h1>
             <Button className="loginButton" bsStyle="primary" onClick={auth.login.bind(this)}>LOGIN</Button>
           </div>
         </header>
-        <Jumbotron className="ingredients-recipes">
+        <div className="ingredients-recipes">
           <GetRecipe/>
-        </Jumbotron>
+        </div>
       </div>
     );
   }
