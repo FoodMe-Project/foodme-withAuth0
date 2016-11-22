@@ -5,7 +5,7 @@ import styles from './Home.css'
 import grid from '../grid.css'
 import RecipeOutput from './../Recipes/Recipes'
 import Fridge from './../Fridge/Fridge'
-
+import SavedRecipes from './../SavedRecipes/SavedRecipes'
 
 var axios = require('axios');
 var $ = require('jquery');
@@ -28,8 +28,9 @@ export class Home extends Component {
       recipesId: null,
       ingredients: [],
       fridgeId: null,
-      savedRecipes: []
-      
+      savedRecipes: [],
+      showSearch: true,
+      showSaved: false
     }
     
     props.auth.on('profile_updated', (newProfile) => {
@@ -121,10 +122,28 @@ export class Home extends Component {
     })
    }
 
+   toggleSearch() {
+      
+      if (!this.state.showSearch) {
+        this.setState({
+          showSearch: true,
+          showSaved: false
+        })
+      }
+   }
+
+   toggleSaved() {
+    
+    if (!this.state.showSaved) {
+      this.setState({
+        showSearch: false,
+        showSaved: true
+      })
+    }
+   }
+
   render(){
     const { profile } = this.state;
-
-    console.log(this.state.savedRecipes)
 
     return (
       <div className={styles.root} className={grid.root} id="home-wrapper">
@@ -140,8 +159,8 @@ export class Home extends Component {
           <div className="dividing-line" />
           <div id="nav-buttons">
             <button id="top">Featured</button>
-            <button>Search For Recipes</button>
-            <button>Saved Recipes</button>
+            <button onClick={this.toggleSearch.bind(this)}>Search For Recipes</button>
+            <button onClick={this.toggleSaved.bind(this)}>Saved Recipes</button>
             <button>User Settings</button>
           </div>
           <div className="dividing-line" />
@@ -160,12 +179,17 @@ export class Home extends Component {
                 componentDidUpdate={this.componentDidUpdate}
                 deleteIngredient={this.deleteIngredient.bind(this)}
               /> 
+             {this.state.showSearch ? 
               <section id="recipe-container" >
-                <RecipeOutput
-                clientId={this.state.profile.clientID} 
-                recipes={this.state.recipes}
-                />
-              </section>
+                 <RecipeOutput
+                 clientId={this.state.profile.clientID} 
+                 recipes={this.state.recipes}
+                 />
+               </section> 
+              : null}
+              {this.state.showSaved ?
+                <SavedRecipes recipes={this.state.savedRecipes}/>
+              : null}
           </div>
       </div>
     );
