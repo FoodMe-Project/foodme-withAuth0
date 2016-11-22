@@ -7,10 +7,11 @@ import RecipeOutput from './../Recipes/Recipes'
 import Fridge from './../Fridge/Fridge'
 
 
+var axios = require('axios');
 var $ = require('jquery');
 
 export class Home extends Component {
-  
+
   static contextTypes = {
     router: PropTypes.object
   }
@@ -27,7 +28,7 @@ export class Home extends Component {
       recipesId: null,
       ingredients: [],
       fridgeId: null,
-      testState: null
+      savedRecipes: []
       
     }
     
@@ -65,8 +66,8 @@ export class Home extends Component {
     
   componentDidMount() {
       this._apiCall();
-      this.testAjax();
-    
+      this.getClientFridgeId();
+      this.displaySavedRecipe();
     }
     
   _handleButtonClick (userIngredientInput) {
@@ -78,7 +79,6 @@ export class Home extends Component {
    }
    
   componentDidUpdate(prevProps, prevState){
-        console.log(this.state);
         if(prevState.ingredients.length !== this.state.ingredients.length){
             this._apiCall();
         }
@@ -95,36 +95,37 @@ export class Home extends Component {
        });
    }
 
-   testAjax() {
-          var that = this;
-      // $.ajax({
-      //   url: 'localhost:4000/get-fridge/1',
-      //   type: 'POST',
-      //   data: {},
-      //   dataType: 'json',
-
-      //   success: function(data) {
-      //     // that.setState({
-      //     //   testState: data.fridgeId
-      //     console.log('jello', data)
-      //     // })
-      //   },
-      //   error: function (request, status, error) {
-      //   alert(request.responseText);
-      // }
-      // })
-      $.post('http://localhost:4000/get-fridge/1', function (data) {
+   getClientFridgeId() {
+      var that = this;
+      axios.post(`http://localhost:4000/get-fridge/${this.state.profile.clientID}`)
+      .then(result => {
         that.setState({
-          testState: data.fridgeId,
+          fridgeId: result.data.fridgeId
         })
-        console.log(data)
-          
       })
+      .catch(err => {
+        console.log(err.stack)
+      })
+   }
+
+   displaySavedRecipe() {
+    var that = this;
+    axios.post(`http://localhost:4000/display-recipes/${this.state.profile.clientID}`)
+    .then(result => {
+      that.setState({
+        savedRecipes: result.data
+      })
+    })
+    .catch(err => {
+      console.log(err.stack)
+    })
    }
 
   render(){
     const { profile } = this.state;
-    console.log(this.state);
+
+
+
     return (
       <div className={styles.root} className={grid.root} id="home-wrapper">
         <Jumbotron id="sidebar-nav" className="col-large-3">
@@ -160,9 +161,9 @@ export class Home extends Component {
                 deleteIngredient={this.deleteIngredient.bind(this)}
               /> 
               <section id="recipe-container" >
-                <RecipeOutput 
+                <RecipeOutput
+                clientId={this.state.profile.clientID} 
                 recipes={this.state.recipes}
-                recipesId={this.state.recipesId}
                 />
               </section>
           </div>
