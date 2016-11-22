@@ -3,11 +3,9 @@ import { Button, Jumbotron } from 'react-bootstrap'
 import AuthService from '../../utils/AuthService'
 import styles from './Home.css'
 import grid from '../grid.css'
-import Ingredient from './../Ingredient/Ingredients'
 import RecipeOutput from './../Recipes/Recipes'
-import Collapsible from 'react-collapsible';
-import FridgeSearch from './../FridgeSearch/FridgeSearch'
 import Fridge from './../Fridge/Fridge'
+
 
 var $ = require('jquery');
 
@@ -28,7 +26,8 @@ export class Home extends Component {
       recipes: [],
       recipesId: null,
       ingredients: [],
-      fridgeId: null
+      fridgeId: null,
+      testState: null
       
     }
     
@@ -66,6 +65,7 @@ export class Home extends Component {
     
   componentDidMount() {
       this._apiCall();
+      this.testAjax();
     
     }
     
@@ -79,7 +79,7 @@ export class Home extends Component {
    
   componentDidUpdate(prevProps, prevState){
         console.log(this.state);
-        if(prevState.ingredients.length != this.state.ingredients.length){
+        if(prevState.ingredients.length !== this.state.ingredients.length){
             this._apiCall();
         }
     }
@@ -95,8 +95,36 @@ export class Home extends Component {
        });
    }
 
+   testAjax() {
+          var that = this;
+      // $.ajax({
+      //   url: 'localhost:4000/get-fridge/1',
+      //   type: 'POST',
+      //   data: {},
+      //   dataType: 'json',
+
+      //   success: function(data) {
+      //     // that.setState({
+      //     //   testState: data.fridgeId
+      //     console.log('jello', data)
+      //     // })
+      //   },
+      //   error: function (request, status, error) {
+      //   alert(request.responseText);
+      // }
+      // })
+      $.post('http://localhost:4000/get-fridge/1', function (data) {
+        that.setState({
+          testState: data.fridgeId,
+        })
+        console.log(data)
+          
+      })
+   }
+
   render(){
     const { profile } = this.state;
+    console.log(this.state);
     return (
       <div className={styles.root} className={grid.root} id="home-wrapper">
         <Jumbotron id="sidebar-nav" className="col-large-3">
@@ -104,7 +132,7 @@ export class Home extends Component {
             <h2>FoodMe.</h2>
           </div>
           <div id="user-info">
-            <img id="user-image" src={profile.picture} />
+            <img id="user-image" src={profile.picture} alt="user's profile"/>
             <p>Welcome {profile.nickname}!</p>
             <Button id="logout-button" onClick={this.logout.bind(this)}>Logout</Button>
           </div>

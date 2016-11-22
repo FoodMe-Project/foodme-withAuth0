@@ -1,4 +1,4 @@
-import './GetRecipe.css';
+    import './GetRecipe.css';
 import {Button, Grid, Row, Col} from 'react-bootstrap';
 
 
@@ -44,7 +44,7 @@ var GetRecipe = React.createClass({
         this._getRecipes();
     },
     render: function() {
-        let isLoading = this.state.isLoading;
+        // let isLoading = this.state.isLoading;
         return (
             <div className="main-div">
                 <div className="main-content">

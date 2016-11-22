@@ -9,7 +9,7 @@ var IndividualRecipes = React.createClass({
         <div id="individual-recipe-wrapper">
             <div id="button-and-image">
                 <button id="save-button"><i id="favourite-button" className="material-icons 24md">stars</i></button>
-                <img src={this.props.recipes.image} />
+                <img src={this.props.recipes.image} alt="recipe representation"/>
             </div>
             <div className="seperating-line">
             </div>

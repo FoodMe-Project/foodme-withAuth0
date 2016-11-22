@@ -1,7 +1,6 @@
 var React = require('react');
 import styles from './../Home/Home.css';
 import grid from './../grid.css'
-import FridgeSearch from "./../FridgeSearch/FridgeSearch";
 import Collapsible from 'react-collapsible';
 import Ingredient from './../Ingredient/Ingredients';
 
@@ -37,10 +36,10 @@ var Fridge = React.createClass({
             <Collapsible 
                 trigger={fridgeClosed} 
                 triggerWhenOpen={fridgeOpen}
-                open='true'   
+                open={true}   
                 >
               <div id="fridge-and-search" className="col-large-9">
-                <section className={styles.root} id="fridge" className="col-large-7">
+                <section id="fridge" className="col-large-7">
                   <form id="submit-wrapper">       
                       <input id="input-ingredient" type="text" ref="userInput" ></input>
                       <button id="add-ingredient" onClick={this.handleButtonClick}>-></button>
