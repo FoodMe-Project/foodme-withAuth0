@@ -59,7 +59,7 @@ var ModalContent = React.createClass({
                     <h3 className="recipeTitles">Gives: {this.state.recipesServings} serving(s)</h3>
                     {this.state.recipesInstructions === "" ? 
                         <h5 className="noInstructions">No need for instructions for this one!</h5> : 
-                        <ol dangerouslySetInnerHTML={{__html: this.state.recipesInstructions}}/>
+                        <ol><li dangerouslySetInnerHTML={{__html: this.state.recipesInstructions}}/></ol>
                     }
                     </ul>
                     <Button bsStyle="primary" className="moreInfo" href={this.state.recipesUrl}>MORE INFO</Button>

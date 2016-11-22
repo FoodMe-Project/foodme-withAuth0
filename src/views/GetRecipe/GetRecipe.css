@@ -78,3 +78,34 @@
 .form {
     margin: 0 26.65em;
 }
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 200px;
+    background-color: black;
+    color: white;
+}
+
+.social-icons {
+    justify-content: center;
+    display: flex;
+}
+
+.social-icon {
+    margin: 0 0.3em;
+    background-color: white;
+    color: black;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-direction: row;
+}
+
+.footer p {
+    padding: 20px;
+    margin: 10px;
+}
