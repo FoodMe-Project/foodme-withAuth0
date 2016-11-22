@@ -6,8 +6,8 @@ import grid from '../grid.css'
 import Ingredient from './../Ingredient/Ingredients'
 import RecipeOutput from './../Recipes/Recipes'
 import Collapsible from 'react-collapsible';
-
-
+import FridgeSearch from './../FridgeSearch/FridgeSearch'
+import Fridge from './../Fridge/Fridge'
 
 var $ = require('jquery');
 
@@ -22,12 +22,13 @@ export class Home extends Component {
   }
 
   constructor(props, context) {
-    super(props, context)
+    super(props, context);
     this.state = {
       profile: props.auth.getProfile(),
-      recipes: null,
+      recipes: [],
+      recipesId: null,
       ingredients: [],
-      fridgeOpen: false
+      fridgeId: null
       
     }
     
@@ -45,73 +46,47 @@ export class Home extends Component {
   
   _apiCall() {
       var that = this;
-        // $.ajax({
-        //     url:'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=' + this.state.ingredients.toString(),
-        //     type: 'GET', 
-        //     data: {}, 
-        //     dataType: 'json',
-        //     success: function(data) { 
-        //         that.setState({
-        //             recipes: data     
-        //         });
-        //         },
-        //     error: function(err) { console.log(err); },
-        //     beforeSend: function(xhr) {
-        //     xhr.setRequestHeader("X-Mashape-Authorization", "OGgxA05LFxmshPOYbcVhff7XvFnsp1cqkWRjsnkY4Ce71CwFAs"); // Enter here your Mashape key
-        //     }
-        // });
-    }
-    
-  _apiCallAutoComplete(e) {
-            var testInput = e.target.value;
-            console.log(testInput);
-    //     $.ajax({
-    //         url:'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/autocomplete?query=' + this.refs.userInput.value,
-    //         type: 'GET', 
-    //         data: {}, 
-    //         dataType: 'json',
-    //         success: function(data) { console.log((data)); },
-    //         error: function(err) { alert(err); },
-    //         beforeSend: function(xhr) {
-    //         xhr.setRequestHeader("X-Mashape-Authorization", "IOXxGwmjbcmshk5Fl9AKuHX5WCLdp1kZ21fjsneOpkbp8wAgkG");
-    //             }    
-    //         });
+        $.ajax({
+            url:`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=` + this.state.ingredients.toString() + "&number=12",
+            type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
+            data: {}, // Additional parameters here
+            dataType: 'json',
         
+            success: function(data) {
+                that.setState({
+                    recipes: data,
+                    recipesId: data.id
+                });
+            },
+            beforeSend: function(xhr) {
+            xhr.setRequestHeader("X-Mashape-Authorization", "IOXxGwmjbcmshk5Fl9AKuHX5WCLdp1kZ21fjsneOpkbp8wAgkG"); // Enter here your Mashape key
+            }
+        });
     }
     
   componentDidMount() {
-        this._apiCall();
-        console.log(this._apiCall());
-        // this._apiCallAutoComplete();
-        // console.log( this._apiCallAutoComplete());
-        
+      this._apiCall();
+    
     }
     
-  _handleButtonClick (event) {
-       event.preventDefault();
-       var userIngredientInput = this.refs.userInput.value;
+  _handleButtonClick (userIngredientInput) {
        var ingredient = this.state.ingredients.concat(userIngredientInput);
        this.setState({
            ingredients: ingredient
-       });
+       } );
      
    }
    
   componentDidUpdate(prevProps, prevState){
-        if(prevProps.ingredients != this.state.ingredients){
+        console.log(this.state);
+        if(prevState.ingredients.length != this.state.ingredients.length){
             this._apiCall();
         }
-
-        // if(prevProps.refs.userInput.value != this.state.userInput.value){
-        //     this._apiCallAutoComplete();
-        // }
     }
    
-  deleteIngredient(i, event) {
-        console.log(i);
+  deleteIngredient(i) {
        event.preventDefault();
 
-      
        this.setState(state => {
            state.ingredients.splice(i, 1);
            return {
@@ -119,19 +94,11 @@ export class Home extends Component {
            };
        });
    }
-   
-  _handleFridge(){
-    this.setState({
-      fridgeOpen: !this.state.fridgeOpen
-    })
-  }
-  
-
 
   render(){
-    const { profile } = this.state
+    const { profile } = this.state;
     return (
-      <div className={styles.root} id="home-wrapper">
+      <div className={styles.root} className={grid.root} id="home-wrapper">
         <Jumbotron id="sidebar-nav" className="col-large-3">
           <div id="foodme-logo">
             <h2>FoodMe.</h2>
@@ -144,41 +111,35 @@ export class Home extends Component {
           <div className="dividing-line" />
           <div id="nav-buttons">
             <button id="top">Featured</button>
-            <button>Quick Search</button>
-            <button onClick={this._handleFridge.bind(this)}>Open Your Fridge</button>
+            <button>Search For Recipes</button>
             <button>Saved Recipes</button>
+            <button>User Settings</button>
           </div>
           <div className="dividing-line" />
-         
-          <footer>
-            <a></a>
-            <a></a>
-            <a></a>
+          <footer id="footer-content">
+            <a>Contact</a>
+            <a>FAQ</a>
+            <p>FoodMe. 2016</p>
           </footer>
         </Jumbotron>
         <div id="recipe-and-fridge" className="col-large-9">
-          <Collapsible trigger="Fridge +" triggerWhenOpen="Fridge -">
-                <section className={styles.root} id="fridge">
-                  <div id="submit-wrapper">       
-                      <input id="input-ingredient" onChange={this._apiCallAutoComplete.bind(this)} type="text" ref="userInput"></input>
-                      <button id="add-ingredient" onClick={this._handleButtonClick.bind(this)}> -> </button>
-                  </div>
-                  <div id="ingredient-wrapper">
-                      {this.state.ingredients.map((ingredient, i) => 
-                      <li key={i}>
-                          <Ingredient ClassName="ingredient-list" ingredient={ingredient}  onClick={(evt) => this.deleteIngredient(i, evt)}/>
-                      </li>
-                      )}
-                  </div>
-                </section>
-            </Collapsible>
-            <section id="recipe-container" className="overlay">
-              <h2 id="recipe-header">Recipes:</h2>
-              <RecipeOutput />
-            </section>
+              <Fridge
+                ingredientsArray={this.state.ingredients} 
+                apiCall={this._apiCall.bind(this)}
+                componentDidMount={this.componentDidMount.bind(this)}
+                handleButtonClick={this._handleButtonClick.bind(this)}
+                componentDidUpdate={this.componentDidUpdate}
+                deleteIngredient={this.deleteIngredient.bind(this)}
+              /> 
+              <section id="recipe-container" >
+                <RecipeOutput 
+                recipes={this.state.recipes}
+                recipesId={this.state.recipesId}
+                />
+              </section>
           </div>
       </div>
-    )
+    );
   }
 }
 

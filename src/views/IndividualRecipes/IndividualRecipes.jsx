@@ -7,15 +7,17 @@ var IndividualRecipes = React.createClass({
         return (
         
         <div id="individual-recipe-wrapper">
-            <img src={this.props.recipes.image} />
-            <div className="seperating-line">
-                <hr />
+            <div id="button-and-image">
+                <button id="save-button"><i id="favourite-button" className="material-icons 24md">stars</i></button>
+                <img src={this.props.recipes.image} />
             </div>
-           
+            <div className="seperating-line">
+            </div>
             <h2>{this.props.recipes.title}</h2>
-            <hr />
-            <div id="recipe-info">{this.props.recipes.info}</div>
-            
+         
+            <div id="read-more-wrapper">
+                <button id="read-more">See Recipe</button>
+            </div>    
         </div>
         )
     }

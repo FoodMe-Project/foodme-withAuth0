@@ -7,5 +7,7 @@ ul {
     display: flex;
     position: relative;
     flex-wrap: wrap;
-    padding-bottom: 300px;
+    margin-left: 2em;
+    margin-bottom: 20em;
+    
 }
