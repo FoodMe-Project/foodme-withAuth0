@@ -18,10 +18,6 @@ var IndividualRecipes = React.createClass({
         })
    },
 
-   buttonClicked: function() {
-        console.log('clicked')
-   },
-
     render: function() {
     
         return (

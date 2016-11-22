@@ -124,7 +124,7 @@ export class Home extends Component {
   render(){
     const { profile } = this.state;
 
-
+    console.log(this.state.savedRecipes)
 
     return (
       <div className={styles.root} className={grid.root} id="home-wrapper">
