@@ -10,32 +10,30 @@ const IndividualSavedRecipe = React.createClass({
 	},
 
 	componentDidMount: function() {
-       this._getRecipes();
+		let id = this.props.id
+       this._getRecipes(id);
    	},
 
-   _getRecipes: function() {
-       console.log(this.props.id)
-       console.log(typeof this.props.id)
+   _getRecipes: function(id) {
+		console.log(id)
 
-   //     var self = this;
-   //     $.ajax({
-			// url:﻿⁠⁠⁠⁠ `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${this.props.id}/information﻿⁠⁠⁠⁠`,
-   //         type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
-   //         data: {}, // Additional parameters here
-   //         dataType: 'json',
-   //         success: function(data) {
-   //             self.setState({
-   //                 recipeInfo: data,
-   //             });
-   //         },
-   //         error: function(error) {
-   //         	console.log(error)
-   //         },
-   //         beforeSend: function(xhr) {
-   //         xhr.setRequestHeader("X-Mashape-Authorization", "IOXxGwmjbcmshk5Fl9AKuHX5WCLdp1kZ21fjsneOpkbp8wAgkG"); // Enter here your Mashape key
-   //         }
-   //     });
-   },
+		var self = this;
+
+		$.ajax({
+			url: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/` + id + `/information﻿⁠⁠⁠⁠/`,
+			type: 'GET',
+			data: {},
+			dataType: 'json',
+			success: function(data) {
+			   self.setState({
+			       recipeInfo: data,
+			   });
+			},
+			beforeSend: function(xhr) {
+				xhr.setRequestHeader("X-Mashape-Authorization", "IOXxGwmjbcmshk5Fl9AKuHX5WCLdp1kZ21fjsneOpkbp8wAgkG"); // Enter here your Mashape key
+				}
+			});
+   		},
 
 	render: function() {
 
