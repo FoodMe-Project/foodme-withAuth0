@@ -13,9 +13,9 @@ var Fridge = React.createClass({
         this.props.handleButtonClick(userIngredientInput);
     },
     
-    deleteIngredient: function(i, event) {
+    deleteIngredient: function(i, event, ingredient) {
         event.preventDefault();
-        this.props.deleteIngredient(i);
+        this.props.deleteIngredient(i, ingredient);
     },
     
     render: function() {
@@ -47,7 +47,7 @@ var Fridge = React.createClass({
                   <div id="ingredient-wrapper">
                       {ingredientsArray.map((ingredient, i) => 
                       <li key={i}>
-                          <Ingredient ClassName="ingredient-list" ingredient={ingredient}  onClick={(evt) => this.deleteIngredient(i, evt)}/>
+                          <Ingredient ClassName="ingredient-list" ingredient={ingredient}  onClick={(evt) => this.deleteIngredient(i, evt, ingredient)}/>
                       </li>
                       )}
                   </div>

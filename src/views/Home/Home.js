@@ -103,15 +103,27 @@ export class Home extends Component {
         // }
     }
    
-  deleteIngredient(i) {
+  deleteIngredient(i, ingredient) {
        event.preventDefault();
-
-       this.setState(state => {
-           state.ingredients.splice(i, 1);
-           return {
-               ingredients: this.state.ingredients
-           };
-       });
+       var that = this;
+       // this.setState(state => {
+       //     state.ingredients.splice(i, 1);
+       //     return {
+       //         ingredients: this.state.ingredients
+       //     };
+       // });
+       console.log(ingredient);
+       axios.post('http://localhost:4000/delete-ingredient', {
+        fridgeId: that.state.fridgeId,
+        ingredientName: ingredient
+       })
+       .then(result => {
+          console.log(result);
+          that.displayFridge();
+       })
+       .catch(err => {
+          console.log(err.stack);
+       })
    }
 
    getClientFridgeId() {
@@ -121,7 +133,7 @@ export class Home extends Component {
         that.setState({
           fridgeId: result.data.fridgeId
         })
-        that.displayFridge()
+        that.displayFridge();
       })
       .catch(err => {
         console.log(err.stack)
@@ -134,7 +146,7 @@ export class Home extends Component {
      .then(result => {
         let fridge = result.data;
         var fridgeDisplayed = fridge.map(ingredientObj => {
-          return ingredientObj.name;  
+          return ingredientObj.name;
         })
         that.setState({
             ingredients: fridgeDisplayed

@@ -11,10 +11,8 @@ var Ingredient = React.createClass({
                     <button onClick={this.props.onClick}>x</button>
                 </form>
             </div>
-            );
-        
+        );
     }
-    
 });
 
 module.exports =  Ingredient;
