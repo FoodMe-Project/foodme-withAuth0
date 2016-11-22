@@ -19,7 +19,7 @@ var GetRecipe = React.createClass({
         e.preventDefault();
         var self = this;
         $.ajax({
-            url: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=${this.state.ingredients.toString()}&number=24&ranking=1&limitLicense=true`,
+            url: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=${this.state.ingredients.toString()}&number=24&ranking=2&limitLicense=true`,
             type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
             data: {}, // Additional parameters here
             dataType: 'json',
@@ -75,12 +75,12 @@ var GetRecipe = React.createClass({
                     FoodMe is a website that will help you find the perfect meal to prepare today.
                     Just enter the ingredients you would like to use by adding them to your list of ingredients you 
                     have home or that you want to use, and let FoodMe suggest you recipes to make with these!</p>
-                    <h2 className="insert-ingredients">Please enter your ingredients to begin.</h2>
+                    <h2 className="homepageTitles">Please enter your ingredients to begin.</h2>
                     <form className="form">
-                        {this.state.recipes ? <p>scroll down to see your results!</p> : ""}
+                        {this.state.recipes ? <p>scroll down to see what FoodMe found!</p> : ""}
                         <input ref="userInput" className="ingredientsInput" type="text" />
-                        <Button className="add-ingredient" onClick={this._handleButtonClick.bind(this)}>ADD INGREDIENT</Button>
-                        <Button bsStyle="primary" onClick={this._getRecipes} className="add-ingredient">SEARCH</Button>
+                        <Button className="button" onClick={this._handleButtonClick.bind(this)}>ADD INGREDIENT</Button>
+                        <Button bsStyle="primary" onClick={this._getRecipes} className="button">SEARCH</Button>
                         <div className="ingredients">
                             {this.state.ingredients.map((ingredient, i) => 
                                 <li key={i}>
@@ -93,10 +93,10 @@ var GetRecipe = React.createClass({
                         <Row className="recipes-row">
                             <Col xs={12}>
                                 {this.state.recipes ?
-                                    <h2 className="recipeSuggestionTitle">Here are the recipe suggestions for {this.refs.userInput.value}: </h2> : ""
+                                    <h2 className="homepageTitles">Here are your recipes suggestions: </h2> : ""
                                 }
                                 {this.state.recipesId ?
-                                    <h2>Sorry, there are no suggestions for {this.refs.userInput.value}</h2> : ""
+                                    <h2 className="homepageTitles">Sorry, there are no suggestions your ingredient(s).</h2> : ""
                                     
                                 }
                             </Col>

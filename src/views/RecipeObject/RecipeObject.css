@@ -1,24 +1,13 @@
-.recipeTitles {
-    font-family: 'Josefin Slab', serif;
-    margin-top: 50px;
-    font-size: 2em;
-
+.recipeName {
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: center;
 }
 
-src {
-    max-width: 300px;
-    max-height: 300px;
-    min-height: 300px;
-    min-width: 300px
-}
-
-.recipeTitle {
-    font-family: 'Roboto Mono', monospace;
-    margin-top: 50px;
+.recipeHeaders {
     font-size: 1.2em;
     font-weight: bold;
-    padding: 5px;
-    line-height: 30px;
+    margin: 2em auto;
 }
 
 .recipeImage {
@@ -63,13 +52,6 @@ li {
     min-height: 30em;
     max-width: 20em;
     min-width: 20em;
-}
-
-img {
-    max-width: 200px;
-    min-width: 200px;
-    max-height: 200px;
-    min-height: 200px;
 }
 
 ol {

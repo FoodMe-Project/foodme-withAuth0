@@ -46,27 +46,29 @@ var ModalContent = React.createClass({
         return (
             <div>
                 <Modal.Header closeButton>
-                    <Modal.Title>{this.props.title}</Modal.Title>
+                    <Modal.Title className="recipeName">{this.props.title}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                <div className="divImage">
                     <img src={this.props.image} className="image"/>
-                    <h3 className="h">Ingredients needed:</h3>
+                </div>
+                    <h3 className="recipeHeaders">Ingredients needed:</h3>
                     <p>{this.state.recipesOtherIngredients ?  
                         this.state.recipesOtherIngredients.map(recipeOtherIngredients => 
                         <RecipeInfo recipeObject={recipeOtherIngredients} key={recipeOtherIngredients.id}/>) :
                         ""}</p>
                     <p>
-                    <h3 className="recipeTitles">Gives: {this.state.recipesServings} serving(s)</h3>
-                    {this.state.recipesInstructions === "" ? 
-                        <h5 className="noInstructions">No need for instructions for this one!</h5> : 
+                    <h3 className="recipeHeaders">Gives: {this.state.recipesServings} serving(s)</h3>
+                    {this.state.recipesInstructions === "" || null? 
+                        <h5 className="recipeHeaders">No need for instructions for this one!</h5> : 
+                        <h5 className="recipeHeaders">Instructions:</h5> }
                         <p dangerouslySetInnerHTML={{__html: this.state.recipesInstructions}}/>
-                    }
                     </p>
-                    <Button bsStyle="primary" className="moreInfo" href={this.state.recipesUrl}>MORE INFO</Button>
+                    <Button bsStyle="primary" className="websiteButton" href={this.state.recipesUrl}>WEBSITE</Button>
                 </Modal.Body>
             </div>
-        )
+        );
     }
-})
+});
 
 module.exports = ModalContent;

@@ -8,3 +8,51 @@
 .h {
     color: red;
 }
+
+.websiteButton {
+    background-color: white;
+    color: black;
+    font-size: 0.8em;
+    border-radius: 0;
+    border-style: none;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: 'Roboto Mono', monospace;
+    border: 2px solid black;
+    box-shadow: 2px 2px;
+}
+
+.websiteButton:hover {
+    background-color: black;
+    color: white;
+}
+
+.websiteButton:active {
+    background-color: black;
+    color: white;
+}
+
+.websiteButton:focus {
+    background-color: black;
+    color: white;
+}
+
+img {
+    max-width: 200px;
+    min-width: 200px;
+    max-height: 200px;
+    min-height: 200px;
+    justify-content: center;
+}
+
+.image {
+    max-width: 400px;
+    min-width: 400px;
+    max-height: 250px;
+    min-height: 250px;
+}
+
+.divImage {
+    display: flex;
+    justify-content: center;
+}

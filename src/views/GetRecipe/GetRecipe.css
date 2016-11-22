@@ -1,5 +1,6 @@
 .main-div {
     justify-content: center;
+    align-items: center;
     margin-bottom: 7.5em;
     background-color: #ffefe0
 }
@@ -18,49 +19,18 @@
     letter-spacing: 0.07em;
 }
 
-.insert-ingredients {
+.homepageTitles {
     margin: 3.2em auto 3.2em auto;
-}
-
-.searchButton {
-    padding-left: 1.875em;
-    padding-right: 1.875em;
-    background-color: white;
-    border-style: none;
-    font-weight: bold;
-    letter-spacing: 0.188em;
-    margin-left: 0.625em;
-    font-family: 'Roboto Mono', monospace;
 }
 
 .ingredientsInput {
     margin-right: 0.625em;
-    height: 2.500em;
-    width: 18.750em;
+    height: 2.5em;
+    width: 18.75em;
 }
 
 .recipeSuggestionTitle {
     margin: 3.5em auto 3.5em auto;
-}
-
-.searchButton:hover {
-    background-color: black;
-    text-decoration: none;
-}
-
-.searchButton:active {
-    background-color: black;
-    text-decoration: none;
-}
-
-.searchButton:visited {
-    background-color: black;
-    text-decoration: none;
-}
-
-.searchButton:focus {
-    background-color: black;
-    text-decoration: none;
 }
 
 .recipes-content {
@@ -74,7 +44,7 @@
 }
 
 .form {
-    margin: 0 26.65em;
+    margin: 0 27em;
 }
 
 .footer {
@@ -101,7 +71,6 @@
 
 .social-icons {
     justify-content: center;
-    padding-right: 2.8125em;
     display: flex;
 }
 
@@ -116,7 +85,7 @@
     justify-content: center;
     border-radius: 50%;
     flex-direction: row;
-    margin-left: 2em;
+    margin: 0 2em;
 }
 
 .footer p {

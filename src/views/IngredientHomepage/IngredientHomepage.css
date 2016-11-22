@@ -13,7 +13,7 @@
     flex-direction: row;
 }
 
-.add-ingredient {
+.button {
     background-color: white;
     color: black;
     font-size: 0.8em;
@@ -26,28 +26,28 @@
     box-shadow: 2px 2px;
 }
 
-.add-ingredient:hover {
+.button:hover {
     background-color: black;
     color: white;
     border: 2px solid black;
 }
 
-.add-ingredient:active {
+.button:active {
     background-color: black;
     color: white;
-    border-style: none;
+    border: 2px solid black;
 }
 
-.add-ingredient:focus {
+.button:focus {
     background-color: black;
     color: white;
-    border-style: none;
+    border: 2px solid black;
 }
 
-.add-ingredient:link {
+.button:link {
     background-color: black;
     color: white;
-    border-style: none;
+    border: 2px solid black;
 }
 
 .add-ingredient-input button {
