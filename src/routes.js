@@ -4,6 +4,7 @@ import AuthService from './utils/AuthService'
 import Container from './views/Container'
 import Home from './views/Home/Home'
 import Login from './views/Login/Login'
+import RecipeObject from './views/RecipeObject/RecipeObject'
 
 const auth = new AuthService('jDjPIyEAQJ8oOwKQIWWANpbCkQrkm1r1', 'charlesjamb.auth0.com');
 
@@ -21,7 +22,9 @@ export const makeRoutes = () => {
 			<Route path="/" component={Container} auth={auth}>
 				<IndexRedirect to="/home" />
 				<Route path="home" component={Home} onEnter={requireAuth}/>
-				<Route path="login" component={Login} />
+				<Route path="login" component={Login}>
+					<Route path="recipes" component={RecipeObject} />
+				</Route>
 				<Route path="access_token=:token" component={Login} /> //to prevent router errors
 			</Route>
 		</Route>

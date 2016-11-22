@@ -1,15 +1,14 @@
-import React, { PropTypes, Component } from 'react'
-import { Button, Jumbotron } from 'react-bootstrap'
-import AuthService from '../../utils/AuthService'
-import styles from './Home.css'
-import grid from '../grid.css'
-import Ingredient from './../Ingredient/Ingredients'
-import RecipeOutput from './../Recipes/Recipes'
+import React, { PropTypes, Component } from 'react';
+import { Button, Jumbotron } from 'react-bootstrap';
+import AuthService from '../../utils/AuthService';
+import styles from './Home.css';
+import grid from '../grid.css';
+import Ingredient from './../Ingredient/Ingredients';
+import RecipeOutput from './../Recipes/Recipes';
 import Collapsible from 'react-collapsible';
 
-
-
 var $ = require('jquery');
+
 
 export class Home extends Component {
   
@@ -88,14 +87,14 @@ export class Home extends Component {
     }
     
   _handleButtonClick (event) {
-       event.preventDefault();
-       var userIngredientInput = this.refs.userInput.value;
-       var ingredient = this.state.ingredients.concat(userIngredientInput);
-       this.setState({
-           ingredients: ingredient
-       });
+      event.preventDefault();
+      var userIngredientInput = this.refs.userInput.value;
+      var ingredient = this.state.ingredients.concat(userIngredientInput);
+      this.setState({
+          ingredients: ingredient
+      });
      
-   }
+  }
    
   componentDidUpdate(prevProps, prevState){
         if(prevProps.ingredients != this.state.ingredients){
@@ -109,16 +108,16 @@ export class Home extends Component {
    
   deleteIngredient(i, event) {
         console.log(i);
-       event.preventDefault();
+      event.preventDefault();
 
       
-       this.setState(state => {
-           state.ingredients.splice(i, 1);
-           return {
-               ingredients: this.state.ingredients
-           };
-       });
-   }
+      this.setState(state => {
+          state.ingredients.splice(i, 1);
+          return {
+              ingredients: this.state.ingredients
+          };
+      });
+  }
    
   _handleFridge(){
     this.setState({
@@ -183,4 +182,5 @@ export class Home extends Component {
 }
 
 export default Home;
+
 

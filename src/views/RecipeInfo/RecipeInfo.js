@@ -6,7 +6,7 @@ var RecipeInfo = React.createClass({
     },
     render: function() {
         return (
-            <div className="hello">
+            <div>
                 <ul>
                     <li>{this.props.recipeObject.name} ({this.props.recipeObject.amount} {this.props.recipeObject.unitLong})</li>
                 </ul>

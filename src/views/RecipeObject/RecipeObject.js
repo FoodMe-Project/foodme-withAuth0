@@ -1,5 +1,7 @@
 import './RecipeObject.css';
-import {Button, Thumbnail, Col} from 'react-bootstrap';
+import {Button, Thumbnail, Col, Popover, Tooltip, Modal, OverlayTrigger} from 'react-bootstrap';
+import './../IngredientHomepage/IngredientHomepage.css'
+import ModalContent from './../ModalContent/ModalContent'
 
 var React = require('react');
 var $ = require('jquery');
@@ -16,15 +18,14 @@ var RecipeObject = React.createClass({
             recipesServings: null,
             recipesUrl: null,
             recipesInstructions: null,
-            showResults: false
+            showModal: false
         };
     },
-    onClick: function(e) {
-        var evt = e;
-        this.setState({ 
-            showResults: !this.state.showResults
-        });
-        this._getRecipesURL(evt)
+    open() {
+        this.setState({ showModal: true });
+    },
+    close() {
+        this.setState({ showModal: false });
     },
     _getRecipesURL: function(e) {
         e.preventDefault();
@@ -55,27 +56,15 @@ var RecipeObject = React.createClass({
             <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet"/>
                 <Thumbnail className="eachRecipe" src={this.props.recipeObject.image} alt="242x200">
                     <h3 className="recipeTitle">{this.props.recipeObject.title.toUpperCase()}</h3>
-                    <Button bsStyle="primary" className="moreInfo" onClick={this.onClick}>QUICK VIEW</Button>
-                     {!this.state.showResults ? "" :
-                        <div className="ingredientsList">
-                            {this.state.recipesOtherIngredients ? <h4 className="recipeTitles">Ingredients needed:</h4> : "" }
-                            <ul>
-                                {this.state.recipesOtherIngredients ?  
-                                    this.state.recipesOtherIngredients.map(recipeOtherIngredients => <RecipesOtherIngredients recipeObject={recipeOtherIngredients} key={recipeOtherIngredients.id}/>) :
-                                    ""
-                                }
-                            </ul>
-                        {this.state.recipesServings ? <h4 className="recipeTitles">Gives: {this.state.recipesServings} serving(s)</h4> : ""}
-                        {this.state.recipesInstructions? <h4 className="recipeTitles">Steps to follow:</h4> : "" }
-                        <div className="steps">
-                            {this.state.recipesInstructions === "" ? 
-                                <h5 className="noInstructions">No need for instructions for this one!</h5> : 
-                                <div dangerouslySetInnerHTML={{__html: this.state.recipesInstructions}}/>
-                            }
-                            {this.state.recipesUrl ? <Button bsStyle="primary" className="moreInfo" href={this.state.recipesUrl}>MORE INFO</Button>: ""}
-                            </div>
-                        </div>
-                    }
+                    <Button bsStyle="primary" bsSize="large" className="add-ingredient" onClick={this.open}>SHOW RECIPE</Button>
+                    
+                    <Modal show={this.state.showModal} onHide={this.close}>
+                        <ModalContent recipeId={this.props.recipeObject.id} title={this.props.recipeObject.title} image={this.props.recipeObject.image}
+                        servings/>
+                        <Modal.Footer>
+                            <Button onClick={this.close}>Close</Button>
+                        </Modal.Footer>
+                    </Modal>
                 </Thumbnail>
             </Col>
         );
@@ -83,3 +72,23 @@ var RecipeObject = React.createClass({
 });
 
 module.exports = RecipeObject;
+
+                    //     <div className="ingredientsList">
+                    //         {this.state.recipesOtherIngredients ? <h4 className="recipeTitles">Ingredients needed:</h4> : "" }
+                    //         <ul>
+                    //             {this.state.recipesOtherIngredients ?  
+                    //                 this.state.recipesOtherIngredients.map(recipeOtherIngredients => <RecipesOtherIngredients recipeObject={recipeOtherIngredients} key={recipeOtherIngredients.id}/>) :
+                    //                 ""
+                    //             }
+                    //         </ul>
+                    //     {this.state.recipesServings ? <h4 className="recipeTitles">Gives: {this.state.recipesServings} serving(s)</h4> : ""}
+                    //     {this.state.recipesInstructions? <h4 className="recipeTitles">Steps to follow:</h4> : "" }
+                    //     <div className="steps">
+                    //         {this.state.recipesInstructions === "" ? 
+                    //             <h5 className="noInstructions">No need for instructions for this one!</h5> : 
+                    //             <div dangerouslySetInnerHTML={{__html: this.state.recipesInstructions}}/>
+                    //         }
+                    //         {this.state.recipesUrl ? <Button bsStyle="primary" className="moreInfo" href={this.state.recipesUrl}>MORE INFO</Button>: ""}
+                    //         </div>
+                    //     </div>
+                    // }

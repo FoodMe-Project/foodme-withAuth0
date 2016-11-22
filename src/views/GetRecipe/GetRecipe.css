@@ -1,12 +1,19 @@
 .main-div {
     justify-content: center;
+    margin-bottom: 10em;
+    background-color: #ffefe0
+}
+
+.ingredients {
+    display: flex;
+    flex-direction: row;
 }
 
 .description {
     position: relative;
     text-align: center;
     width: 50%;
-    margin: 3em auto 4em auto;
+    margin: 4em auto 4em auto;
     line-height: 2.8em;
     letter-spacing: 0.07em;
     font-family: 'Josefin Slab', serif;
@@ -19,7 +26,7 @@
 .searchButton {
     padding-left: 1.875em;
     padding-right: 1.875em;
-    background-color: #ffa500;
+    background-color: white;
     border-style: none;
     font-weight: bold;
     letter-spacing: 3px;
@@ -58,3 +65,16 @@
     border-style: none;
 }
 
+.recipes-content {
+    display: flex;
+    justify-content: center;
+}
+
+.recipes-row {
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    margin: 0 26.65em;
+}
