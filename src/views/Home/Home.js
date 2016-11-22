@@ -66,23 +66,41 @@ export class Home extends Component {
     }
     
   componentDidMount() {
-      this._apiCall();
       this.getClientFridgeId();
+      console.log(this.state.ingredients)
       this.displaySavedRecipe();
     }
     
   _handleButtonClick (userIngredientInput) {
-       var ingredient = this.state.ingredients.concat(userIngredientInput);
-       this.setState({
-           ingredients: ingredient
-       } );
-     
+         // var ingredient = this.state.ingredients.concat(userIngredientInput);
+         // this.setState({
+         //     ingredients: ingredient
+         // } );
+
+
+         var that = this;
+        axios.post(`http://localhost:4000/insert-into-fridge`, {
+          fridgeId: that.state.fridgeId,
+          ingredientName: userIngredientInput
+        })
+        .then(result => {
+          console.log(result);
+          console.log(that.state.ingredients);
+          that.displayFridge();
+        })
+        .catch(err => {
+          console.log(err.stack);
+        })
+
+        this.displayFridge()
    }
    
   componentDidUpdate(prevProps, prevState){
-        if(prevState.ingredients.length !== this.state.ingredients.length){
-            this._apiCall();
-        }
+        // this.displayFridge();
+        // if(prevState.ingredients.length !== this.state.ingredients.length){
+        //     // this._apiCall();
+        //     this.displayFridge();
+        // }
     }
    
   deleteIngredient(i) {
@@ -103,10 +121,28 @@ export class Home extends Component {
         that.setState({
           fridgeId: result.data.fridgeId
         })
+        that.displayFridge()
       })
       .catch(err => {
         console.log(err.stack)
       })
+   }
+
+   displayFridge() {
+     var that = this;
+     axios.post(`http://localhost:4000/display-fridge/${this.state.fridgeId}`)
+     .then(result => {
+        let fridge = result.data;
+        var fridgeDisplayed = fridge.map(ingredientObj => {
+          return ingredientObj.name;  
+        })
+        that.setState({
+            ingredients: fridgeDisplayed
+          })
+     })
+     .catch(err => {
+        console.log(err.stack)
+     })
    }
 
    displaySavedRecipe() {
