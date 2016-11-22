@@ -55,13 +55,13 @@ var ModalContent = React.createClass({
                         this.state.recipesOtherIngredients.map(recipeOtherIngredients => 
                         <RecipeInfo recipeObject={recipeOtherIngredients} key={recipeOtherIngredients.id}/>) :
                         ""}</p>
-                    <ul>
+                    <p>
                     <h3 className="recipeTitles">Gives: {this.state.recipesServings} serving(s)</h3>
                     {this.state.recipesInstructions === "" ? 
                         <h5 className="noInstructions">No need for instructions for this one!</h5> : 
-                        <ol><li dangerouslySetInnerHTML={{__html: this.state.recipesInstructions}}/></ol>
+                        <p dangerouslySetInnerHTML={{__html: this.state.recipesInstructions}}/>
                     }
-                    </ul>
+                    </p>
                     <Button bsStyle="primary" className="moreInfo" href={this.state.recipesUrl}>MORE INFO</Button>
                 </Modal.Body>
             </div>

@@ -1,16 +1,16 @@
-a:link {
+.foodMe:link {
     color: black;
     text-decoration: none
 }
 
-/* visited link */
-a:visited {
+/*visited link */
+.foodMe:visited {
     color: black;
     text-decoration: none
 }
 
-/* mouse over link */
-a:hover {
+/*mouse over link */
+.foodMe:hover {
     color: white;
     background-color: black;
     border: solid 0.15em white;
@@ -63,6 +63,7 @@ a:hover {
   border-style: none;
   font-weight: bold;
   letter-spacing: 0.188em;
+  border-radius: 0;
 }
 
 .loginButton:hover {

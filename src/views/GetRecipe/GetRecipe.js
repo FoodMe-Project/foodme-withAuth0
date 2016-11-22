@@ -1,19 +1,12 @@
 import './GetRecipe.css';
-import {
-    Button,
-    Grid,
-    Row,
-    Col
-}
-from 'react-bootstrap';
-import Ingredient from './../IngredientHomepage/IngredientHomepage'
-
-var React = require('react');
-var $ = require('jquery');
-var RecipeObject = require('../RecipeObject/RecipeObject');
+import {Button, Grid, Row, Col} from 'react-bootstrap';
+import Ingredient from './../IngredientHomepage/IngredientHomepage';
+import React from 'react';
+import $ from 'jquery';
+import RecipeObject from '../RecipeObject/RecipeObject';
 
 var GetRecipe = React.createClass({
-    getInitialState: function() {
+    getInitialState() {
         return {
             recipes: null,
             recipesId: null,
@@ -22,9 +15,8 @@ var GetRecipe = React.createClass({
             ingredients: [],
         };
     },
-    _getRecipes: function(e) {
+    _getRecipes(e) {
         e.preventDefault();
-        var searchItem = this.refs.userInput.value;
         var self = this;
         $.ajax({
             url: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=${this.state.ingredients.toString()}&number=24&ranking=1&limitLicense=true`,
@@ -42,14 +34,14 @@ var GetRecipe = React.createClass({
             }
         });
     },
-    _userInput: function(e) {
+    _userInput(e) {
         e.preventDefault();
         this.setState({
             userInput: this.refs.userInput.value
         });
         this._getRecipes();
     },
-    _handleButtonClick: function(e) {
+    _handleButtonClick(e) {
         e.preventDefault();
         var userIngredientInput = this.refs.userInput.value;
         var ingredient = this.state.ingredients.concat(userIngredientInput);
@@ -57,12 +49,12 @@ var GetRecipe = React.createClass({
             ingredients: ingredient
         });
     },
-    componentDidUpdate: function(prevProps, prevState) {
+    componentDidUpdate(prevProps, prevState) {
         if (prevProps.ingredients != this.state.ingredients) {
             this._getRecipes();
         }
     },
-    deleteIngredient: function(i, e) {
+    deleteIngredient(i, e) {
         console.log(i);
         e.preventDefault();
 
@@ -74,10 +66,10 @@ var GetRecipe = React.createClass({
             };
         });
     },
-    render: function() {
-        let isLoading = this.state.isLoading;
+    render() {
         return (
             <div>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
                 <div className="main-div">
                     <p className="description">Having trouble finding what you would like to eat? No problem!
                     FoodMe is a website that will help you find the perfect meal to prepare today.
@@ -119,28 +111,34 @@ var GetRecipe = React.createClass({
                     </main>
                 </div>
                 <footer className="footer">
-                    <p>Contacts</p>
-                    <p>Email</p>
-                    <p>Got recipe ideas? Tell us!</p>
-                    <p>About</p>
-                    <hr/>
-                    <ul class="social-icons">
-                        <li class="social-icon">                  
-                            <a href="www.facebook.com">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                        </li>
-                        <li class="social-icon">
-                            <a href="www.twitter.com">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li class="social-icon">
-                            <a href="www.instagram.com">
-                                <i class="fa fa-instagram"></i>
-                            </a>
-                        </li>
-                    </ul>
+                    <div className="footerContacts">
+                        <p>Contacts</p>
+                        <p>Email</p>
+                        <p>FAQ</p>
+                        <p>About</p>
+                    </div>
+                    <div className="icons">
+                        <ul className="social-icons">
+                            <li className="social-icon">                  
+                                <a href="www.facebook.com">
+                                    <i className="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li className="social-icon">
+                                <a href="www.twitter.com">
+                                    <i className="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li className="social-icon">
+                                <a href="www.instagram.com">
+                                    <i className="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="copyright">
+                        <p>FoodMe© 2016</p>
+                    </div>
                 </footer>
             </div>
         );

@@ -21,7 +21,6 @@
     border-style: none;
     font-weight: bold;
     letter-spacing: 2px;
-    margin-right: 10px;
     font-family: 'Roboto Mono', monospace;
     border: 2px solid black;
     box-shadow: 2px 2px;
@@ -30,7 +29,7 @@
 .add-ingredient:hover {
     background-color: black;
     color: white;
-    border-style: none;
+    border: 2px solid black;
 }
 
 .add-ingredient:active {

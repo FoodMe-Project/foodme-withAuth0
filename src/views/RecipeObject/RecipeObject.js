@@ -53,11 +53,9 @@ var RecipeObject = React.createClass({
     render: function() {
         return (
             <Col xs={6} md={4}>
-            <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet"/>
                 <Thumbnail className="eachRecipe" src={this.props.recipeObject.image} alt="242x200">
-                    <h3 className="recipeTitle">{this.props.recipeObject.title.toUpperCase()}({this.props.recipeObject.id})</h3>
+                    <h3 className="recipeTitle">{this.props.recipeObject.title.toUpperCase()}</h3>
                     <Button bsStyle="primary" bsSize="large" className="add-ingredient" onClick={this.open}>SHOW RECIPE</Button>
-                    
                     <Modal show={this.state.showModal} onHide={this.close}>
                         <ModalContent recipeId={this.props.recipeObject.id} title={this.props.recipeObject.title} image={this.props.recipeObject.image}
                         servings/>

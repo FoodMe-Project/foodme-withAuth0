@@ -1,19 +1,18 @@
 import React from 'react';
-import {Route, IndexRedirect} from 'react-router'
-import AuthService from './utils/AuthService'
-import Container from './views/Container'
-import Home from './views/Home/Home'
-import Login from './views/Login/Login'
-import RecipeObject from './views/RecipeObject/RecipeObject'
+import {Route, IndexRedirect} from 'react-router';
+import AuthService from './utils/AuthService';
+import Container from './views/Container';
+import Home from './views/Home/Home';
+import Login from './views/Login/Login';
 
 const auth = new AuthService('jDjPIyEAQJ8oOwKQIWWANpbCkQrkm1r1', 'charlesjamb.auth0.com');
 
 // onEnter callback to validate authentication in private routes
 const requireAuth = (nextState, replace) => {
   if (!auth.loggedIn()) {
-    replace({ pathname: '/login' })
+    replace({ pathname: '/login' });
   }
-}
+};
 
 export const makeRoutes = () => {
 
@@ -27,6 +26,6 @@ export const makeRoutes = () => {
 			</Route>
 		</Route>
 	);
-}
+};
 
 export default makeRoutes;

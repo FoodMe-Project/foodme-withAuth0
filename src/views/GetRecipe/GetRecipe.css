@@ -1,6 +1,6 @@
 .main-div {
     justify-content: center;
-    margin-bottom: 10em;
+    margin-bottom: 7.5em;
     background-color: #ffefe0
 }
 
@@ -13,14 +13,13 @@
     position: relative;
     text-align: center;
     width: 50%;
-    margin: 4em auto 4em auto;
+    margin: 7em auto 0 auto;
     line-height: 2.8em;
     letter-spacing: 0.07em;
-    font-family: 'Josefin Slab', serif;
 }
 
 .insert-ingredients {
-    margin: 3.5em auto 3.5em auto;
+    margin: 3.2em auto 3.2em auto;
 }
 
 .searchButton {
@@ -29,15 +28,15 @@
     background-color: white;
     border-style: none;
     font-weight: bold;
-    letter-spacing: 3px;
-    margin-left: 10px;
+    letter-spacing: 0.188em;
+    margin-left: 0.625em;
     font-family: 'Roboto Mono', monospace;
 }
 
 .ingredientsInput {
-    margin-right: 10px;
-    height: 40px;
-    width: 300px;
+    margin-right: 0.625em;
+    height: 2.500em;
+    width: 18.750em;
 }
 
 .recipeSuggestionTitle {
@@ -62,7 +61,6 @@
 .searchButton:focus {
     background-color: black;
     text-decoration: none;
-    border-style: none;
 }
 
 .recipes-content {
@@ -81,31 +79,64 @@
 
 .footer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     text-align: center;
     align-items: center;
-    height: 200px;
+    height: 12.5em;
     background-color: black;
     color: white;
 }
 
+.footerContacts {
+    display: flex;
+    flex-direction: row;
+    text-decoration: underline;
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+}
+
 .social-icons {
     justify-content: center;
+    padding-right: 2.8125em;
     display: flex;
 }
 
 .social-icon {
     margin: 0 0.3em;
     background-color: white;
-    color: black;
+    color: white;
+    width: 2.1875em;
+    height: 2.1875em;
+    display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     flex-direction: row;
+    margin-left: 2em;
 }
 
 .footer p {
-    padding: 20px;
-    margin: 10px;
+    padding: 1.250em;
+    margin: 0.625em;
+}
+
+.copyright {
+    display: flex;
+    flex-direction: row;
+}
+
+ul {
+    margin: 0;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
 }
