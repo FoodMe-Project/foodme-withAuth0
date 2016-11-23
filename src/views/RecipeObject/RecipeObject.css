@@ -1,101 +1,21 @@
-.recipeTitles {
-    font-family: 'Josefin Slab', serif;
-    margin-top: 50px;
-    font-size: 2em;
-
-}
-
-.recipeTitle {
-    font-family: 'Roboto Mono', monospace;
-    margin-top: 50px;
-    font-size: 1.5em;
+.recipeHeaders {
+    font-size: 1.2em;
     font-weight: bold;
-    padding: 5px;
-    line-height: 30px;
+    margin: 2em auto;
 }
 
-.recipeImage {
-    border-radius: 50%;
-}
-
-.moreInfo {
-    font-family: 'Roboto Mono', monospace;
-    background-color: #ffa500;
-    color: white;
-    font-weight: bold;
-    border-style: none;
-    margin-top: 20px;
-}
-
-.moreInfo:hover {
-    background-color: black;
-    text-decoration: none;
-    color: white;
-}
-
-.imageAndButton {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.steps {
-    line-height: 1.875em;
-    letter-spacing: 0.1em;
-}
-
-li {
-    line-height: 1.5em;
-    text-align: left;
-}
 .eachRecipe {
-    margin: 30px;
-    padding: 30px;
-    border: 2px solid black;
-    box-shadow: 3px 3px 5px black;
-    max-width: 25em;
-    min-height: 33em;
-    position: absolute;
-}
-
-.col-md-4.col-xs-6 {
-    justify-content: center;
-    text-align: center;
-    margin: auto;
-    position: relative;
-}
-
-
-ol {
-    padding: 0;
-    margin: auto;
-}
-
-.recipes-content {
-    display: flex;
-    flex-direction: column;
-}
-
-.link {
-    font-size: 2em;
-    font-weight: bold;
-}
-
-.ingredientsList {
-    font-size: 0.5em;
+    border: 0.125em solid black;
+    box-shadow: 0.188em 0.188em 0.313em black;
+    max-height: 30em;
+    min-height: 30em;
+    max-width: 20em;
+    min-width: 20em;
 }
 
 ul {
     padding: 0;
-    line-height: 50px;
-    letter-spacing: 1px;
+    line-height: 3.125em;
+    letter-spacing: 0.063em;
     list-style: none;
-}
-
-href {
-    color: white;
-}
-
-href:hover {
-    border-style: none;
 }

@@ -1,60 +1,113 @@
+.homepageDiv {
+    width: 100%;
+}
+
 .main-div {
     justify-content: center;
+    align-items: center;
+    margin-bottom: 7.5em;
+    background-color: #ffefe0;
+    width: 100%;
+}
+
+.ingredients {
+    display: flex;
+    flex-direction: row;
 }
 
 .description {
     position: relative;
     text-align: center;
     width: 50%;
-    margin: 3em auto 4em auto;
+    margin: 7em auto 0 auto;
     line-height: 2.8em;
     letter-spacing: 0.07em;
-    font-family: 'Josefin Slab', serif;
 }
 
-.insert-ingredients {
-    margin: 3.5em auto 3.5em auto;
-}
-
-.searchButton {
-    padding-left: 1.875em;
-    padding-right: 1.875em;
-    background-color: #ffa500;
-    border-style: none;
-    font-weight: bold;
-    letter-spacing: 3px;
-    margin-left: 10px;
-    font-family: 'Roboto Mono', monospace;
+.homepageTitles {
+    margin: 3.2em auto 3.2em auto;
 }
 
 .ingredientsInput {
-    margin-right: 10px;
-    height: 40px;
-    width: 300px;
+    margin-right: 0.625em;
+    height: 2.5em;
+    width: 18.75em;
 }
 
-.recipeSuggestionTitle {
-    margin: 3.5em auto 3.5em auto;
+.recipes-content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
-.searchButton:hover {
+.recipes-row {
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    margin: 0 27em;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 12.5em;
     background-color: black;
-    text-decoration: none;
+    color: white;
 }
 
-.searchButton:active {
-    background-color: black;
-    text-decoration: none;
+.footerContacts {
+    display: flex;
+    flex-direction: row;
+    text-decoration: underline;
 }
 
-.searchButton:visited {
-    background-color: black;
-    text-decoration: none;
+.icons {
+    display: flex;
+    flex-direction: row;
 }
 
-.searchButton:focus {
-    background-color: black;
-    text-decoration: none;
-    border-style: none;
+.social-icons {
+    justify-content: center;
+    display: flex;
+}
+
+.social-icon {
+    background-color: white;
+    color: white;
+    width: 2.1875em;
+    height: 2.1875em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-direction: row;
+    margin: 0 2em;
+}
+
+.footer p {
+    padding: 1.250em;
+    margin: 0.625em;
+}
+
+.copyright {
+    display: flex;
+    flex-direction: row;
+}
+
+ul {
+    margin: 0;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
 }
 

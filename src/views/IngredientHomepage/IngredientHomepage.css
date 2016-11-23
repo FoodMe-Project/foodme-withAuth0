@@ -1,0 +1,71 @@
+.add-ingredient-input {
+    margin: 0.5em;
+    display: inline-block;
+    box-shadow: 0.125em 0.125em;
+    background-color: white;
+}
+
+.add-ingredient-input text {
+    background-color: white;
+    font-size: 1em;
+    padding: 0 .3em;
+    border-bottom: solid white 0.063em;
+    flex-direction: row;
+}
+
+.button {
+    background-color: white;
+    color: black;
+    font-size: 0.8em;
+    border-radius: 0;
+    border-style: none;
+    font-weight: bold;
+    letter-spacing: 0.16em;
+    border: 0.16em solid black;
+    box-shadow: 0.16em 0.16em;
+    outline: none;
+}
+
+.button:hover {
+    background-color: black;
+    color: white;
+    border: 0.16em solid black;
+    outline: none;
+
+}
+
+.button:active {
+    background-color: black;
+    color: white;
+    border: 0.16em solid black;
+    outline: none;
+
+}
+
+.button:focus {
+    background-color: black;
+    color: white;
+    border: 0.16em solid black;
+    outline: none;
+
+}
+
+.button:link {
+    background-color: black;
+    color: white;
+    border: 0.16em solid black;
+    outline: none;
+
+}
+
+.xButton {
+    background-color: white;
+    font-size: 1em;
+    padding: 0 .3em;
+    border: none;
+    outline: none;
+}
+
+
+
+
