@@ -17,13 +17,6 @@
     text-decoration: none
 }
 
-.jumbotron {
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .header {
     background-image: url('https://static.pexels.com/photos/27599/pexels-photo-27599.jpg');
     background-size: cover;
@@ -79,11 +72,6 @@
   background-color: black;
   text-decoration: none;
 }
-
-.toolbar {
-  display: inline-block;
-}
-
 .ingredients-recipes {
   display: flex;
   justify-content: center;
@@ -93,4 +81,5 @@
 
 .page {
   background-color: #ffefe0;
+  width: 100%;
 }

@@ -68,13 +68,12 @@ var GetRecipe = React.createClass({
     },
     render() {
         return (
-            <div>
+            <div className="homepageDiv">
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
                 <div className="main-div">
                     <p className="description">Having trouble finding what you would like to eat? No problem!
                     FoodMe is a website that will help you find the perfect meal to prepare today.
-                    Just enter the ingredients you would like to use by adding them to your list of ingredients you 
-                    have home or that you want to use, and let FoodMe suggest you recipes to make with these!</p>
+                    Just enter the list of ingredients you would like to use below, and let FoodMe suggest you recipes to make with these!</p>
                     <h2 className="homepageTitles">Please enter your ingredients to begin.</h2>
                     <form className="form">
                         {this.state.recipes ? <p>scroll down to see what FoodMe found!</p> : ""}
@@ -119,21 +118,21 @@ var GetRecipe = React.createClass({
                     </div>
                     <div className="icons">
                         <ul className="social-icons">
-                            <li className="social-icon">                  
-                                <a href="www.facebook.com">
+                            <a href="www.facebook.com" className="social-icon">
+                                <li>                  
                                     <i className="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                            <li className="social-icon">
-                                <a href="www.twitter.com">
+                                </li>
+                            </a>
+                            <a href="www.twitter.com" className="social-icon">
+                                <li>
                                     <i className="fa fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li className="social-icon">
-                                <a href="www.instagram.com">
+                                </li>
+                            </a>
+                            <a href="www.instagram.com" className="social-icon">
+                                <li>
                                     <i className="fa fa-instagram"></i>
-                                </a>
-                            </li>
+                                </li>
+                            </a>
                         </ul>
                     </div>
                     <div className="copyright">

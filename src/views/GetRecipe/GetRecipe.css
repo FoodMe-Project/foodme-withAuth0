@@ -1,8 +1,13 @@
+.homepageDiv {
+    width: 100%;
+}
+
 .main-div {
     justify-content: center;
     align-items: center;
     margin-bottom: 7.5em;
-    background-color: #ffefe0
+    background-color: #ffefe0;
+    width: 100%;
 }
 
 .ingredients {
@@ -29,13 +34,10 @@
     width: 18.75em;
 }
 
-.recipeSuggestionTitle {
-    margin: 3.5em auto 3.5em auto;
-}
-
 .recipes-content {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .recipes-row {
@@ -75,7 +77,6 @@
 }
 
 .social-icon {
-    margin: 0 0.3em;
     background-color: white;
     color: white;
     width: 2.1875em;
@@ -109,3 +110,4 @@ a:link {
 a:visited {
     color: black;
 }
+

@@ -1,9 +1,9 @@
-var React = require ('react');
 import {Button, Modal} from 'react-bootstrap';
-import RecipeInfo from './../RecipeInfo/RecipeInfo'
-import './ModalContent.css'
-var $ = require('jquery')
+import RecipeInfo from './../RecipeInfo/RecipeInfo';
+import './ModalContent.css';
 
+var React = require ('react');
+var $ = require('jquery');
 
 var ModalContent = React.createClass({
     getInitialState() {
@@ -13,14 +13,12 @@ var ModalContent = React.createClass({
         recipesOtherIngredients: null,
         recipesServings: null,
         recipesUrl: null
-        }
+        };
     },
     componentDidMount: function() {
-        this._getRecipesURL();
+        this._getRecipesInfo();
     },
-    _getRecipesURL: function() {
-        console.log(this.props.recipeId)
-        // e.preventDefault();
+    _getRecipesInfo: function() {
         var self = this;
         $.ajax({
             url:`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${this.props.recipeId}/information`,
@@ -28,7 +26,6 @@ var ModalContent = React.createClass({
             data: {}, // Additional parameters here
             dataType: 'json',
             success: function(data) {
-                console.log(data)
                 self.setState({
                     recipesInfo: data, 
                     recipesInstructions: data.instructions,
@@ -59,7 +56,7 @@ var ModalContent = React.createClass({
                         ""}</p>
                     <p>
                     <h3 className="recipeHeaders">Gives: {this.state.recipesServings} serving(s)</h3>
-                    {this.state.recipesInstructions === "" || null? 
+                    {this.state.recipesInstructions === "" || null ? 
                         <h5 className="recipeHeaders">No need for instructions for this one!</h5> : 
                         <h5 className="recipeHeaders">Instructions:</h5> }
                         <p dangerouslySetInnerHTML={{__html: this.state.recipesInstructions}}/>
