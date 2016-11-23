@@ -76,11 +76,6 @@ export class Home extends Component {
 	}
     
 	_handleButtonClick (userIngredientInput) {
-		// var ingredient = this.state.ingredients.concat(userIngredientInput);
-		// this.setState({
-		// 	ingredients: ingredient
-		// });
-
 		var that = this;
 		axios.post(`http://localhost:4000/insert-into-fridge`, {
 			fridgeId: that.state.fridgeId,
@@ -94,26 +89,11 @@ export class Home extends Component {
 		.catch(err => {
 			console.log(err.stack);
 		})
-
-		// this.displayFridge()
-	}
-   
-	componentDidUpdate(prevProps, prevState){
-		// this.displayFridge();
-		// if(prevState.ingredients.length !== this.state.ingredients.length){
-		// 	this._apiCall();
-		// }
 	}
    
 	deleteIngredient(i, ingredient) {
 		event.preventDefault();
 		var that = this;
-		// this.setState(state => {
-		//     state.ingredients.splice(i, 1);
-		//     return {
-		//         ingredients: this.state.ingredients
-		//     };
-		// });
 
 		axios.post('http://localhost:4000/delete-ingredient', {
 			fridgeId: that.state.fridgeId,
@@ -264,6 +244,7 @@ export class Home extends Component {
 						apiCall={this._apiCall.bind(this)}
 					
 					/>
+					</Collapsible>
 					{this.state.showSearch ? 
 						<section id="recipe-container" >
 							<RecipeOutput
@@ -273,9 +254,9 @@ export class Home extends Component {
 						</section> 
 					: null}
 					{this.state.showSaved ?
-						<SavedRecipes recipes={this.state.savedRecipes}/>
+						<SavedRecipes recipes={this.state.savedRecipes} clientId={this.state.profile.clientID}/>
 					: null}
-					</Collapsible>
+					
 				</div>
 				
 			</div>

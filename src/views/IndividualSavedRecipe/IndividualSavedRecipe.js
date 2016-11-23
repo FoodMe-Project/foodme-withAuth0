@@ -1,5 +1,6 @@
 const React = require('react');
-var $ = require('jquery');
+const $ = require('jquery');
+const axios = require('axios');
 import styles from './../IndividualRecipes/IndividualRecipes.css'
 
 const IndividualSavedRecipe = React.createClass({
@@ -14,10 +15,9 @@ const IndividualSavedRecipe = React.createClass({
    	},
 
    _getRecipes: function() {
-		var self = this;
-
+		const self = this;
 		$.ajax({
-			url: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${this.props.id}/information/`,
+			url: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${this.props.recipeId}/information/`,
 			type: 'GET',
 			data: {},
 			dataType: 'json',
@@ -28,18 +28,29 @@ const IndividualSavedRecipe = React.createClass({
 			},
 			beforeSend: function(xhr) {
 				xhr.setRequestHeader("X-Mashape-Authorization", "l1LBB0jz0wmshpT2AzWw4K1uUb6ep1oXuBdjsnQWcgGs9Iutw8");
-				}
-			});
-   		},
+			}
+		});
+   	},
+
+   	deleteSavedRecipe: function() {
+   		axios.post('http://localhost:4000/delete-recipe/', {
+   			clientId: this.props.clientId,
+   			recipeId: this.props.recipeId,
+   		})
+   		.then(result => {
+   			console.log(result);
+   		})
+   		.catch(err => {
+   			console.log(err.stack);
+   		})
+   	},
 
 	render: function() {
-
-		console.log(this.state.recipeInfo)
 
 		return (
         <div id="individual-recipe-wrapper">
             <div id="button-and-image">
-                <button id="save-button"><i id="favourite-button" className="material-icons 24md">stars</i></button>
+                <button id="save-button" onClick={this.deleteSavedRecipe}><i id="favourite-button" className="material-icons 24md">clear</i></button>
                 <img src={this.state.recipeInfo.image} alt="recipe representation"/>
             </div>
             <div className="seperating-line">
@@ -55,5 +66,3 @@ const IndividualSavedRecipe = React.createClass({
 })
 
 module.exports = IndividualSavedRecipe;
-
-                // <img src={this.state.recipes.image} alt="recipe representation"/>

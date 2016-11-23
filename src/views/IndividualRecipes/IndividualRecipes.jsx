@@ -5,7 +5,6 @@ var axios = require('axios');
 var IndividualRecipes = React.createClass({  
 
     saveUserRecipe: function() {
-        var that = this;
         axios.post(`http://localhost:4000/insert-save-recipe`, {
           clientId: this.props.clientId,
           recipeId: this.props.recipes.id

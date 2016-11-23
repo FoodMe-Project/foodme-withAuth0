@@ -5,15 +5,13 @@ import IndividualSavedRecipe from '../IndividualSavedRecipe/IndividualSavedRecip
 
 const SavedRecipes = React.createClass({
 	render: function() {
-
 		let recipes = this.props.recipes
-		console.log(recipes)
 
 		return (
 			<ul>
 				{recipes.map((recipe, i) =>
 				<li key={i} className="recipe-list">
-					<IndividualSavedRecipe className="recipes-list" id={recipe.recipeId}/>
+					<IndividualSavedRecipe className="recipes-list" recipeId={recipe.recipeId} clientId={this.props.clientId}/>
 				</li>
 				)}
 			</ul>

@@ -328,5 +328,7 @@ input:focus {
 #recipe-and-fridge {
     padding-left: 0;
     background-color: #ffefe0;
+    display: flex;
+    flex-direction: column;
 }
 
