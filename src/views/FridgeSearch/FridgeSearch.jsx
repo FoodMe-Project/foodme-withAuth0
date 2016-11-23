@@ -16,9 +16,8 @@ var FridgeSearch = React.createClass({
                     <li>
                     hey
                     </li>
-                    <button id="fridge-search-button">Search Recipes</button>
                 </ul>
-                
+                <button id="fridge-search-button">Search Recipes</button>
             </form>
         );
     }
