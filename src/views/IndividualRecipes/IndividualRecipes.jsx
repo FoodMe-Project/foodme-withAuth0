@@ -1,9 +1,15 @@
 const React = require('react');
 const axios = require('axios');
 import styles from './IndividualRecipes.css';
+import { Modal, Button } from 'react-bootstrap';
+import ModalContent from '../ModalContent/ModalContent';
 
 const IndividualRecipes = React.createClass({  
-
+    getInitialState: function() {
+        return {
+            showModal: false
+        }
+    },
     saveUserRecipe: function() {
         axios.post(`http://localhost:4000/insert-save-recipe`, {
           clientId: this.props.clientId,
@@ -16,6 +22,12 @@ const IndividualRecipes = React.createClass({
           console.log(err.stack);
         })
    },
+    open() {
+        this.setState({ showModal: true });
+    },
+    close() {
+        this.setState({ showModal: false });
+    },
 
     render: function() {
     
@@ -30,8 +42,15 @@ const IndividualRecipes = React.createClass({
                 <h2>{this.props.recipes.title}</h2>
              
                 <div id="read-more-wrapper">
-                    <button id="read-more">See Recipe</button>
-                </div>    
+                    <button id="read-more" onClick={this.open}>SHOW RECIPE</button>
+                </div>
+                <Modal show={this.state.showModal} onHide={this.close}>
+                    <ModalContent recipeId={this.props.recipes.id} title={this.props.recipes.title} image={this.props.recipes.image}
+                    servings/>
+                    <Modal.Footer>
+                        <Button className="button" onClick={this.close}>CLOSE</Button>
+                    </Modal.Footer>
+                </Modal>   
             </div>
         )
     }
