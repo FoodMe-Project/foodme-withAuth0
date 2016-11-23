@@ -3,15 +3,12 @@ import { Button, Jumbotron } from 'react-bootstrap';
 import AuthService from '../../utils/AuthService';
 import styles from './Home.css';
 import grid from '../grid.css';
-import RecipeOutput from './../Recipes/Recipes';
 import Fridge from './../Fridge/Fridge';
 import SavedRecipes from './../SavedRecipes/SavedRecipes';
 import QuickSearch from './../QuickSearch/QuickSearch'
 import Ingredient from './../Ingredient/Ingredients';
 import RecipeOutput from './../Recipes/Recipes';
-import Collapsible from 'react-collapsible';
-import FridgeSearch from './../FridgeSearch/FridgeSearch'
-import Fridge from './../Fridge/Fridge'
+
 
 var axios = require('axios');
 var $ = require('jquery');
