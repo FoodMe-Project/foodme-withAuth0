@@ -6,13 +6,18 @@ import styles from './../IndividualRecipes/IndividualRecipes.css'
 const IndividualSavedRecipe = React.createClass({
 	getInitialState() {
 		return {
-			recipeInfo: {} 
+			recipeInfo: {}
+
 		}
 	},
 
 	componentDidMount: function() {
 		this._getRecipes();
    	},
+
+    // componentDidUpdate: function(){
+    //   if(this.props)
+    // }
 
    _getRecipes: function() {
 		const self = this;
@@ -33,24 +38,19 @@ const IndividualSavedRecipe = React.createClass({
    	},
 
    	deleteSavedRecipe: function() {
-   		axios.post('http://localhost:4000/delete-recipe/', {
-   			clientId: this.props.clientId,
-   			recipeId: this.props.recipeId,
-   		})
-   		.then(result => {
-   			console.log(result);
-   		})
-   		.catch(err => {
-   			console.log(err.stack);
-   		})
+      this.props.deleteSavedRecipe(this.props.recipeId);
    	},
 
 	render: function() {
-
+   
 		return (
         <div id="individual-recipe-wrapper">
             <div id="button-and-image">
-                <button id="save-button" onClick={this.deleteSavedRecipe}><i id="favourite-button" className="material-icons 24md">clear</i></button>
+                <button id="save-button" 
+                onClick={(event) => { this.deleteSavedRecipe(); this.props.onClickArray;}}>
+              
+                  <i id="favourite-button" className="material-icons 24md">clear</i>
+                </button>
                 <img src={this.state.recipeInfo.image} alt="recipe representation"/>
             </div>
             <div className="seperating-line">

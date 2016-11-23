@@ -4,14 +4,20 @@ import IndividualSavedRecipe from '../IndividualSavedRecipe/IndividualSavedRecip
 
 
 const SavedRecipes = React.createClass({
+
 	render: function() {
 		let recipes = this.props.recipes
 
 		return (
 			<ul>
-				{recipes.map((recipe, i) =>
-				<li key={i} className="recipe-list">
-					<IndividualSavedRecipe className="recipes-list" recipeId={recipe.recipeId} clientId={this.props.clientId}/>
+				{recipes.map((recipe) =>
+				<li key={recipe.recipeId} className="recipe-list">
+					<IndividualSavedRecipe 
+					className="recipes-list" 
+					recipeId={recipe.recipeId} 
+					recipes={recipes}
+					deleteSavedRecipe={this.props.deleteSavedRecipe}
+					/>
 				</li>
 				)}
 			</ul>

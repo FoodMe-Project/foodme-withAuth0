@@ -7,7 +7,7 @@ import Fridge from './../Fridge/Fridge';
 import SavedRecipes from './../SavedRecipes/SavedRecipes';
 import QuickSearch from './../QuickSearch/QuickSearch';
 import Ingredient from './../Ingredient/Ingredients';
-import RecipeOutput from './../Recipes/Recipes';
+import Recipes from './../Recipes/Recipes';
 import Collapsible from 'react-collapsible';
 
 
@@ -118,6 +118,23 @@ export class Home extends Component {
           };
       });
 	}
+
+	deleteSavedRecipe(recipeId){
+
+   		axios.post('http://localhost:4000/delete-recipe/', {
+   			clientId: this.state.profile.clientID,
+   			recipeId: recipeId,
+   		})
+   		.then(result => {
+   			this.setState({
+   				savedRecipes: this.state.savedRecipes.filter(r => r.recipeId !== recipeId)
+   			});
+   		})
+   		.catch(err => {
+   			console.log(err.stack);
+   		})
+	}
+
 	copyIngredient(i) {
 		event.preventDefault();
 		this.setState(state => {
@@ -197,7 +214,7 @@ export class Home extends Component {
 		const { profile } = this.state;
 		var fridgeOpen = <span><i className="material-icons">kitchen</i><i className="material-icons">close</i></span>;
         var fridgeClosed = <span><i className="material-icons">kitchen</i><i className="material-icons">arrow_forward</i></span>;
-        
+        console.log(this.state.savedRecipes)
 		return (
 			<div className={styles.root} className={grid.root} id="home-wrapper">
 				<Jumbotron id="sidebar-nav" className="col-large-3">
@@ -247,14 +264,17 @@ export class Home extends Component {
 					</Collapsible>
 					{this.state.showSearch ? 
 						<section id="recipe-container" >
-							<RecipeOutput
+							<Recipes
 								clientId={this.state.profile.clientID} 
 								recipes={this.state.recipes}
 							/>
 						</section> 
 					: null}
 					{this.state.showSaved ?
-						<SavedRecipes recipes={this.state.savedRecipes} clientId={this.state.profile.clientID}/>
+						<SavedRecipes 
+						recipes={this.state.savedRecipes}
+						deleteSavedRecipe={this.deleteSavedRecipe.bind(this)}
+						/>
 					: null}
 					
 				</div>
