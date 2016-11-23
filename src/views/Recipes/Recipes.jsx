@@ -13,7 +13,11 @@ var RecipeOutput = React.createClass({
             <ul className="overlay">
                 {recipesArray.map((recipes, i) => 
                 <li key={i} className="recipe-list">
-                    <IndividualRecipes className="recipes-list" recipes={recipes} clientId={this.props.clientId}/>
+                    <IndividualRecipes 
+                    className="recipes-list" 
+                    recipes={recipes}
+                    saveUserRecipe={this.props.saveUserRecipe}
+                    />
                 </li>
                 )}
             </ul>

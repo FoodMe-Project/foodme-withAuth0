@@ -15,10 +15,6 @@ const IndividualSavedRecipe = React.createClass({
 		this._getRecipes();
    	},
 
-    // componentDidUpdate: function(){
-    //   if(this.props)
-    // }
-
    _getRecipes: function() {
 		const self = this;
 		$.ajax({

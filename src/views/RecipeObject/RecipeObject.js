@@ -26,28 +26,6 @@ var RecipeObject = React.createClass({
     close() {
         this.setState({ showModal: false });
     },
-    // _getRecipesURL: function(e) {
-    //     e.preventDefault();
-    //     var self = this;
-    //     $.ajax({
-    //         url:`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${this.props.recipeObject.id}/information`,
-    //         type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
-    //         data: {}, // Additional parameters here
-    //         dataType: 'json',
-    //         success: function(data) {
-    //             self.setState({
-    //                 recipesInfo: data, 
-    //                 recipesInstructions: data.instructions,
-    //                 recipesOtherIngredients: data.extendedIngredients,
-    //                 recipesServings: data.servings,
-    //                 recipesUrl: data.sourceUrl
-    //             });
-    //         },
-    //         beforeSend: function(xhr) {
-    //         xhr.setRequestHeader("X-Mashape-Authorization", "IOXxGwmjbcmshk5Fl9AKuHX5WCLdp1kZ21fjsneOpkbp8wAgkG"); // Enter here your Mashape key
-    //         }
-    //     });
-    // },
     render: function() {
         return (
             <Col xs={6} md={4}>

@@ -11,17 +11,8 @@ const IndividualRecipes = React.createClass({
         }
     },
     saveUserRecipe: function() {
-        axios.post(`http://localhost:4000/insert-save-recipe`, {
-          clientId: this.props.clientId,
-          recipeId: this.props.recipes.id
-        })
-        .then(result => {
-          console.log(result);
-        })
-        .catch(err => {
-          console.log(err.stack);
-        })
-   },
+        this.props.saveUserRecipe(this.props.recipes.id);
+    },
     open() {
         this.setState({ showModal: true });
     },

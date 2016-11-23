@@ -120,7 +120,6 @@ export class Home extends Component {
 	}
 
 	deleteSavedRecipe(recipeId){
-
    		axios.post('http://localhost:4000/delete-recipe/', {
    			clientId: this.state.profile.clientID,
    			recipeId: recipeId,
@@ -133,6 +132,21 @@ export class Home extends Component {
    		.catch(err => {
    			console.log(err.stack);
    		})
+	}
+
+	saveUserRecipe(recipeId) {
+		axios.post(`http://localhost:4000/insert-save-recipe`, {
+	        clientId: this.state.profile.clientID,
+	        recipeId: recipeId
+        })
+        .then(result => {
+          	this.setState({
+          		savedRecipes: this.state.savedRecipes.concat({clientId: this.state.profile.clientID, recipeId: recipeId})
+          	});
+        })
+        .catch(err => {
+          console.log(err.stack);
+        })
 	}
 
 	copyIngredient(i) {
@@ -267,6 +281,7 @@ export class Home extends Component {
 							<Recipes
 								clientId={this.state.profile.clientID} 
 								recipes={this.state.recipes}
+								saveUserRecipe={this.saveUserRecipe.bind(this)}
 							/>
 						</section> 
 					: null}

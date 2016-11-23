@@ -25,19 +25,10 @@ var Fridge = React.createClass({
     },
     
     render: function() {
-        
-        // var recipes = this.props.recipes;
-        // var fridgeId = this.props.fridgeId;
-        // var apiCall= this.props._apiCall;
-        // var componentDidMount = this.props.componentDidMount;
         var ingredientsArray = this.props.ingredientsArray;
-        // var componentDidUpdate = this.props.componentDidUpdate;
-      
-        // var apiCallAutocomplete = this.apiCallAutocomplete;
-        
+
         return (
 
-           
               <div id="fridge-and-search" className="col-large-9">
                 <section id="fridge" className="col-large-7">
                   <form id="submit-wrapper">       
