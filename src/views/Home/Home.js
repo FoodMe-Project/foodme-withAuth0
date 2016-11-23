@@ -5,9 +5,10 @@ import styles from './Home.css';
 import grid from '../grid.css';
 import Fridge from './../Fridge/Fridge';
 import SavedRecipes from './../SavedRecipes/SavedRecipes';
-import QuickSearch from './../QuickSearch/QuickSearch'
+import QuickSearch from './../QuickSearch/QuickSearch';
 import Ingredient from './../Ingredient/Ingredients';
 import RecipeOutput from './../Recipes/Recipes';
+import Collapsible from 'react-collapsible';
 
 
 var axios = require('axios');
@@ -214,24 +215,26 @@ export class Home extends Component {
 
 	render() {
 		const { profile } = this.state;
-
+		var fridgeOpen = <span><i className="material-icons">kitchen</i><i className="material-icons">close</i></span>;
+        var fridgeClosed = <span><i className="material-icons">kitchen</i><i className="material-icons">arrow_forward</i></span>;
+        
 		return (
 			<div className={styles.root} className={grid.root} id="home-wrapper">
 				<Jumbotron id="sidebar-nav" className="col-large-3">
 					<div id="foodme-logo">
 						<h2>FoodMe.</h2>
 					</div>
-					<div id="user-info">
-						<img id="user-image" src={profile.picture} alt="user's profile"/>
-						<p>Welcome {profile.nickname}!</p>
+					<div className="user-info">
+						<img className="user-image" src={profile.picture} alt="user's profile"/>
+						<p id="welcome">Welcome {profile.nickname}!</p>
 						<Button id="logout-button" onClick={this.logout.bind(this)}>Logout</Button>
 					</div>
 					<div className="dividing-line" />
 					<div id="nav-buttons">
-						<button id="top">Featured</button>
+					
 						<button onClick={this.toggleSearch.bind(this)}>Search For Recipes</button>
 						<button onClick={this.toggleSaved.bind(this)}>Saved Recipes</button>
-						<button>User Settings</button>
+					
 					</div>
 					<div className="dividing-line" />
 					<footer id="footer-content">
@@ -241,6 +244,11 @@ export class Home extends Component {
 					</footer>
 				</Jumbotron>
 				<div id="recipe-and-fridge" className="col-large-9">
+					<Collapsible 
+                	trigger={fridgeClosed} 
+                	triggerWhenOpen={fridgeOpen}
+                	open={true}   
+                	>
 					<Fridge
 						ingredientsArray={this.state.ingredients} 
 						apiCall={this._apiCall.bind(this)}
@@ -267,7 +275,9 @@ export class Home extends Component {
 					{this.state.showSaved ?
 						<SavedRecipes recipes={this.state.savedRecipes}/>
 					: null}
+					</Collapsible>
 				</div>
+				
 			</div>
 		);
 	}
