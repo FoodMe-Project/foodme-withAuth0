@@ -17,6 +17,12 @@ var Fridge = React.createClass({
         event.preventDefault();
         this.props.deleteIngredient(i, ingredient);
     },
+
+    copyIngredient: function(i, event) {
+      event.preventDefault();
+      this.props.copyIngredient(i);
+
+    },
     
     render: function() {
         var fridgeOpen = <span><i className="material-icons">kitchen</i><i className="material-icons">close</i></span>;
@@ -47,7 +53,10 @@ var Fridge = React.createClass({
                   <div id="ingredient-wrapper">
                       {ingredientsArray.map((ingredient, i) => 
                       <li key={i}>
-                          <Ingredient ClassName="ingredient-list" ingredient={ingredient}  onClick={(evt) => this.deleteIngredient(i, evt, ingredient)}/>
+                          <Ingredient ClassName="ingredient-list" 
+                          ingredient={ingredient}  
+                          onClickCopy={(evt) => this.copyIngredient(i, evt)}
+                          onClickDelete={(evt) => this.deleteIngredient(i, evt, ingredient)}/>
                       </li>
                       )}
                   </div>

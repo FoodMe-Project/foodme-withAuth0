@@ -6,6 +6,7 @@ import grid from '../grid.css';
 import RecipeOutput from './../Recipes/Recipes';
 import Fridge from './../Fridge/Fridge';
 import SavedRecipes from './../SavedRecipes/SavedRecipes';
+import QuickSearch from './../QuickSearch/QuickSearch'
 
 var axios = require('axios');
 var $ = require('jquery');
@@ -27,6 +28,7 @@ export class Home extends Component {
 			recipes: [],
 			recipesId: null,
 			ingredients: [],
+			quickSearch: [],
 			fridgeId: null,
 			savedRecipes: [],
 			showSearch: true,
@@ -46,7 +48,7 @@ export class Home extends Component {
 	_apiCall() {
 		var that = this;
 		$.ajax({
-			url:`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=` + this.state.ingredients.toString() + "&number=12",
+			url:`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=` + this.state.quickSearch.toString() + "&number=12",
 			type: 'GET',
 			data: {},
 			dataType: 'json',
@@ -122,6 +124,26 @@ export class Home extends Component {
 		})
 	}
 
+	deleteQuickIngredient(i){
+	event.preventDefault();
+
+      this.setState(state => {
+          state.quickSearch.splice(i, 1);
+          return {
+            quickSearch: this.state.quickSearch
+          };
+      });
+	}
+	copyIngredient(i) {
+		event.preventDefault();
+		this.setState(state => {
+			var copied = state.ingredients.slice(i, i+1);
+			var ingredient = copied.concat(this.state.quickSearch);
+			return {
+				quickSearch: ingredient
+			}
+		})
+	}
 	getClientFridgeId() {
 		var that = this;
 
@@ -223,7 +245,14 @@ export class Home extends Component {
 						handleButtonClick={this._handleButtonClick.bind(this)}
 						componentDidUpdate={this.componentDidUpdate}
 						deleteIngredient={this.deleteIngredient.bind(this)}
-					/> 
+						copyIngredient={this.copyIngredient.bind(this)}
+					/>
+					<QuickSearch
+						searchArray={this.state.quickSearch}
+						deleteQuickIngredient={this.deleteQuickIngredient.bind(this)}
+						apiCall={this._apiCall.bind(this)}
+					
+					/>
 					{this.state.showSearch ? 
 						<section id="recipe-container" >
 							<RecipeOutput

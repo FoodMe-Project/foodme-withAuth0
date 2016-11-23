@@ -7,8 +7,8 @@ var Ingredient = React.createClass({
         return (
             <div className={styles.root}>
                 <form id="add-ingredient-input">    
-                    <text>{this.props.ingredient}</text>
-                    <button onClick={this.props.onClick}>x</button>
+                    <text onClick={this.props.onClickCopy}>{this.props.ingredient}</text>
+                    <button onClick={this.props.onClickDelete}>x</button>
                 </form>
             </div>
         );
