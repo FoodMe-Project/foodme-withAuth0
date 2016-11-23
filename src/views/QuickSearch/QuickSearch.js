@@ -1,5 +1,6 @@
 import React from 'react';
 import QuickSearchIngredient from './../Ingredient/QuickSearchIngredient'
+import styles from './../Home/Home.css';
 
 const QuickSearch = React.createClass({
 	deleteQuickIngredient: function(i, event){
@@ -12,7 +13,9 @@ const QuickSearch = React.createClass({
 		console.log('quicksearch', searchArray)
 
 		return (
-			<div id="ingredient-wrapper">
+		<div id="quick-search">	
+		<button className="button" onClick={this.props.apiCall}>Search Recipes</button>
+			<div id="ingredient-wrapper2">
 				<ul>
 					{
 						searchArray.map((ingredient, i) => 
@@ -22,9 +25,9 @@ const QuickSearch = React.createClass({
 						)
 					}
 				</ul>
-				
-				<button onClick={this.props.apiCall}>Search Recipes</button>
 			</div>
+			
+		</div>
 		)
 	}
 })

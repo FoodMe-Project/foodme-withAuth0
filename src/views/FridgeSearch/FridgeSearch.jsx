@@ -10,14 +10,13 @@ var FridgeSearch = React.createClass({
     },
     
     render: function() {
-       return (
+       return (<
             <form id="quick-search-fridge-wrapper">
                 <ul id="search-recipe-list">
                     <li>
                     hey
                     </li>
                 </ul>
-                <button id="fridge-search-button">Search Recipes</button>
             </form>
         );
     }
@@ -27,3 +26,4 @@ module.exports = FridgeSearch;
 
 
 
+ 

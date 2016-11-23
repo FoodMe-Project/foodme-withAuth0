@@ -29,8 +29,8 @@ var Fridge = React.createClass({
 
         return (
 
-              <div id="fridge-and-search" className="col-large-9">
-                <section id="fridge" className="col-large-7">
+              <div id="fridge-and-search">
+                <section id="fridge" >
                   <form id="submit-wrapper">       
                       <input id="input-ingredient" type="text" ref="userInput" ></input>
                       <button id="add-ingredient" onClick={this.handleButtonClick}>-></button>

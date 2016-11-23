@@ -71,7 +71,6 @@ export class Home extends Component {
     
 	componentDidMount() {
 		this.getClientFridgeId();
-		console.log(this.state.ingredients)
 		this.displaySavedRecipe();
 	}
     
@@ -82,8 +81,6 @@ export class Home extends Component {
 			ingredientName: userIngredientInput
 		})
 		.then(result => {
-			console.log(result);
-			console.log(that.state.ingredients);
 			that.displayFridge();
 		})
 		.catch(err => {
@@ -100,7 +97,6 @@ export class Home extends Component {
 			ingredientName: ingredient
 		})
 		.then(result => {
-			console.log(result);
 			that.displayFridge();
 		})
 		.catch(err => {
@@ -228,7 +224,6 @@ export class Home extends Component {
 		const { profile } = this.state;
 		var fridgeOpen = <span><i className="material-icons">kitchen</i><i className="material-icons">close</i></span>;
         var fridgeClosed = <span><i className="material-icons">kitchen</i><i className="material-icons">arrow_forward</i></span>;
-        console.log(this.state.savedRecipes)
 		return (
 			<div className={styles.root} className={grid.root} id="home-wrapper">
 				<Jumbotron id="sidebar-nav" className="col-large-3">
@@ -269,6 +264,7 @@ export class Home extends Component {
 						deleteIngredient={this.deleteIngredient.bind(this)}
 						copyIngredient={this.copyIngredient.bind(this)}
 					/>
+					<div id="vertical-line" />
 					<QuickSearch
 						searchArray={this.state.quickSearch}
 						deleteQuickIngredient={this.deleteQuickIngredient.bind(this)}
