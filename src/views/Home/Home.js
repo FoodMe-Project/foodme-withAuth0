@@ -271,7 +271,7 @@ export class Home extends Component {
 						</section> 
 					: null}
 					{this.state.showSaved ?
-						<SavedRecipes 
+						<SavedRecipes id="recipe-container"
 						recipes={this.state.savedRecipes}
 						deleteSavedRecipe={this.deleteSavedRecipe.bind(this)}
 						/>

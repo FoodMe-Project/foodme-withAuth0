@@ -22,7 +22,7 @@ export const makeRoutes = () => {
 				<IndexRedirect to="/home" />
 				<Route path="home" component={Home} onEnter={requireAuth}/>
 				<Route path="login" component={Login}/>
-				<Route path="access_token=:token" component={Login}/> //to prevent router errors
+				<Route path="access_token=:token" component={Login}/>
 			</Route>
 		</Route>
 	);

@@ -41,8 +41,10 @@
 
 #button-and-image img {
     justify-content: center;
-    width: 250px;
-    height: 150px;
+    max-width: 250px;
+    min-width: 250px;
+    max-height: 170px;
+    min-height: 170px;
     padding: .5em;
     position: relative;
     
@@ -101,4 +103,49 @@ display: flex;
 
 #read-more-wrapper button{ 
  margin-bottom: 1em;
+}
+
+.button {
+    background-color: white;
+    color: black;
+    font-size: 0.8em;
+    border-radius: 0;
+    border-style: none;
+    font-weight: bold;
+    letter-spacing: 0.16em;
+    border: 0.16em solid black;
+    box-shadow: 0.16em 0.16em;
+    outline: none;
+}
+
+.button:hover {
+    background-color: black;
+    color: white;
+    border: 0.16em solid black;
+    outline: none;
+
+}
+
+.button:active {
+    background-color: black;
+    color: white;
+    border: 0.16em solid black;
+    outline: none;
+
+}
+
+.button:focus {
+    background-color: black;
+    color: white;
+    border: 0.16em solid black;
+    outline: none;
+
+}
+
+.button:link {
+    background-color: black;
+    color: white;
+    border: 0.16em solid black;
+    outline: none;
+
 }

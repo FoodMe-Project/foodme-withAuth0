@@ -58,7 +58,7 @@ const IndividualSavedRecipe = React.createClass({
             <h2>{this.state.recipeInfo.title}</h2>
          
             <div id="read-more-wrapper">
-                <button id="read-more">See Recipe</button>
+                <button className="button">See Recipe</button>
             </div>    
         </div>
 		)

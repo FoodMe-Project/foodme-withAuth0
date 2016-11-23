@@ -42,7 +42,7 @@ const IndividualRecipes = React.createClass({
                 <h2>{this.props.recipes.title}</h2>
              
                 <div id="read-more-wrapper">
-                    <button id="read-more" onClick={this.open}>SHOW RECIPE</button>
+                    <button className="button" onClick={this.open}>SHOW RECIPE</button>
                 </div>
                 <Modal show={this.state.showModal} onHide={this.close}>
                     <ModalContent recipeId={this.props.recipes.id} title={this.props.recipes.title} image={this.props.recipes.image}
