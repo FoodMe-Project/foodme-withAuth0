@@ -19,6 +19,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', e
     border-bottom-style: solid;
     border-color: rgba(255, 255, 255, 0.4);
     border-width: 1px;
+    padding: 0.5em;
 
 }
 
@@ -58,14 +59,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', e
     flex-direction:column;
     justify-content: center;
     margin-top: 5em;
-    margin-bottom: 15em;
+    margin-bottom:14em;
 
 }
 
 #nav-buttons button:focus {
     outline: 0;
-    background-color: rgba(255, 255, 255, 0.4);
-    
+   
 }
 
 #logout-button {
@@ -171,6 +171,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffbba3', end
     justify-content: space-between;
     align-items: flex-start;
     max-height: 35vh;
+  
 }
 
 
@@ -186,7 +187,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffbba3', end
 
 padding-top: 1em;
 background: none;
-width: 75vw;
+width: 60vw;
 }
 
 #submit-wrapper {
@@ -244,10 +245,12 @@ input:focus {
   background: -moz-linear-gradient(rgba(239,177,91,1) 0%, rgba(252,147,131,1) 100%);
   background: -o-linear-gradient(rgba(239,177,91,1) 0%, rgba(252,147,131,1) 100%);
   background: linear-gradient(rgba(239,177,91,1) 0%, rgba(252,147,131,1) 100%);
-  height: 100vh;
+  height: 100vh !important;
   width: 25vw;
   display:flex;
   flex-direction: column;
+  justify-content:space-between;
+  
 
  
 }
@@ -274,23 +277,30 @@ input:focus {
 
 }
 
-#user-info {
+.user-info {
     margin-top: .5em;
+    
 }
-#user-image {
-    border-radius: 50px;
+.user-image {
+    border-radius: 50%;
+    max-width:60px !important;
+    min-width: 6px;
+    min-height: 60px;
+    max-height: 60px !important;
 }
 
-#user-info p {
+#welcome {
+    margin-top: 1.5em;
     margin: 1em;
-    font-size: 0.8em;
+    font-size: 0.7em;
 
 }
 
 #footer-content{
-    margin-top: 1em;
+  
     display: flex;
     flex-direction: column;
+
     
 }
 
