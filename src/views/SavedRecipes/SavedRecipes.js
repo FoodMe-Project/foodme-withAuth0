@@ -9,11 +9,9 @@ const SavedRecipes = React.createClass({
 		let recipes = this.props.recipes
 		console.log(recipes)
 
-
-
 		return (
 			<ul>
-				{recipes.map((recipe, i) => 
+				{recipes.map((recipe, i) =>
 				<li key={i} className="recipe-list">
 					<IndividualSavedRecipe className="recipes-list" id={recipe.recipeId}/>
 				</li>

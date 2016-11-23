@@ -11,7 +11,7 @@ const IndividualSavedRecipe = React.createClass({
 
 	componentDidMount: function() {
 		let id = this.props.id
-       this._getRecipes(id);
+		this._getRecipes(id);
    	},
 
    _getRecipes: function(id) {
@@ -20,7 +20,7 @@ const IndividualSavedRecipe = React.createClass({
 		var self = this;
 
 		$.ajax({
-			url: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/` + id + `/information﻿⁠⁠⁠⁠/`,
+			url: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/` + id + `/information/`,
 			type: 'GET',
 			data: {},
 			dataType: 'json',
@@ -30,7 +30,7 @@ const IndividualSavedRecipe = React.createClass({
 			   });
 			},
 			beforeSend: function(xhr) {
-				xhr.setRequestHeader("X-Mashape-Authorization", "IOXxGwmjbcmshk5Fl9AKuHX5WCLdp1kZ21fjsneOpkbp8wAgkG"); // Enter here your Mashape key
+				xhr.setRequestHeader("X-Mashape-Authorization", "l1LBB0jz0wmshpT2AzWw4K1uUb6ep1oXuBdjsnQWcgGs9Iutw8"); // Enter here your Mashape key
 				}
 			});
    		},
@@ -40,19 +40,19 @@ const IndividualSavedRecipe = React.createClass({
 		console.log(this.state.recipeInfo)
 
 		return (
-			<div id="individual-recipe-wrapper">
-            <div id="button-and-image">
-                <button id="save-button" ><i id="favourite-button" className="material-icons 24md">stars</i></button>
+		<div id="individual-recipe-wrapper">
+			<div id="button-and-image">
+				<button id="save-button" ><i id="favourite-button" className="material-icons 24md">stars</i></button>
 
-            </div>
-            <div className="seperating-line">
-            </div>
-            <h2>Hello</h2>
-         
-            <div id="read-more-wrapper">
-                <button id="read-more">See Recipe</button>
-            </div>    
-        	</div>
+			</div>
+			<div className="seperating-line">
+			</div>
+			<h2>Hello</h2>
+
+			<div id="read-more-wrapper">
+				<button id="read-more">See Recipe</button>
+			</div>
+		</div>
 		)
 	}
 })

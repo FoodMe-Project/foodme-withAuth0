@@ -35,7 +35,7 @@ var ModalContent = React.createClass({
                 });
             },
             beforeSend: function(xhr) {
-            xhr.setRequestHeader("X-Mashape-Authorization", "IOXxGwmjbcmshk5Fl9AKuHX5WCLdp1kZ21fjsneOpkbp8wAgkG"); // Enter here your Mashape key
+            xhr.setRequestHeader("X-Mashape-Authorization", "l1LBB0jz0wmshpT2AzWw4K1uUb6ep1oXuBdjsnQWcgGs9Iutw8"); // Enter here your Mashape key
             }
         });
     },
