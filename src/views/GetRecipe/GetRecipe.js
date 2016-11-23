@@ -92,12 +92,11 @@ var GetRecipe = React.createClass({
                     <Grid className="recipes-content">
                         <Row className="recipes-row">
                             <Col xs={12}>
-                                {this.state.recipes ?
-                                    <h2 className="homepageTitles">Here are your recipes suggestions: </h2> : ""
-                                }
-                                {this.state.recipesId ?
-                                    <h2 className="homepageTitles">Sorry, there are no suggestions your ingredient(s).</h2> : ""
-                                    
+                                {this.state.recipes ? 
+                                    (this.state.recipes[0] ?
+                                        <h2 className="homepageTitles">Here are your recipes suggestions: </h2>
+                                        : <h2 className="homepageTitles">Sorry, there are no suggestions your ingredient(s).</h2>)
+                                    : ""
                                 }
                             </Col>
                             {this.state.recipes ?  
