@@ -1,7 +1,7 @@
 .add-ingredient-input {
     margin: 0.5em;
     display: inline-block;
-    box-shadow: 2px 2px;
+    box-shadow: 0.125em 0.125em;
     background-color: white;
 }
 
@@ -9,56 +9,63 @@
     background-color: white;
     font-size: 1em;
     padding: 0 .3em;
-    border-bottom: solid white 1px;
+    border-bottom: solid white 0.063em;
     flex-direction: row;
 }
 
-.add-ingredient {
+.button {
     background-color: white;
     color: black;
     font-size: 0.8em;
     border-radius: 0;
     border-style: none;
     font-weight: bold;
-    letter-spacing: 2px;
-    margin-right: 10px;
-    font-family: 'Roboto Mono', monospace;
-    border: 2px solid black;
-    box-shadow: 2px 2px;
+    letter-spacing: 0.16em;
+    border: 0.16em solid black;
+    box-shadow: 0.16em 0.16em;
+    outline: none;
 }
 
-.add-ingredient:hover {
+.button:hover {
     background-color: black;
     color: white;
-    border-style: none;
+    border: 0.16em solid black;
+    outline: none;
+
 }
 
-.add-ingredient:active {
+.button:active {
     background-color: black;
     color: white;
-    border-style: none;
+    border: 0.16em solid black;
+    outline: none;
+
 }
 
-.add-ingredient:focus {
+.button:focus {
     background-color: black;
     color: white;
-    border-style: none;
+    border: 0.16em solid black;
+    outline: none;
+
 }
 
-.add-ingredient:link {
+.button:link {
     background-color: black;
     color: white;
-    border-style: none;
+    border: 0.16em solid black;
+    outline: none;
+
 }
 
-.add-ingredient-input button {
+.xButton {
     background-color: white;
     font-size: 1em;
     padding: 0 .3em;
     border: none;
+    outline: none;
 }
 
-.ingredients {
-    display: flex;
-    flex-direction: row;
-}
+
+
+

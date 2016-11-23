@@ -1,10 +1,75 @@
-.image {
-    max-width: 300px;
-    min-width: 300px;
-    max-height: 200px;
-    min-height: 200px;
+.recipeName {
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: center;
 }
 
-.h {
-    color: red;
+.image {
+    max-width: 18.75em;
+    min-width: 18.75em;
+    max-height: 12.5em;
+    min-height: 12.5em;
+}
+
+.websiteButton {
+    background-color: white;
+    color: black;
+    font-size: 0.8em;
+    border-radius: 0;
+    border-style: none;
+    font-weight: bold;
+    letter-spacing: 0.125em;
+    border: 0.125em solid black;
+    box-shadow: 0.125em 0.125em;
+}
+
+.websiteButton:hover {
+    background-color: black;
+    color: white;
+    border: 0.125em solid black;
+    outline: none;
+}
+
+.websiteButton:active {
+    background-color: black;
+    color: white;
+    border: 0.125em solid black;
+    outline: none;
+}
+
+.websiteButton:focus {
+    background-color: black;
+    color: white;
+    border: 0.125em solid black;
+    outline: none;
+}
+
+img {
+    max-width: 12.5em;
+    min-width: 12.5em;
+    max-height: 12.5em;
+    min-height: 12.5em;
+    justify-content: center;
+}
+
+.image {
+    max-width: 25em;
+    min-width: 25em;
+    max-height: 15.625em;
+    min-height: 15.625em;
+}
+
+.divImage {
+    display: flex;
+    justify-content: center;
+}
+
+ol {
+    padding: 0;
+    margin: auto;
+}
+
+li {
+    line-height: 1.5em;
+    text-align: left;
 }

@@ -1,27 +1,20 @@
-a:link {
+.foodMe:link {
     color: black;
     text-decoration: none
 }
 
-/* visited link */
-a:visited {
+/*visited link */
+.foodMe:visited {
     color: black;
     text-decoration: none
 }
 
-/* mouse over link */
-a:hover {
+/*mouse over link */
+.foodMe:hover {
     color: white;
     background-color: black;
     border: solid 0.15em white;
     text-decoration: none
-}
-
-.jumbotron {
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .header {
@@ -37,7 +30,6 @@ a:hover {
   position: absolute;
   right: 15%;
   top: 30%;
-  font-family: 'Roboto Mono', monospace;
   padding-bottom: 4.688em;
   justify-content: center;
 }
@@ -63,6 +55,7 @@ a:hover {
   border-style: none;
   font-weight: bold;
   letter-spacing: 0.188em;
+  border-radius: 0;
 }
 
 .loginButton:hover {
@@ -79,11 +72,6 @@ a:hover {
   background-color: black;
   text-decoration: none;
 }
-
-.toolbar {
-  display: inline-block;
-}
-
 .ingredients-recipes {
   display: flex;
   justify-content: center;
@@ -93,4 +81,5 @@ a:hover {
 
 .page {
   background-color: #ffefe0;
+  width: 100%;
 }

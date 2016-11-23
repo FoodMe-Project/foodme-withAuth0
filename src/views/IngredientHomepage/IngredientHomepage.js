@@ -1,5 +1,4 @@
 var React = require('react');
-import styles from './IngredientHomepage.css';
 
 var Ingredient = React.createClass({
     render: function() {
@@ -7,7 +6,7 @@ var Ingredient = React.createClass({
             <div>
                 <form className="add-ingredient-input">    
                     <text>{this.props.ingredient}</text>
-                    <button onClick={this.props.onClick}>x</button>
+                    <button className="xButton" onClick={this.props.onClick}>x</button>
                 </form>
             </div>
         );
