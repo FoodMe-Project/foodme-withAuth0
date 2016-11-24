@@ -105,14 +105,14 @@ export class Home extends Component {
 	}
 
 	deleteQuickIngredient(i){
-	event.preventDefault();
+		event.preventDefault();
 
-      this.setState(state => {
-          state.quickSearch.splice(i, 1);
-          return {
-            quickSearch: this.state.quickSearch
-          };
-      });
+		this.setState(state => {
+			state.quickSearch.splice(i, 1);
+			return {
+				quickSearch: this.state.quickSearch
+			};
+		});
 	}
 
 	deleteSavedRecipe(recipeId){
