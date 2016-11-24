@@ -17,8 +17,14 @@
 
 #favourite-button button:active {
     border: none;
-}
+    outline: none;
 
+}
+#favourite-button button:focus {
+    outline: none;
+    order: none;
+   
+}
 
 #save-button {
     padding-left: .4em;
@@ -31,11 +37,24 @@
     border-radius: 50%;
     display: flex;
     justify-content:center;
+    outline: none;
     
 }
 
 #save-button button:active {
     border:none;
+    outline: none;
+    
+}
+
+#save-button button {
+    border:none;
+    outline: none;
+    
+}
+#save-button button:focus{
+    border:none;
+    outline: none;
     
 }
 

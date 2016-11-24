@@ -17,6 +17,7 @@ var RecipeOutput = React.createClass({
                     className="recipes-list" 
                     recipes={recipes}
                     saveUserRecipe={this.props.saveUserRecipe}
+                    deleteSavedRecipe={this.props.deleteSavedRecipe}
                     />
                 </li>
                 )}

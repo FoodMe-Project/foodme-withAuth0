@@ -7,11 +7,25 @@ import ModalContent from '../ModalContent/ModalContent';
 const IndividualRecipes = React.createClass({  
     getInitialState: function() {
         return {
-            showModal: false
+            showModal: false,
+            savedButton: false
         }
     },
-    saveUserRecipe: function() {
-        this.props.saveUserRecipe(this.props.recipes.id);
+    savedButtonClick: function() {
+        if (!this.state.savedButton) {
+            console.log('saved')
+            this.props.saveUserRecipe(this.props.recipes.id);
+            this.setState({
+                savedButton: true
+            })
+        }
+        else {
+            console.log('deleted')
+            this.props.deleteSavedRecipe(this.props.recipes.id)
+            this.setState({
+                savedButton: false
+            })
+        }
     },
     open() {
         this.setState({ showModal: true });
@@ -25,7 +39,10 @@ const IndividualRecipes = React.createClass({
         return (
             <div id="individual-recipe-wrapper">
                 <div id="button-and-image">
-                    <button id="save-button" onClick={this.saveUserRecipe}><i id="favourite-button" className="material-icons 24md">stars</i></button>
+                    {this.state.savedButton ?
+                        <button id="save-button" onClick={this.savedButtonClick}><i id="favourite-button" className="material-icons 24md">star</i></button>
+                        : <button id="save-button" onClick={this.savedButtonClick}><i id="favourite-button" className="material-icons 24md">star_border</i></button>
+                    }
                     <img src={this.props.recipes.image} alt="recipe representation"/>
                 </div>
                 <div className="seperating-line">

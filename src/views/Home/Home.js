@@ -278,6 +278,7 @@ export class Home extends Component {
 								clientId={this.state.profile.clientID} 
 								recipes={this.state.recipes}
 								saveUserRecipe={this.saveUserRecipe.bind(this)}
+								deleteSavedRecipe={this.deleteSavedRecipe.bind(this)}
 							/>
 						</section> 
 					: null}
