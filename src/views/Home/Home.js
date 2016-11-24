@@ -117,7 +117,7 @@ export class Home extends Component {
 
 	deleteSavedRecipe(recipeId){
    		axios.post('http://localhost:4000/delete-recipe/', {
-   			clientId: this.state.profile.clientID,
+   			clientId: this.state.profile.user_id,
    			recipeId: recipeId,
    		})
    		.then(result => {
@@ -132,12 +132,12 @@ export class Home extends Component {
 
 	saveUserRecipe(recipeId) {
 		axios.post(`http://localhost:4000/insert-save-recipe`, {
-	        clientId: this.state.profile.clientID,
+	        clientId: this.state.profile.user_id,
 	        recipeId: recipeId
         })
         .then(result => {
           	this.setState({
-          		savedRecipes: this.state.savedRecipes.concat({clientId: this.state.profile.clientID, recipeId: recipeId})
+          		savedRecipes: this.state.savedRecipes.concat({user_id: this.state.profile.user_id, recipeId: recipeId})
           	});
         })
         .catch(err => {
@@ -158,7 +158,7 @@ export class Home extends Component {
 	getClientFridgeId() {
 		var that = this;
 
-		axios.post(`http://localhost:4000/get-fridge/${this.state.profile.clientID}`)
+		axios.post(`http://localhost:4000/get-fridge/${this.state.profile.user_id}`)
 		.then(result => {
 			that.setState({
 				fridgeId: result.data.fridgeId
@@ -191,7 +191,7 @@ export class Home extends Component {
 	displaySavedRecipe() {
 		var that = this;
 
-		axios.post(`http://localhost:4000/display-recipes/${this.state.profile.clientID}`)
+		axios.post(`http://localhost:4000/display-recipes/${this.state.profile.user_id}`)
 		.then(result => {
 			that.setState({
 				savedRecipes: result.data
@@ -224,6 +224,9 @@ export class Home extends Component {
 		const { profile } = this.state;
 		var fridgeOpen = <span><i className="material-icons">kitchen</i><i className="material-icons">close</i></span>;
         var fridgeClosed = <span><i className="material-icons">kitchen</i><i className="material-icons">arrow_forward</i></span>;
+
+        console.log(this.state.profile)
+
 		return (
 			<div className={styles.root} className={grid.root} id="home-wrapper">
 				<Jumbotron id="sidebar-nav" className="col-large-3">
@@ -275,7 +278,7 @@ export class Home extends Component {
 					{this.state.showSearch ? 
 						<section id="recipe-container" >
 							<Recipes
-								clientId={this.state.profile.clientID} 
+								clientId={this.state.profile.user_id} 
 								recipes={this.state.recipes}
 								saveUserRecipe={this.saveUserRecipe.bind(this)}
 								deleteSavedRecipe={this.deleteSavedRecipe.bind(this)}

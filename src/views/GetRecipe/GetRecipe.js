@@ -41,7 +41,6 @@ var GetRecipe = React.createClass({
         });
         this._getRecipes();
     },
-
     _handleButtonClick(e) {
         e.preventDefault();
         var userIngredientInput = this.refs.userInput.value;
