@@ -13,14 +13,12 @@ const IndividualRecipes = React.createClass({
     },
     savedButtonClick: function() {
         if (!this.state.savedButton) {
-            console.log('saved')
             this.props.saveUserRecipe(this.props.recipes.id);
             this.setState({
                 savedButton: true
             })
         }
         else {
-            console.log('deleted')
             this.props.deleteSavedRecipe(this.props.recipes.id)
             this.setState({
                 savedButton: false

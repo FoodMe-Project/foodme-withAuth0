@@ -224,9 +224,6 @@ export class Home extends Component {
 		const { profile } = this.state;
 		var fridgeOpen = <span><i className="material-icons">kitchen</i><i className="material-icons">close</i></span>;
         var fridgeClosed = <span><i className="material-icons">kitchen</i><i className="material-icons">arrow_forward</i></span>;
-
-        console.log(this.state.profile)
-
 		return (
 			<div className={styles.root} className={grid.root} id="home-wrapper">
 				<Jumbotron id="sidebar-nav" className="col-large-3">

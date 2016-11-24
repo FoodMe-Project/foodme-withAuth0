@@ -10,8 +10,6 @@ const QuickSearch = React.createClass({
 	render: function() {
 		let searchArray = this.props.searchArray
 		let searchATest = ["hi","there","array"];
-		console.log('quicksearch', searchArray)
-
 		return (
 		<div id="quick-search">	
 		<button className="button" onClick={this.props.apiCall}>Search Recipes</button>
