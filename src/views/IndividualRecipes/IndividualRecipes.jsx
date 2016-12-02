@@ -1,6 +1,5 @@
 const React = require('react');
-const axios = require('axios');
-import styles from './IndividualRecipes.css';
+import './IndividualRecipes.css';
 import { Modal, Button } from 'react-bootstrap';
 import ModalContent from '../ModalContent/ModalContent';
 

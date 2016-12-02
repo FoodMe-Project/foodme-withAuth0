@@ -4,7 +4,6 @@ import './../IngredientHomepage/IngredientHomepage.css';
 import ModalContent from './../ModalContent/ModalContent';
 
 var React = require('react');
-var $ = require('jquery');
 
 var RecipeObject = React.createClass({
     propTypes: {

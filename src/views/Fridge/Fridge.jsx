@@ -1,6 +1,6 @@
 var React = require('react');
-import styles from './../Home/Home.css';
-import grid from './../grid.css'
+import './../Home/Home.css';
+import './../grid.css'
 
 import Ingredient from './../Ingredient/Ingredients';
 

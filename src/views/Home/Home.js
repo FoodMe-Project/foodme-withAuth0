@@ -6,7 +6,6 @@ import grid from '../grid.css';
 import Fridge from './../Fridge/Fridge';
 import SavedRecipes from './../SavedRecipes/SavedRecipes';
 import QuickSearch from './../QuickSearch/QuickSearch';
-import Ingredient from './../Ingredient/Ingredients';
 import Recipes from './../Recipes/Recipes';
 import Collapsible from 'react-collapsible';
 
@@ -40,8 +39,15 @@ export class Home extends Component {
 		}
     
 		props.auth.on('profile_updated', (newProfile) => {
-			this.setState({profile: newProfile})
+			let that = this;
+			this.setState({profile: newProfile}, 
+				that.getClientFridgeId()
+			);
 		})
+	}
+
+	componentDidMount() {
+		this.displaySavedRecipe();
 	}
 
 	logout(){
@@ -50,13 +56,13 @@ export class Home extends Component {
 	}
   
 	_apiCall() {
-		var that = this;
+		let that = this;
+
 		$.ajax({
 			url:`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=` + this.state.quickSearch.toString() + "&number=12",
 			type: 'GET',
 			data: {},
 			dataType: 'json',
-
 			success: function(data) {
 				that.setState({
 					recipes: data,
@@ -69,14 +75,10 @@ export class Home extends Component {
 		});
 	}
     
-	componentDidMount() {
-		this.getClientFridgeId();
-		this.displaySavedRecipe();
-	}
-    
 	_handleButtonClick (userIngredientInput) {
-		var that = this;
-		axios.post(`http://localhost:4000/insert-into-fridge`, {
+		let that = this;
+
+		axios.post(`http://foodme-backend.herokuapp.com/insert-into-fridge`, {
 			fridgeId: that.state.fridgeId,
 			ingredientName: userIngredientInput
 		})
@@ -90,9 +92,9 @@ export class Home extends Component {
    
 	deleteIngredient(i, ingredient) {
 		event.preventDefault();
-		var that = this;
+		let that = this;
 
-		axios.post('http://localhost:4000/delete-ingredient', {
+		axios.post('http://foodme-backend.herokuapp.com/delete-ingredient', {
 			fridgeId: that.state.fridgeId,
 			ingredientName: ingredient
 		})
@@ -116,33 +118,33 @@ export class Home extends Component {
 	}
 
 	deleteSavedRecipe(recipeId){
-   		axios.post('http://localhost:4000/delete-recipe/', {
-   			clientId: this.state.profile.user_id,
-   			recipeId: recipeId,
-   		})
-   		.then(result => {
-   			this.setState({
-   				savedRecipes: this.state.savedRecipes.filter(r => r.recipeId !== recipeId)
-   			});
-   		})
-   		.catch(err => {
-   			console.log(err.stack);
-   		})
+ 		axios.post('http://foodme-backend.herokuapp.com/delete-recipe/', {
+ 			clientId: this.state.profile.user_id,
+ 			recipeId: recipeId,
+ 		})
+ 		.then(result => {
+ 			this.setState({
+ 				savedRecipes: this.state.savedRecipes.filter(r => r.recipeId !== recipeId)
+ 			});
+ 		})
+ 		.catch(err => {
+ 			console.log(err.stack);
+ 		})
 	}
 
 	saveUserRecipe(recipeId) {
-		axios.post(`http://localhost:4000/insert-save-recipe`, {
-	        clientId: this.state.profile.user_id,
-	        recipeId: recipeId
-        })
-        .then(result => {
-          	this.setState({
-          		savedRecipes: this.state.savedRecipes.concat({user_id: this.state.profile.user_id, recipeId: recipeId})
-          	});
-        })
-        .catch(err => {
-          console.log(err.stack);
-        })
+		axios.post(`http://foodme-backend.herokuapp.com/insert-save-recipe`, {
+			clientId: this.state.profile.user_id,
+			recipeId: recipeId
+		})
+		.then(result => {
+			this.setState({
+				savedRecipes: this.state.savedRecipes.concat({user_id: this.state.profile.user_id, recipeId: recipeId})
+			});
+		})
+		.catch(err => {
+			console.log(err.stack);
+		})
 	}
 
 	copyIngredient(i) {
@@ -156,14 +158,16 @@ export class Home extends Component {
 		})
 	}
 	getClientFridgeId() {
-		var that = this;
+		let that = this;
 
-		axios.post(`http://localhost:4000/get-fridge/${this.state.profile.user_id}`)
+		axios.post(`http://foodme-backend.herokuapp.com/get-fridge/${this.state.profile.user_id}`)
 		.then(result => {
+			console.log('fridgeId ', this.state.profile.user_id)
 			that.setState({
 				fridgeId: result.data.fridgeId
 			})
 			that.displayFridge();
+			that.displaySavedRecipe();
 		})
 		.catch(err => {
 			console.log(err.stack)
@@ -171,12 +175,12 @@ export class Home extends Component {
 	}
 
 	displayFridge() {
-		var that = this;
+		let that = this;
 
-		axios.post(`http://localhost:4000/display-fridge/${this.state.fridgeId}`)
+		axios.post(`http://foodme-backend.herokuapp.com/display-fridge/${this.state.fridgeId}`)
 		.then(result => {
 			let fridge = result.data;
-			var fridgeDisplayed = fridge.map(ingredientObj => {
+			let fridgeDisplayed = fridge.map(ingredientObj => {
 				return ingredientObj.name;
 			})
 			that.setState({
@@ -189,10 +193,11 @@ export class Home extends Component {
 	}
 
 	displaySavedRecipe() {
-		var that = this;
+		let that = this;
 
-		axios.post(`http://localhost:4000/display-recipes/${this.state.profile.user_id}`)
+		axios.post(`http://foodme-backend.herokuapp.com/display-recipes/${this.state.profile.user_id}`)
 		.then(result => {
+			console.log('saved', result.data);
 			that.setState({
 				savedRecipes: result.data
 			})
@@ -211,7 +216,7 @@ export class Home extends Component {
 		}
 	}
 
-	toggleSaved() {  
+	toggleSaved() {
 		if (!this.state.showSaved) {
 			this.setState({
 				showSearch: false,
@@ -221,40 +226,48 @@ export class Home extends Component {
 	}
 
 	render() {
-		const { profile } = this.state;
-		var fridgeOpen = <span><i className="material-icons">kitchen</i><i className="material-icons">close</i></span>;
-        var fridgeClosed = <span><i className="material-icons">kitchen</i><i className="material-icons">arrow_forward</i></span>;
+		const {profile} = this.state;
+		const fridgeOpen = <span><i className="material-icons">kitchen</i><i className="material-icons">close</i></span>;
+    const fridgeClosed = <span><i className="material-icons">kitchen</i><i className="material-icons">arrow_forward</i></span>;
+
 		return (
-			<div className={styles.root} className={grid.root} id="home-wrapper">
+
+			<div className={styles.root + " " + grid.root} id="home-wrapper">
+
 				<Jumbotron id="sidebar-nav" className="col-large-3">
 					<div id="foodme-logo">
 						<h2>FoodMe.</h2>
 					</div>
+
 					<div className="user-info">
 						<img className="user-image" src={profile.picture} alt="user's profile"/>
 						<p id="welcome">Welcome {profile.nickname}!</p>
 						<Button id="logout-button" onClick={this.logout.bind(this)}>Logout</Button>
 					</div>
+
 					<div className="dividing-line" />
+
 					<div id="nav-buttons">
-					
 						<button onClick={this.toggleSearch.bind(this)}>Search For Recipes</button>
 						<button onClick={this.toggleSaved.bind(this)}>Saved Recipes</button>
-					
 					</div>
+
 					<div className="dividing-line" />
+
 					<footer id="footer-content">
 						<a>Contact</a>
 						<a>FAQ</a>
 						<p>FoodMe. 2016</p>
 					</footer>
 				</Jumbotron>
+
 				<div id="recipe-and-fridge" className="col-large-9">
 					<Collapsible 
-                	trigger={fridgeClosed} 
-                	triggerWhenOpen={fridgeOpen}
-                	open={true}   
-                	>
+						trigger={fridgeClosed} 
+						triggerWhenOpen={fridgeOpen}
+						open={true}   
+					>
+
 					<Fridge
 						ingredientsArray={this.state.ingredients} 
 						apiCall={this._apiCall.bind(this)}
@@ -264,14 +277,16 @@ export class Home extends Component {
 						deleteIngredient={this.deleteIngredient.bind(this)}
 						copyIngredient={this.copyIngredient.bind(this)}
 					/>
+
 					<div id="vertical-line" />
+
 					<QuickSearch
 						searchArray={this.state.quickSearch}
 						deleteQuickIngredient={this.deleteQuickIngredient.bind(this)}
 						apiCall={this._apiCall.bind(this)}
-					
 					/>
 					</Collapsible>
+
 					{this.state.showSearch ? 
 						<section id="recipe-container" >
 							<Recipes
@@ -282,15 +297,14 @@ export class Home extends Component {
 							/>
 						</section> 
 					: null}
+
 					{this.state.showSaved ?
 						<SavedRecipes id="recipe-container"
 						recipes={this.state.savedRecipes}
 						deleteSavedRecipe={this.deleteSavedRecipe.bind(this)}
 						/>
 					: null}
-					
 				</div>
-				
 			</div>
 		);
 	}

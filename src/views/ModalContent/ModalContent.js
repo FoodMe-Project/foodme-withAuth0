@@ -47,7 +47,7 @@ var ModalContent = React.createClass({
                 </Modal.Header>
                 <Modal.Body>
                 <div className="divImage">
-                    <img src={this.props.image} className="image"/>
+                    <img src={this.props.image} className="image" alt="recipe"/>
                 </div>
                     <h3 className="recipeHeaders">Ingredients needed:</h3>
                     <p>{this.state.recipesOtherIngredients ?  

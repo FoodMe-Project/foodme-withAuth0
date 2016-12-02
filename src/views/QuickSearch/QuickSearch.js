@@ -1,6 +1,6 @@
 import React from 'react';
 import QuickSearchIngredient from './../Ingredient/QuickSearchIngredient'
-import styles from './../Home/Home.css';
+import './../Home/Home.css';
 
 const QuickSearch = React.createClass({
 	deleteQuickIngredient: function(i, event){
@@ -9,7 +9,6 @@ const QuickSearch = React.createClass({
 	},
 	render: function() {
 		let searchArray = this.props.searchArray
-		let searchATest = ["hi","there","array"];
 		return (
 		<div id="quick-search">	
 		<button className="button" onClick={this.props.apiCall}>Search Recipes</button>

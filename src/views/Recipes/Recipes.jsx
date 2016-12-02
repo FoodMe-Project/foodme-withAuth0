@@ -1,5 +1,5 @@
 var React = require('react');
-import styles from './Recipes.css';
+import './Recipes.css';
 import IndividualRecipes from "./../IndividualRecipes/IndividualRecipes";
 
 

@@ -1,7 +1,6 @@
 const React = require('react');
 const $ = require('jquery');
-const axios = require('axios');
-import styles from './../IndividualRecipes/IndividualRecipes.css';
+import './../IndividualRecipes/IndividualRecipes.css';
 import ModalContent from '../ModalContent/ModalContent';
 import { Modal, Button } from 'react-bootstrap';
 
@@ -49,9 +48,9 @@ const IndividualSavedRecipe = React.createClass({
         <div id="individual-recipe-wrapper">
             <div id="button-and-image">
                 <button id="save-button" 
-                onClick={(event) => { this.deleteSavedRecipe(); this.props.onClickArray;}}>
+                onClick={(event) => {this.deleteSavedRecipe()}}>
               
-                  <i id="favourite-button" className="material-icons 24md">clear</i>
+                <i id="favourite-button" className="material-icons 24md">clear</i>
                 </button>
                 <img src={this.state.recipeInfo.image} alt="recipe representation"/>
             </div>

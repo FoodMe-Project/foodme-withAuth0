@@ -50,7 +50,7 @@ var GetRecipe = React.createClass({
         });
     },
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.ingredients != this.state.ingredients) {
+        if (prevProps.ingredients !== this.state.ingredients) {
             this._getRecipes();
         }
     },
