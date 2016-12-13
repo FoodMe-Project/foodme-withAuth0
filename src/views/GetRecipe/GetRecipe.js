@@ -34,8 +34,7 @@ var GetRecipe = React.createClass({
             }
         });
     },
-    _userInput(e) {
-        e.preventDefault();
+    _userInput() {
         this.setState({
             userInput: this.refs.userInput.value
         });
@@ -78,7 +77,7 @@ var GetRecipe = React.createClass({
                     <form className="form">
                         {this.state.recipes ? <p>scroll down to see what FoodMe found!</p> : ""}
                         <input ref="userInput" className="ingredientsInput" type="text" />
-                        <Button className="button" onClick={this._handleButtonClick.bind(this)}>ADD INGREDIENT</Button>
+                        <Button className="button" onClick={this._handleButtonClick.bind(null, this)}>ADD INGREDIENT</Button>
                         <Button bsStyle="primary" onClick={this._getRecipes} className="button">SEARCH</Button>
                         <div className="ingredients">
                             {this.state.ingredients.map((ingredient, i) => 

@@ -10,11 +10,11 @@ import Recipes from './../Recipes/Recipes';
 import Collapsible from 'react-collapsible';
 
 
-var axios = require('axios');
-var $ = require('jquery');
+const axios = require('axios');
+const $ = require('jquery');
 
 
-export class Home extends Component {
+export default class Home extends Component {
 
 	static contextTypes = {
 		router: PropTypes.object
@@ -39,15 +39,19 @@ export class Home extends Component {
 		}
     
 		props.auth.on('profile_updated', (newProfile) => {
-			let that = this;
-			this.setState({profile: newProfile}, 
-				that.getClientFridgeId()
-			);
+			console.log('profile')
+			this.setState({profile: newProfile})
 		})
 	}
 
 	componentDidMount() {
-		this.displaySavedRecipe();
+		console.log('componentDidMount');
+	}
+
+	componentDidUpdate(prevState) {
+		if (prevState.profile !== this.state.profile && !this.state.fridgeId) {
+			this.getClientFridgeId();
+		}
 	}
 
 	logout(){
@@ -226,6 +230,7 @@ export class Home extends Component {
 	}
 
 	render() {
+
 		const {profile} = this.state;
 		const fridgeOpen = <span><i className="material-icons">kitchen</i><i className="material-icons">close</i></span>;
     const fridgeClosed = <span><i className="material-icons">kitchen</i><i className="material-icons">arrow_forward</i></span>;
@@ -309,7 +314,4 @@ export class Home extends Component {
 		);
 	}
 }
-
-
-export default Home;
 
