@@ -82,7 +82,7 @@ export default class Home extends Component {
 	_handleButtonClick (userIngredientInput) {
 		let that = this;
 
-		axios.post(`http://foodme-backend.herokuapp.com/insert-into-fridge`, {
+		axios.post(`https://foodme-backend.herokuapp.com/insert-into-fridge`, {
 			fridgeId: that.state.fridgeId,
 			ingredientName: userIngredientInput
 		})
@@ -98,7 +98,7 @@ export default class Home extends Component {
 		event.preventDefault();
 		let that = this;
 
-		axios.post('http://foodme-backend.herokuapp.com/delete-ingredient', {
+		axios.post('https://foodme-backend.herokuapp.com/delete-ingredient', {
 			fridgeId: that.state.fridgeId,
 			ingredientName: ingredient
 		})
@@ -122,7 +122,7 @@ export default class Home extends Component {
 	}
 
 	deleteSavedRecipe(recipeId){
- 		axios.post('http://foodme-backend.herokuapp.com/delete-recipe/', {
+ 		axios.post('https://foodme-backend.herokuapp.com/delete-recipe/', {
  			clientId: this.state.profile.user_id,
  			recipeId: recipeId,
  		})
@@ -137,7 +137,7 @@ export default class Home extends Component {
 	}
 
 	saveUserRecipe(recipeId) {
-		axios.post(`http://foodme-backend.herokuapp.com/insert-save-recipe`, {
+		axios.post(`https://foodme-backend.herokuapp.com/insert-save-recipe`, {
 			clientId: this.state.profile.user_id,
 			recipeId: recipeId
 		})
@@ -164,7 +164,7 @@ export default class Home extends Component {
 	getClientFridgeId() {
 		let that = this;
 
-		axios.post(`http://foodme-backend.herokuapp.com/get-fridge/${this.state.profile.user_id}`)
+		axios.post(`https://foodme-backend.herokuapp.com/get-fridge/${this.state.profile.user_id}`)
 		.then(result => {
 			console.log('fridgeId ', this.state.profile.user_id)
 			that.setState({
@@ -181,7 +181,7 @@ export default class Home extends Component {
 	displayFridge() {
 		let that = this;
 
-		axios.post(`http://foodme-backend.herokuapp.com/display-fridge/${this.state.fridgeId}`)
+		axios.post(`https://foodme-backend.herokuapp.com/display-fridge/${this.state.fridgeId}`)
 		.then(result => {
 			let fridge = result.data;
 			let fridgeDisplayed = fridge.map(ingredientObj => {
@@ -199,7 +199,7 @@ export default class Home extends Component {
 	displaySavedRecipe() {
 		let that = this;
 
-		axios.post(`http://foodme-backend.herokuapp.com/display-recipes/${this.state.profile.user_id}`)
+		axios.post(`https://foodme-backend.herokuapp.com/display-recipes/${this.state.profile.user_id}`)
 		.then(result => {
 			console.log('saved', result.data);
 			that.setState({
