@@ -166,7 +166,6 @@ export default class Home extends Component {
 
 		axios.post(`https://foodme-backend.herokuapp.com/get-fridge/${this.state.profile.user_id}`)
 		.then(result => {
-			console.log('fridgeId ', this.state.profile.user_id)
 			that.setState({
 				fridgeId: result.data.fridgeId
 			})
@@ -201,7 +200,6 @@ export default class Home extends Component {
 
 		axios.post(`https://foodme-backend.herokuapp.com/display-recipes/${this.state.profile.user_id}`)
 		.then(result => {
-			console.log('saved', result.data);
 			that.setState({
 				savedRecipes: result.data
 			})
