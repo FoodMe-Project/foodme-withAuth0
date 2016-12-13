@@ -16,7 +16,7 @@ var GetRecipe = React.createClass({
         };
     },
     _getRecipes(e) {
-        e.preventDefault();
+        // e.preventDefault();
         var self = this;
         $.ajax({
             url: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=${this.state.ingredients.toString()}&number=24&ranking=2&limitLicense=true`,
@@ -34,30 +34,27 @@ var GetRecipe = React.createClass({
             }
         });
     },
-    _userInput() {
-        this.setState({
-            userInput: this.refs.userInput.value
-        });
-        this._getRecipes();
-    },
+    // _userInput() {
+    //     this.setState({
+    //         userInput: this.refs.userInput.value
+    //     });
+    //     this._getRecipes();
+    // },
     _handleButtonClick(e) {
-        e.preventDefault();
+        // e.preventDefault();
         var userIngredientInput = this.refs.userInput.value;
         var ingredient = this.state.ingredients.concat(userIngredientInput);
         this.setState({
             ingredients: ingredient
         });
     },
-    componentDidUpdate(prevProps, prevState) {
-        if (prevProps.ingredients !== this.state.ingredients) {
-            this._getRecipes();
-        }
-    },
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevProps.ingredients !== this.state.ingredients) {
+    //         this._getRecipes();
+    //     }
+    // },
     deleteIngredient(i, e) {
-        console.log(i);
         e.preventDefault();
-
-
         this.setState(state => {
             state.ingredients.splice(i, 1);
             return {
