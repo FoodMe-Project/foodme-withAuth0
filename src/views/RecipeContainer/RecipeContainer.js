@@ -3,7 +3,7 @@ import axios from 'axios';
 import {Grid, Row, Col} from 'react-bootstrap';
 import './RecipeContainer.css';
 import {mashapeKey} from '../../utils/keys.js';
-import RecipeObject from '../RecipeObject/RecipeObject';
+import Recipe from './../Recipe/Recipe';
 
 export default class RecipeContainer extends Component {
 
@@ -13,6 +13,12 @@ export default class RecipeContainer extends Component {
 			recipes: []
 		};
 	}
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.ingredients !== this.props.ingredients) {
+      this._getRecipes();
+    };
+  }
 
 	_getRecipes() {
 		axios.defaults.headers.common['X-Mashape-Key'] = mashapeKey;
@@ -25,12 +31,6 @@ export default class RecipeContainer extends Component {
 		.catch(err => {
 			console.log(err.stack);
 		})
-	}
-
-	componentDidUpdate(prevProps) {
-		if (prevProps.ingredients !== this.props.ingredients) {
-			this._getRecipes();
-		};
 	}
 
 	render() {
@@ -46,7 +46,7 @@ export default class RecipeContainer extends Component {
                   }
               </Col>
               {this.state.recipes ?  
-                  this.state.recipes.map(recipe => <RecipeObject recipeObject={recipe} key={recipe.id}/>) :
+                  this.state.recipes.map(recipe => <Recipe recipe={recipe} key={recipe.id}/>) :
                   ""
               }
           </Row>
