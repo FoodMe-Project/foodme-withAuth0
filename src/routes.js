@@ -4,9 +4,8 @@ import AuthService from './utils/AuthService';
 import Container from './views/Container';
 import Home from './views/Home/Home';
 import Login from './views/Login/Login';
-import {auth0Key, auth0Id} from './utils/keys.js'
 
-const auth = new AuthService(auth0Key, auth0Id);
+const auth = new AuthService(process.env.REACT_APP_AUTH_TOKEN, process.env.REACT_APP_AUTH_ID);
 
 // onEnter callback to validate authentication in private routes
 const requireAuth = (nextState, replace) => {

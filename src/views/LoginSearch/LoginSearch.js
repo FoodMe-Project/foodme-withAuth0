@@ -42,10 +42,12 @@ export default class LoginSearch extends Component {
             FoodMe is a website that will help you find the perfect meal to prepare today.
             Just enter the list of ingredients you would like to use below, and let FoodMe suggest you recipes to make with these!</p>
             <h2 className="homepageTitles">Please enter your ingredients to begin.</h2>
-            <form className="form">
-                {this.state.recipes ? <p>scroll down to see what FoodMe found!</p> : ""}
-                <input ref="userInput" className="ingredientsInput" type="text" />
-                <Button className="button" onClick={this._handleButtonClick.bind(null, this)}>ADD INGREDIENT</Button>
+            <div className="form">
+                <form>
+                  {this.state.recipes ? <p>scroll down to see what FoodMe found!</p> : ""}
+                  <input ref="userInput" className="ingredientsInput" type="text" />
+                  <Button className="button" onClick={this._handleButtonClick.bind(null, this)}>ADD INGREDIENT</Button>
+                </form>
                 <div className="ingredients">
                     {this.state.ingredients.map((ingredient, i) => 
                         <li key={i}>
@@ -53,7 +55,7 @@ export default class LoginSearch extends Component {
                         </li>
                     )}
                 </div>
-            </form>
+            </div>
             <RecipeContainer ingredients={this.state.ingredients}/>
         </div>
     </div>

@@ -2,7 +2,6 @@ import React, {Component, PropTypes} from 'react';
 import axios from 'axios';
 import {Grid, Row, Col} from 'react-bootstrap';
 import './RecipeContainer.css';
-import {mashapeKey} from '../../utils/keys.js';
 import Recipe from './../Recipe/Recipe';
 
 export default class RecipeContainer extends Component {
@@ -21,7 +20,7 @@ export default class RecipeContainer extends Component {
   }
 
 	_getRecipes() {
-		axios.defaults.headers.common['X-Mashape-Key'] = mashapeKey;
+		axios.defaults.headers.common['X-Mashape-Key'] = process.env.REACT_APP_MASHAPE_KEY;
 		axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=${this.props.ingredients.toString()}&number=24&ranking=2&limitLicense=true`)
 		.then(result => {
 			this.setState({
