@@ -34,7 +34,11 @@
     width: 18.75em;
 }
 
-.recipes-content {
+.form {
+    margin: 0 27em;
+}
+
+/*.recipes-content {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -43,10 +47,6 @@
 .recipes-row {
     display: flex;
     justify-content: center;
-}
-
-.form {
-    margin: 0 27em;
 }
 
 .footer {
@@ -97,7 +97,7 @@
 .copyright {
     display: flex;
     flex-direction: row;
-}
+}*/
 
 ul {
     margin: 0;

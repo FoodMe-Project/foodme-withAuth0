@@ -1,6 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import axios from 'axios';
-import {key} from '../../utils/mashapeKey.js';
+import {Grid, Row, Col} from 'react-bootstrap';
+import './RecipeContainer.css';
+import {mashapeKey} from '../../utils/keys.js';
+import RecipeObject from '../RecipeObject/RecipeObject';
 
 export default class RecipeContainer extends Component {
 
@@ -12,7 +15,7 @@ export default class RecipeContainer extends Component {
 	}
 
 	_getRecipes() {
-		axios.defaults.headers.common['X-Mashape-Key'] = key;
+		axios.defaults.headers.common['X-Mashape-Key'] = mashapeKey;
 		axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=${this.props.ingredients.toString()}&number=24&ranking=2&limitLicense=true`)
 		.then(result => {
 			this.setState({
@@ -32,9 +35,22 @@ export default class RecipeContainer extends Component {
 
 	render() {
 		return (
-				<div>
-					<ul></ul>
-				</div>
+      <Grid className="recipes-content">
+          <Row className="recipes-row">
+              <Col xs={12}>
+                  {this.state.recipes ? 
+                      (this.state.recipes[0] ?
+                          <h2 className="homepageTitles">Here are your recipes suggestions: </h2>
+                          : <h2 className="homepageTitles">Sorry, there are no suggestions your ingredient(s).</h2>)
+                      : ""
+                  }
+              </Col>
+              {this.state.recipes ?  
+                  this.state.recipes.map(recipe => <RecipeObject recipeObject={recipe} key={recipe.id}/>) :
+                  ""
+              }
+          </Row>
+      </Grid>
 		);
 	}
 }

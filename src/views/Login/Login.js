@@ -2,7 +2,7 @@ import React, {PropTypes, Component} from 'react';
 import {Link} from 'react-router';
 import {Button} from 'react-bootstrap';
 import AuthService from '../../utils/AuthService';
-import GetRecipe from '../GetRecipe/GetRecipe';
+import LoginSearch from '../LoginSearch/LoginSearch';
 
 import './Login.css';
 
@@ -27,7 +27,7 @@ export class Login extends Component {
           </div>
         </header>
         <div className="ingredients-recipes">
-          <GetRecipe/>
+          <LoginSearch/>
         </div>
             <footer className="footer">
               <div className="footerContacts">

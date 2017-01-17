@@ -15,4 +15,4 @@ build
 npm-debug.log
 
 # personal info
-src/views/Main/routes.js
+src/utils/keys.js

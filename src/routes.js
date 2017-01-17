@@ -4,8 +4,9 @@ import AuthService from './utils/AuthService';
 import Container from './views/Container';
 import Home from './views/Home/Home';
 import Login from './views/Login/Login';
+import {auth0Key, auth0Id} from './utils/keys.js'
 
-const auth = new AuthService('jDjPIyEAQJ8oOwKQIWWANpbCkQrkm1r1', 'charlesjamb.auth0.com');
+const auth = new AuthService(auth0Key, auth0Id);
 
 // onEnter callback to validate authentication in private routes
 const requireAuth = (nextState, replace) => {
