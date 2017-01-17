@@ -1,9 +1,10 @@
-import React, { PropTypes, Component } from 'react';
+import React, {PropTypes, Component} from 'react';
+import {Link} from 'react-router';
 import {Button} from 'react-bootstrap';
 import AuthService from '../../utils/AuthService';
-import './Login.css';
 import GetRecipe from '../GetRecipe/GetRecipe';
-import { Link } from 'react-router';
+
+import './Login.css';
 
 export class Login extends Component {
   static contextTypes = {
@@ -16,7 +17,7 @@ export class Login extends Component {
   }
 
   render() {
-    const { auth } = this.props;
+    const {auth} = this.props;
     return (
       <div className="page">
         <header className="header">
@@ -28,6 +29,36 @@ export class Login extends Component {
         <div className="ingredients-recipes">
           <GetRecipe/>
         </div>
+            <footer className="footer">
+              <div className="footerContacts">
+                <p>Contacts</p>
+                <p>Email</p>
+                <p>FAQ</p>
+                <p>About</p>
+              </div>
+              <div className="icons">
+                  <ul className="social-icons">
+                      <a href="#" className="social-icon">
+                          <li>                  
+                              <i className="fa fa-facebook"></i>
+                          </li>
+                      </a>
+                      <a href="#" className="social-icon">
+                          <li>
+                              <i className="fa fa-twitter"></i>
+                          </li>
+                      </a>
+                      <a href="#" className="social-icon">
+                          <li>
+                              <i className="fa fa-instagram"></i>
+                          </li>
+                      </a>
+                  </ul>
+              </div>
+              <div className="copyright">
+                  <p>FoodMe© 2016</p>
+              </div>
+          </footer>
       </div>
     );
   }

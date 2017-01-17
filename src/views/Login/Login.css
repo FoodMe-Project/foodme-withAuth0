@@ -83,3 +83,65 @@
   background-color: #ffefe0;
   width: 100%;
 }
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 12.5em;
+    background-color: black;
+    color: white;
+}
+
+.footerContacts {
+    display: flex;
+    flex-direction: row;
+    text-decoration: underline;
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+}
+
+.social-icons {
+    justify-content: center;
+    display: flex;
+}
+
+.social-icon {
+    background-color: white;
+    color: white;
+    width: 2.1875em;
+    height: 2.1875em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-direction: row;
+    margin: 0 2em;
+}
+
+.footer p {
+    padding: 1.250em;
+    margin: 0.625em;
+}
+
+.copyright {
+    display: flex;
+    flex-direction: row;
+}
+
+ul {
+    margin: 0;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
