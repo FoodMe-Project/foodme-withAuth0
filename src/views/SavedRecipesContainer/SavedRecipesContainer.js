@@ -1,10 +1,10 @@
 const React = require('react');
-import './../Recipes/Recipes.css';
+import './../RecipesContainer/RecipesContainer.css';
 import './../Home/Home.css'
-import IndividualSavedRecipe from '../IndividualSavedRecipe/IndividualSavedRecipe.js';
+import SavedRecipe from '../SavedRecipe/SavedRecipe.js';
 
 
-const SavedRecipes = React.createClass({
+const SavedRecipesContainer = React.createClass({
 
 	render: function() {
 		let recipes = this.props.recipes
@@ -18,7 +18,7 @@ const SavedRecipes = React.createClass({
 					<ul>
 						{recipes.map((recipe) =>
 						<li key={recipe.recipeId} className="recipe-list">
-							<IndividualSavedRecipe 
+							<SavedRecipe
 							className="recipes-list" 
 							recipeId={recipe.recipeId} 
 							recipes={recipes}
@@ -33,4 +33,4 @@ const SavedRecipes = React.createClass({
 	}
 })
 
-module.exports = SavedRecipes;
+module.exports = SavedRecipesContainer;

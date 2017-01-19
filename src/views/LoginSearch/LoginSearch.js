@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Button} from 'react-bootstrap';
 import Ingredient from './../IngredientHomepage/IngredientHomepage';
-import RecipeContainer from './../RecipeContainer/RecipeContainer';
+import RecipesContainer from './../RecipesContainer/RecipesContainer';
 import './LoginSearch.css';
 
 export default class LoginSearch extends Component {
@@ -56,7 +56,7 @@ export default class LoginSearch extends Component {
                     )}
                 </div>
             </div>
-            <RecipeContainer ingredients={this.state.ingredients}/>
+            <RecipesContainer ingredients={this.state.ingredients}/>
         </div>
     </div>
     );

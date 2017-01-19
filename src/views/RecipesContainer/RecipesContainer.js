@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import axios from 'axios';
 import {Grid, Row, Col} from 'react-bootstrap';
-import './RecipeContainer.css';
+import './RecipesContainer.css';
 import Recipe from './../Recipe/Recipe';
 
 export default class RecipeContainer extends Component {
@@ -41,12 +41,9 @@ export default class RecipeContainer extends Component {
       <Grid className="recipes-content">
           <Row className="recipes-row">
               <Col xs={12}>
-                  {this.state.recipes ? 
-                      (this.state.recipes[0] ?
-                          <h2 className="homepageTitles">Here are your recipes suggestions: </h2>
-                          : <h2 className="homepageTitles">Sorry, there are no suggestions for your ingredient(s).</h2>)
-                      : null
-                  }
+                {this.state.recipes[0] ?
+                  <h2 className="homepageTitles">Here are your recipes suggestions: </h2>
+                  : <h2 className="homepageTitles">Sorry, there are no suggestions for your ingredient(s).</h2>}
               </Col>
               {this.state.recipes ?  
                   this.state.recipes.map(recipe => <Recipe 
@@ -54,8 +51,7 @@ export default class RecipeContainer extends Component {
                   																		key={recipe.id}
                   																		saveUserRecipe={this.props.saveUserRecipe}
                   																		deleteSavedRecipe={this.props.deleteSavedRecipe}/>) 
-                  : null
-              }
+                  : null}
           </Row>
       </Grid>
 		);

@@ -1,16 +1,16 @@
-import React, { PropTypes, Component } from 'react';
-import { Button, Jumbotron } from 'react-bootstrap';
+import React, {PropTypes, Component} from 'react';
+import {Button, Jumbotron} from 'react-bootstrap';
 import AuthService from '../../utils/AuthService';
+import axios from 'axios';
+
+import Collapsible from 'react-collapsible';
 import styles from './Home.css';
 import grid from '../grid.css';
+
 import Fridge from './../Fridge/Fridge';
-import SavedRecipes from './../SavedRecipes/SavedRecipes';
 import QuickSearch from './../QuickSearch/QuickSearch';
-// import Recipes from './../Recipes/Recipes';
-import RecipeContainer from './../RecipeContainer/RecipeContainer'
-import Collapsible from 'react-collapsible';
-import axios from 'axios';
-import $ from 'jquery';
+import RecipesContainer from './../RecipesContainer/RecipesContainer';
+import SavedRecipe from './../SavedRecipe/SavedRecipe';
 
 const backend = 'http://localhost:3030/';
 
@@ -45,7 +45,8 @@ export default class Home extends Component {
 	}
 
 	componentDidMount() {
-		console.log('test');
+		this.getClientFridgeId();
+		console.log('Home mounted');
 	}
 
 	componentDidUpdate(prevState) {
@@ -57,26 +58,6 @@ export default class Home extends Component {
 	logout(){
 		this.props.auth.logout()
 		this.context.router.push('/login');
-	}
-  
-	_apiCall() {
-		let that = this;
-
-		$.ajax({
-			url:`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=` + this.state.quickSearch.toString() + "&number=12",
-			type: 'GET',
-			data: {},
-			dataType: 'json',
-			success: function(data) {
-				that.setState({
-					recipes: data,
-					recipesId: data.id
-				});
-			},
-			beforeSend: function(xhr) {
-				xhr.setRequestHeader("X-Mashape-Authorization", "IOXxGwmjbcmshk5Fl9AKuHX5WCLdp1kZ21fjsneOpkbp8wAgkG"); // Enter here your Mashape key
-			}
-		});
 	}
     
 	_handleButtonClick (userIngredientInput) {
@@ -228,6 +209,7 @@ export default class Home extends Component {
 	}
 
 	render() {
+		console.log(this.state.savedRecipes);
 
 		const {profile} = this.state;
 		const fridgeOpen = <span><i className="material-icons">kitchen</i><i className="material-icons">close</i></span>;
@@ -273,7 +255,6 @@ export default class Home extends Component {
 
 					<Fridge
 						ingredientsArray={this.state.ingredients} 
-						apiCall={this._apiCall.bind(this)}
 						componentDidMount={this.componentDidMount.bind(this)}
 						handleButtonClick={this._handleButtonClick.bind(this)}
 						componentDidUpdate={this.componentDidUpdate}
@@ -286,21 +267,12 @@ export default class Home extends Component {
 					<QuickSearch
 						searchArray={this.state.quickSearch}
 						deleteQuickIngredient={this.deleteQuickIngredient.bind(this)}
-						apiCall={this._apiCall.bind(this)}
 					/>
 					</Collapsible>
 
 					{this.state.showSearch ? 
 						<section id="recipe-container" >
-							{
-							// <Recipes
-							// 	clientId={this.state.profile.user_id} 
-							// 	recipes={this.state.recipes}
-							// 	saveUserRecipe={this.saveUserRecipe.bind(this)}
-							// 	deleteSavedRecipe={this.deleteSavedRecipe.bind(this)}
-							// />
-							}
-							<RecipeContainer
+							<RecipesContainer
 								ingredients={this.state.quickSearch}
 								saveUserRecipe={this.saveUserRecipe.bind(this)}
 								deleteSavedRecipe={this.deleteSavedRecipe.bind(this)}
@@ -309,10 +281,12 @@ export default class Home extends Component {
 					: null}
 
 					{this.state.showSaved ?
-						<SavedRecipes id="recipe-container"
-						recipes={this.state.savedRecipes}
-						deleteSavedRecipe={this.deleteSavedRecipe.bind(this)}
-						/>
+						<section id="recipe-container">
+							{this.state.savedRecipes.map(recipe => {
+								<SavedRecipe recipeId={recipe.recipeId}
+														 deleteSavedRecipe={this.deleteSavedRecipe.bind(this)}/>
+							})}
+						</section>
 					: null}
 				</div>
 			</div>

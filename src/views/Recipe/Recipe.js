@@ -23,14 +23,14 @@ export default class Recipe extends Component {
       this.setState({
           savedButton: true
       })
-      this.forceUpdate()
+      // this.forceUpdate()
     }
     else {
       this.props.deleteSavedRecipe(this.props.recipe.id)
       this.setState({
           savedButton: false
       })
-      this.forceUpdate()
+      // this.forceUpdate()
     }
   }
 
