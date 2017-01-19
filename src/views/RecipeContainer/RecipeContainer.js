@@ -40,13 +40,17 @@ export default class RecipeContainer extends Component {
                   {this.state.recipes ? 
                       (this.state.recipes[0] ?
                           <h2 className="homepageTitles">Here are your recipes suggestions: </h2>
-                          : <h2 className="homepageTitles">Sorry, there are no suggestions your ingredient(s).</h2>)
-                      : ""
+                          : <h2 className="homepageTitles">Sorry, there are no suggestions for your ingredient(s).</h2>)
+                      : null
                   }
               </Col>
               {this.state.recipes ?  
-                  this.state.recipes.map(recipe => <Recipe recipe={recipe} key={recipe.id}/>) :
-                  ""
+                  this.state.recipes.map(recipe => <Recipe 
+                  																		recipe={recipe} 
+                  																		key={recipe.id}
+                  																		saveUserRecipe={this.props.saveUserRecipe}
+                  																		deleteSavedRecipe={this.props.deleteSavedRecipe}/>) 
+                  : null
               }
           </Row>
       </Grid>
@@ -55,5 +59,7 @@ export default class RecipeContainer extends Component {
 }
 
 RecipeContainer.propTypes = {
-	ingredients: PropTypes.array
+	ingredients: PropTypes.array,
+	saveUserRecipe: PropTypes.function,
+	deleteSavedRecipe: PropTypes.function
 };

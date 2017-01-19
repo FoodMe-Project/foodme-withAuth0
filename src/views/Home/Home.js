@@ -6,7 +6,8 @@ import grid from '../grid.css';
 import Fridge from './../Fridge/Fridge';
 import SavedRecipes from './../SavedRecipes/SavedRecipes';
 import QuickSearch from './../QuickSearch/QuickSearch';
-import Recipes from './../Recipes/Recipes';
+// import Recipes from './../Recipes/Recipes';
+import RecipeContainer from './../RecipeContainer/RecipeContainer'
 import Collapsible from 'react-collapsible';
 
 
@@ -45,7 +46,7 @@ export default class Home extends Component {
 	}
 
 	componentDidMount() {
-		console.log('componentDidMount');
+		console.log('test');
 	}
 
 	componentDidUpdate(prevState) {
@@ -292,9 +293,16 @@ export default class Home extends Component {
 
 					{this.state.showSearch ? 
 						<section id="recipe-container" >
-							<Recipes
-								clientId={this.state.profile.user_id} 
-								recipes={this.state.recipes}
+							{
+							// <Recipes
+							// 	clientId={this.state.profile.user_id} 
+							// 	recipes={this.state.recipes}
+							// 	saveUserRecipe={this.saveUserRecipe.bind(this)}
+							// 	deleteSavedRecipe={this.deleteSavedRecipe.bind(this)}
+							// />
+							}
+							<RecipeContainer
+								ingredients={this.state.quickSearch}
 								saveUserRecipe={this.saveUserRecipe.bind(this)}
 								deleteSavedRecipe={this.deleteSavedRecipe.bind(this)}
 							/>
