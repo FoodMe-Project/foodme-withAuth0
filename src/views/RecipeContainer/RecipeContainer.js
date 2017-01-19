@@ -13,6 +13,10 @@ export default class RecipeContainer extends Component {
 		};
 	}
 
+	componentDidMount() {
+		this._getRecipes();
+	}
+
   componentDidUpdate(prevProps) {
     if (prevProps.ingredients !== this.props.ingredients) {
       this._getRecipes();

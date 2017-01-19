@@ -1,5 +1,5 @@
-const React = require('react');
-const $ = require('jquery');
+import React from 'react';
+import axios from 'axios';
 import './../IndividualRecipes/IndividualRecipes.css';
 import ModalContent from '../ModalContent/ModalContent';
 import { Modal, Button } from 'react-bootstrap';
@@ -20,23 +20,20 @@ const IndividualSavedRecipe = React.createClass({
     close() {
         this.setState({ showModal: false });
     },
-   _getRecipes: function() {
-		const self = this;
-		$.ajax({
-			url: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${this.props.recipeId}/information/`,
-			type: 'GET',
-			data: {},
-			dataType: 'json',
-			success: function(data) {
-			   self.setState({
-			       recipeInfo: data,
-			   });
-			},
-			beforeSend: function(xhr) {
-				xhr.setRequestHeader("X-Mashape-Authorization", "l1LBB0jz0wmshpT2AzWw4K1uUb6ep1oXuBdjsnQWcgGs9Iutw8");
-			}
-		});
-   	},
+
+  _getRecipes() {
+    axios.defaults.headers.common['X-Mashape-Key'] = process.env.REACT_APP_MASHAPE_KEY;
+    axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${this.props.recipeId}/information/`)
+    .then(result => {
+      this.setState({
+        recipes: result.data
+      });
+    })
+    .catch(err => {
+      console.log(err.stack);
+    })
+  },
+
 
    	deleteSavedRecipe: function() {
       this.props.deleteSavedRecipe(this.props.recipeId);
