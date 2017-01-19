@@ -8,7 +8,7 @@ export default class Recipe extends Component {
   
   constructor(props) {
     super(props);
-    // this._savedButtonClick = this._savedButtonClick.bind(this);
+    this._savedButtonClick = this._savedButtonClick.bind(this);
     this._open = this._open.bind(this);
     this._close = this._close.bind(this);
     this.state = {
@@ -23,12 +23,14 @@ export default class Recipe extends Component {
       this.setState({
           savedButton: true
       })
+      this.forceUpdate()
     }
     else {
       this.props.deleteSavedRecipe(this.props.recipe.id)
       this.setState({
           savedButton: false
       })
+      this.forceUpdate()
     }
   }
 
@@ -47,8 +49,8 @@ export default class Recipe extends Component {
           <h3 className="recipeHeaders">{this.props.recipe.title.toUpperCase()}</h3>
           {this.props.saveUserRecipe ?
             this.state.savedButton ?
-              <Button bsStyle="primary" bsSize="large" className="button" onClick={this._savedButtonClick}>SAVE RECIPE</Button>
-              : <Button bsStyle="primary" bsSize="large" className="button" onClick={this._savedButtonClick}>UNSAVE RECIPE</Button>
+              <Button bsStyle="primary" bsSize="large" className="button" onClick={this._savedButtonClick}>UNSAVE RECIPE</Button>
+              : <Button bsStyle="primary" bsSize="large" className="button" onClick={this._savedButtonClick}>SAVE RECIPE</Button>
             : null
           }
           <Button bsStyle="primary" bsSize="large" className="button" onClick={this._open}>SHOW RECIPE</Button>

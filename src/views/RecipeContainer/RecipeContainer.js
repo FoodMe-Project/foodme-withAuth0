@@ -60,6 +60,6 @@ export default class RecipeContainer extends Component {
 
 RecipeContainer.propTypes = {
 	ingredients: PropTypes.array,
-	saveUserRecipe: PropTypes.function,
-	deleteSavedRecipe: PropTypes.function
+	saveUserRecipe: PropTypes.func,
+	deleteSavedRecipe: PropTypes.func
 };
