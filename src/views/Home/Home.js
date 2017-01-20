@@ -11,7 +11,6 @@ import Fridge from './../Fridge/Fridge';
 import QuickSearch from './../QuickSearch/QuickSearch';
 import RecipesContainer from './../RecipesContainer/RecipesContainer';
 import Recipe from './../Recipe/Recipe';
-// import SavedRecipe from './../SavedRecipe/SavedRecipe';
 
 const backend = 'http://localhost:3030/';
 
@@ -29,6 +28,7 @@ export default class Home extends Component {
 		super(props, context);
 		this.toggleSearch = this.toggleSearch.bind(this);
 		this.toggleSaved = this.toggleSaved.bind(this);
+		this.displaySavedRecipe = this.displaySavedRecipe.bind(this); 
 		this._getSavedRecipeInfo = this._getSavedRecipeInfo.bind(this);
 		this.state = {
 			profile: props.auth.getProfile(),
@@ -111,9 +111,12 @@ export default class Home extends Component {
  			recipeId: recipeId,
  		})
  		.then(result => {
- 			this.setState({
- 				savedRecipes: this.state.savedRecipes.filter(r => r.recipeId !== recipeId)
- 			});
+ 			if(this.state.showSaved) {
+ 				this.displaySavedRecipe();
+ 			}
+ 			// this.setState({
+ 			// 	savedRecipes: this.state.savedRecipes.filter(r => r.recipeId !== recipeId)
+ 			// });
  		})
  		.catch(err => {
  			console.log(err.stack);
@@ -155,7 +158,6 @@ export default class Home extends Component {
 				fridgeId: result.data.fridgeId
 			})
 			that.displayFridge();
-			// that.displaySavedRecipe();
 		})
 		.catch(err => {
 			console.log(err.stack)
@@ -301,6 +303,7 @@ export default class Home extends Component {
 						{this.state.savedRecipes.map(recipe => <Recipe 
 																										 recipe={recipe.data} 
 																										 key={recipe.data.id}
+																										 displaySavedRecipe={this.displaySavedRecipe.bind(this)}
 																										 deleteSavedRecipe={this.deleteSavedRecipe.bind(this)}
 						/>)}
 						</section>

@@ -35,6 +35,7 @@ export default class Recipe extends Component {
 
   _deleteRecipe() {
     this.props.deleteSavedRecipe(this.props.recipe.id);
+    this.props.displaySavedRecipe();
   }
 
   _open() {
