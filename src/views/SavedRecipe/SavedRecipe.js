@@ -12,52 +12,58 @@ export default class SavedRecipe extends Component {
     this._deleteSavedRecipe = this._deleteSavedRecipe.bind(this);
     this._open = this._open.bind(this);
     this._close = this._close.bind(this);
+    this.forceUpdate = this.forceUpdate.bind(this);
     this.state = {
-      recipeInfo: {},
+      recipe: this._getRecipe(),
       showModal: false
     }
   }
 
-  componentDidMount() {
-    console.log('SavedRecipe');
-    this._getRecipe();
-  }
+  // getInitialState() {
+  //   console.log('recipeId', this.props.recipeId)
+  //   console.log('SavedRecipe componentDidMount')
+  //   this._getRecipe();
+  // }
 
-  _getRecipes() {
+  _getRecipe() {
+    console.log('getRecipe');
     axios.defaults.headers.common['X-Mashape-Key'] = process.env.REACT_APP_MASHAPE_KEY;
     axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${this.props.recipeId}/information/`)
     .then(result => {
-      this.setState({
-        recipes: result.data
-      });
+      console.log(result);
+      this.forceUpdate();
+      return result.data
+      // this.setState({
+      //   recipe: result.data
+      // });
     })
     .catch(err => {
-      console.log(err.stack);
+      (err.stack);
     })
   }
 
-  deleteSavedRecipe() {
+  _deleteSavedRecipe() {
     this.props.deleteSavedRecipe(this.props.recipeId);
   }
 
-  open() {
+  _open() {
     this.setState({ showModal: true });
   }
 
-  close() {
+  _close() {
     this.setState({ showModal: false });
   }
 
   render() {
-    console.log('SavedRecipe ID', this.props.recipeId);
+    console.log('savedRecipe', this.state.recipe);
     return (
       <Col xs={6} md={4}>
-        <Thumbnail className="eachRecipe" src={this.state.recipeInfo.image} alt="242x200">
-          <h3 className="recipeHeaders">{this.state.recipeInfo.title.toUpperCase()}</h3>
+        <Thumbnail className="eachRecipe" src={this.state.recipe.image} alt="242x200">
+          <h3 className="recipeHeaders">{this.state.recipe.title.toUpperCase()}</h3>
           <Button bsStyle="primary" bsSize="large" className="button" onClick={this._deleteSavedRecipe}>UNSAVE RECIPE</Button>
           <Button bsStyle="primary" bsSize="large" className="button" onClick={this._open}>SHOW RECIPE</Button>
           <Modal show={this.state.showModal} onHide={this._close}>
-            <ModalContent recipeId={this.state.recipeInfo.id} title={this.state.recipeInfo.title} image={this.props.recipe.image}
+            <ModalContent recipeId={this.state.recipe.id} title={this.state.recipe.title} image={this.props.recipe.image}
             servings/>
             <Modal.Footer>
               <Button className="button" onClick={this._close}>CLOSE</Button>
@@ -67,7 +73,12 @@ export default class SavedRecipe extends Component {
       </Col>
     );
   }
-}
+};
+
+SavedRecipe.propTypes = {
+  recipeId: PropTypes.string,
+  deleteSavedRecipe: PropTypes.func
+};
 
 // const IndividualSavedRecipe = React.createClass({
 // 	getInitialState() {

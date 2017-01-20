@@ -10,7 +10,8 @@ import grid from '../grid.css';
 import Fridge from './../Fridge/Fridge';
 import QuickSearch from './../QuickSearch/QuickSearch';
 import RecipesContainer from './../RecipesContainer/RecipesContainer';
-import SavedRecipe from './../SavedRecipe/SavedRecipe';
+import Recipe from './../Recipe/Recipe';
+// import SavedRecipe from './../SavedRecipe/SavedRecipe';
 
 const backend = 'http://localhost:3030/';
 
@@ -26,6 +27,9 @@ export default class Home extends Component {
 
 	constructor(props, context) {
 		super(props, context);
+		this.toggleSearch = this.toggleSearch.bind(this);
+		this.toggleSaved = this.toggleSaved.bind(this);
+		this._getSavedRecipeInfo = this._getSavedRecipeInfo.bind(this);
 		this.state = {
 			profile: props.auth.getProfile(),
 			recipes: [],
@@ -36,7 +40,7 @@ export default class Home extends Component {
 			savedRecipes: [],
 			showSearch: true,
 			showSaved: false
-		}
+	}
     
 		props.auth.on('profile_updated', (newProfile) => {
 			console.log('profile')
@@ -46,7 +50,6 @@ export default class Home extends Component {
 
 	componentDidMount() {
 		this.getClientFridgeId();
-		console.log('Home mounted');
 	}
 
 	componentDidUpdate(prevState) {
@@ -142,6 +145,7 @@ export default class Home extends Component {
 			}
 		})
 	}
+
 	getClientFridgeId() {
 		let that = this;
 
@@ -151,7 +155,7 @@ export default class Home extends Component {
 				fridgeId: result.data.fridgeId
 			})
 			that.displayFridge();
-			that.displaySavedRecipe();
+			// that.displaySavedRecipe();
 		})
 		.catch(err => {
 			console.log(err.stack)
@@ -177,17 +181,26 @@ export default class Home extends Component {
 	}
 
 	displaySavedRecipe() {
-		let that = this;
-
 		axios.post(`${backend}display-recipes/${this.state.profile.user_id}`)
-		.then(result => {
-			that.setState({
-				savedRecipes: result.data
-			})
+		.then(savedRe => {
+			return savedRe.data.map(recipe => {return this._getSavedRecipeInfo(recipe.recipeId)})
 		})
 		.catch(err => {
 			console.log(err.stack);
 		})
+	}
+
+	_getSavedRecipeInfo(recipeId) {
+		axios.defaults.headers.common['X-Mashape-Key'] = process.env.REACT_APP_MASHAPE_KEY;
+    axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${recipeId}/information/`)
+    .then(result => {
+    	this.setState({
+    		savedRecipes: this.state.savedRecipes.concat(result)
+    	})
+    })
+    .catch(err => {
+      console.log(err.stack);
+    })
 	}
 
 	toggleSearch() {
@@ -202,14 +215,17 @@ export default class Home extends Component {
 	toggleSaved() {
 		if (!this.state.showSaved) {
 			this.setState({
+				savedRecipes: [],
 				showSearch: false,
 				showSaved: true
 			})
+			this.displaySavedRecipe();
 		}
 	}
 
 	render() {
-		console.log(this.state.savedRecipes);
+
+		console.log('savedRecipes', this.state.savedRecipes)
 
 		const {profile} = this.state;
 		const fridgeOpen = <span><i className="material-icons">kitchen</i><i className="material-icons">close</i></span>;
@@ -282,10 +298,11 @@ export default class Home extends Component {
 
 					{this.state.showSaved ?
 						<section id="recipe-container">
-							{this.state.savedRecipes.map(recipe => {
-								<SavedRecipe recipeId={recipe.recipeId}
-														 deleteSavedRecipe={this.deleteSavedRecipe.bind(this)}/>
-							})}
+						{this.state.savedRecipes.map(recipe => <Recipe 
+																										 recipe={recipe.data} 
+																										 key={recipe.data.id}
+																										 deleteSavedRecipe={this.deleteSavedRecipe.bind(this)}
+						/>)}
 						</section>
 					: null}
 				</div>
