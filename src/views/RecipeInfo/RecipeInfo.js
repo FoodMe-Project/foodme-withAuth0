@@ -15,20 +15,3 @@ export default class RecipeInfo extends Component {
 RecipeInfo.propTypes = {
   recipeObject: PropTypes.object
 }
-
-// var RecipeInfo = React.createClass({
-//     propTypes: {
-//         recipeObject: React.PropTypes.object.isRequired
-//     },
-//     render: function() {
-//         return (
-//             <div>
-//                 <ul>
-//                     <li>{this.props.recipeObject.name} ({this.props.recipeObject.amount} {this.props.recipeObject.unitLong})</li>
-//                 </ul>
-//             </div>
-//         );
-//     }
-// });
-
-// module.exports = RecipeInfo;

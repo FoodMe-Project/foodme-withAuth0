@@ -304,11 +304,8 @@ input:focus {
 }
 
 #footer-content{
-  
     display: flex;
     flex-direction: column;
-
-    
 }
 
 #footer-content a{
@@ -322,7 +319,6 @@ input:focus {
     border:none;
     color:white;
     cursor: pointer;
-    
 }
 
 #footer-content p{
@@ -388,8 +384,13 @@ input:focus {
 #quick-search {
     margin-top: 1.5em;
     margin-left: 1.5em;
-
+    margin: 1em;
+    margin-left: 0em;
+    background-color: #EFB05C;
 }
 
-
-   
+#quick-search-text {
+    font-size: .8em;
+    color:#6b6b6b;
+    font-weight: normal;
+} 
