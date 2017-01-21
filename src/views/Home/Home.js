@@ -42,8 +42,7 @@ export default class Home extends Component {
 			showSaved: false
 	}
     
-		props.auth.on('profile_updated', (newProfile) => {
-			console.log('profile')
+	props.auth.on('profile_updated', (newProfile) => {
 			this.setState({profile: newProfile})
 		})
 	}
@@ -58,14 +57,13 @@ export default class Home extends Component {
 		}
 	}
 
-	logout(){
+	logout() {
 		this.props.auth.logout()
 		this.context.router.push('/login');
 	}
     
 	_handleButtonClick (userIngredientInput) {
 		let that = this;
-
 		axios.post(`${backend}insert-into-fridge`, {
 			fridgeId: that.state.fridgeId,
 			ingredientName: userIngredientInput
@@ -81,7 +79,6 @@ export default class Home extends Component {
 	deleteIngredient(i, ingredient) {
 		event.preventDefault();
 		let that = this;
-
 		axios.post(`${backend}delete-ingredient`, {
 			fridgeId: that.state.fridgeId,
 			ingredientName: ingredient
@@ -96,7 +93,6 @@ export default class Home extends Component {
 
 	deleteQuickIngredient(i){
 		event.preventDefault();
-
 		this.setState(state => {
 			state.quickSearch.splice(i, 1);
 			return {
@@ -114,9 +110,6 @@ export default class Home extends Component {
  			if(this.state.showSaved) {
  				this.displaySavedRecipe();
  			}
- 			// this.setState({
- 			// 	savedRecipes: this.state.savedRecipes.filter(r => r.recipeId !== recipeId)
- 			// });
  		})
  		.catch(err => {
  			console.log(err.stack);
@@ -125,8 +118,8 @@ export default class Home extends Component {
 
 	saveUserRecipe(recipeId) {
 		axios.post(`${backend}insert-save-recipe`, {
-					clientId: this.state.profile.user_id,
-					recipeId: recipeId
+			clientId: this.state.profile.user_id,
+			recipeId: recipeId
 		})
 		.then(result => {
 			this.setState({
@@ -141,8 +134,8 @@ export default class Home extends Component {
 	copyIngredient(i) {
 		event.preventDefault();
 		this.setState(state => {
-			var copied = state.ingredients.slice(i, i+1);
-			var ingredient = copied.concat(this.state.quickSearch);
+			let copied = state.ingredients.slice(i, i+1);
+			let ingredient = copied.concat(this.state.quickSearch);
 			return {
 				quickSearch: ingredient
 			}
@@ -151,7 +144,6 @@ export default class Home extends Component {
 
 	getClientFridgeId() {
 		let that = this;
-
 		axios.post(`${backend}get-fridge/${this.state.profile.user_id}`)
 		.then(result => {
 			that.setState({
@@ -166,7 +158,6 @@ export default class Home extends Component {
 
 	displayFridge() {
 		let that = this;
-
 		axios.post(`${backend}display-fridge/${this.state.fridgeId}`)
 		.then(result => {
 			let fridge = result.data;
@@ -226,13 +217,9 @@ export default class Home extends Component {
 	}
 
 	render() {
-
-		console.log('savedRecipes', this.state.savedRecipes)
-
 		const {profile} = this.state;
 		const fridgeOpen = <span><i className="material-icons">kitchen</i><i className="material-icons">close</i></span>;
     const fridgeClosed = <span><i className="material-icons">kitchen</i><i className="material-icons">arrow_forward</i></span>;
-
 		return (
 
 			<div className={styles.root + " " + grid.root} id="home-wrapper">
