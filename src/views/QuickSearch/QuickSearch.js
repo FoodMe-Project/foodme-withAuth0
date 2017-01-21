@@ -1,5 +1,5 @@
 import React from 'react';
-import QuickSearchIngredient from './../Ingredient/QuickSearchIngredient'
+import Ingredient from './../Ingredient/Ingredient'
 import './../Home/Home.css';
 
 const QuickSearch = React.createClass({
@@ -7,6 +7,7 @@ const QuickSearch = React.createClass({
 		event.preventDefault();
 		this.props.deleteQuickIngredient(i);
 	},
+
 	render: function() {
 		let searchArray = this.props.searchArray
 		return (
@@ -17,7 +18,7 @@ const QuickSearch = React.createClass({
 					{
 						searchArray.map((ingredient, i) => 
 						<li key={i}>
-							<QuickSearchIngredient ingredient={ingredient} onClick={evt => this.deleteQuickIngredient(i, evt)}/>
+							<Ingredient ingredient={ingredient} delete={evt => this.deleteQuickIngredient(i, evt)}/>
 						</li>
 						)
 					}

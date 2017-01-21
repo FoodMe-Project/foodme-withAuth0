@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Button} from 'react-bootstrap';
-import Ingredient from './../IngredientHomepage/IngredientHomepage';
+import Ingredient from './../Ingredient/Ingredient';
 import RecipesContainer from './../RecipesContainer/RecipesContainer';
 import './LoginSearch.css';
 
@@ -51,7 +51,7 @@ export default class LoginSearch extends Component {
                 <div className="ingredients">
                     {this.state.ingredients.map((ingredient, i) => 
                         <li key={i}>
-                            <Ingredient ClassName="ingredient-list" ingredient={ingredient}  onClick={(evt) => this._deleteIngredient(i, evt)}/>
+                            <Ingredient ClassName="ingredient-list" ingredient={ingredient}  delete={(evt) => this._deleteIngredient(i, evt)}/>
                         </li>
                     )}
                 </div>

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './../Home/Home.css';
 import './../grid.css'
 
-import Ingredient from './../Ingredient/Ingredients';
+import Ingredient from './../Ingredient/Ingredient';
 
 export default class Fridge extends Component {
   constructor(props) {
@@ -41,8 +41,8 @@ export default class Fridge extends Component {
               <li key={i}>
                   <Ingredient ClassName="ingredient-list" 
                     ingredient={ingredient}  
-                    onClickCopy={(evt) => this._copyIngredient(i, evt)}
-                    onClickDelete={(evt) => this._deleteIngredient(i, evt, ingredient)}/>
+                    copy={(evt) => this._copyIngredient(i, evt)}
+                    delete={(evt) => this._deleteIngredient(i, evt, ingredient)}/>
               </li>
               )}
           </div>
